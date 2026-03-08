@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPUs, TPUs, & The Economics of AI | Gavin Baker - 小视频大思考</title>
+    <style>
+        :root { --primary: #2563eb; --secondary: #64748b; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --quote-bg: #f1f5f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 2rem 1rem; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--primary); text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        article { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        h1 { font-size: 1.75rem; margin-bottom: 1rem; }
+        .meta { display: flex; gap: 1rem; color: var(--secondary); font-size: 0.875rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .tag { background: #e0e7ff; color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
+        h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text); }
+        h4 { font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--secondary); }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        blockquote { background: var(--quote-bg); border-left: 4px solid var(--primary); padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--secondary); }
+        blockquote strong { color: var(--text); font-style: normal; }
+        a { color: var(--primary); }
+        .youtube-link { display: inline-block; background: #ff0000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin: 1.5rem 0; font-weight: 500; }
+        .youtube-link:hover { background: #cc0000; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem; text-align: left; }
+        th { background: #f8fafc; font-weight: 600; }
+        code { background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9em; }
+        .table-row { padding: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回索引</a>
+        <article>
+            <h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1>
+            <div class="meta">
+                <span>📺 </span>
+                <span>⏱️ </span>
+                <span>📅 2026-03</span>
+            </div>
+            <div class="tags"><span class="tag">#AI</span><span class="tag">#GPU</span><span class="tag">#TPU</span><span class="tag">#Nvidia</span><span class="tag">#Google</span><span class="tag">#Scaling</span><span class="tag">#Gavin</span></div>
+            <div class="content"><strong>视频信息：</strong>
+<ul><li>标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview</li><li>频道：Invest Like The Best</li><li>时长：1:28:26</li><li>观看数：--</li><li>整理时间：2026-03-02</li>
+</ul>
+---
+<h3>🎯 核心观点</h3>
+<strong>Gavin Baker 的核心判断：</strong>
+<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote>
+<strong>翻译：</strong>
+<blockquote>"AI 是我作为科技投资者职业生涯中，第一次出现'低成本生产者'真正重要的情况。"</blockquote>
+<p>---</p>
+<h3>📊 AI 进展的三个 Scaling Laws</h3>
+<h4>1️⃣ Pre-training Scaling Laws</h4>
+<strong>核心发现：Gemini 3 证明了预训练扩展定律依然有效</strong>
+<div class="table-row">要点 | 说明</div>
+|------|------|
+<div class="table-row"><strong>验证</strong> | Gemini 3 是自 Hopper 以来的首次验证</div>
+<div class="table-row"><strong>意义</strong> | 证明更大规模的预训练仍然有效</div>
+<div class="table-row"><strong>比喻</strong> | 像"古埃及人对太阳的理解"——能精确测量，但不完全理解原理</div>
+<strong>关键洞察：</strong>
+<blockquote>"No one on planet Earth knows how or why scaling laws for pre-training work. It's actually not a law. It's an empirical observation."</blockquote>
+<strong>翻译：</strong>
+<blockquote>"地球上没人知道预训练扩展定律为什么有效。它实际上不是定律，而是经验观察。"</blockquote>
+<p>---</p>
+<h4>2️⃣ Post-training Scaling Laws (RLVR)</h4>
+<strong>Reinforcement Learning with Verified Rewards</strong>
+<div class="table-row">要点 | 说明</div>
+|------|------|
+<div class="table-row"><strong>核心概念</strong> | 任何可验证的事情都可以自动化</div>
+<div class="table-row"><strong>来源</strong> | Andrej Karpathy 的洞察</div>
+<div class="table-row"><strong>公式</strong> | With AI, anything you can verify, you can automate</div>
+<strong>为什么重要：</strong>
+<ul><li>在 Blackwell 延期期间，RLVR 让 AI 继续进步</li><li>"Reasoning saved AI" —— 填补了 18 个月的硬件空白</li>
+</ul>
+---
+<h4>3️⃣ Test-time Compute Scaling</h4>
+<strong>测试时计算的扩展</strong>
+<div class="table-row">要点 | 说明</div>
+|------|------|
+<div class="table-row"><strong>作用</strong> | 让模型在推理时"思考更久"</div>
+<div class="table-row"><strong>效果</strong> | ARC-AGI 从 8% → 95% 只用了 3 个月</div>
+<div class="table-row"><strong>意义</strong> | 新的进步维度，不依赖预训练规模</div>
+<p>---</p>
+<h3>🔧 GPU vs TPU：Nvidia vs Google</h3>
+<h4>竞争格局</h4>
+<div class="table-row">维度 | Nvidia (GPU) | Google (TPU)</div>
+|------|-------------|--------------|
+<div class="table-row"><strong>策略</strong> | 全栈解决方案 | 只做 TPU + 其他网络芯片</div>
+<div class="table-row"><strong>优势</strong> | 生态系统完整 | 成本优势</div>
+<div class="table-row"><strong>产品</strong> | Hopper → Blackwell | TPU v6 (2024) → v7 (2025)</div>
+<div class="table-row"><strong>部署难度</strong> | 高（液冷、3000磅机架） | 低（更成熟）</div>
+<h4>Blackwell 的挑战</h4>
+<strong>产品过渡的复杂性：</strong>
+<div class="table-row">变化 | Hopper | Blackwell</div>
+|------|--------|-----------|
+<div class="table-row">冷却 | 风冷 | 液冷</div>
+<div class="table-row">机架重量 | ~1000 磅 | ~3000 磅</div>
+<div class="table-row">功耗 | 30 kW | 130 kW</div>
+<div class="table-row">等效家庭用电 | 30 户 | 130 户</div>
+<strong>Gavin 的比喻：</strong>
+<blockquote>"Imagine if to get a new iPhone you had to change all the outlets in your house to 220 volt, put in a Tesla power wall, put in a generator, put in solar panels..."</blockquote>
+<strong>翻译：</strong>
+<blockquote>"想象一下，为了换个新 iPhone，你得把家里所有插座换成 220 伏，装个特斯拉 Powerwall，装个发电机，装太阳能板……"</blockquote>
+<h4>谁领先？</h4>
+<strong>短期：Google 有优势</strong>
+<ul><li>TPU v6/v7 比 Blackwell 更早部署</li><li>是"最低成本的 token 生产者"</li><li>正在"吸走 AI 生态系统的经济氧气"</li>
+</ul>
+<strong>中期：Blackwell 会追上</strong>
+<ul><li>GB300 是"直接替换"，不需要新基础设施</li><li>2026 年初会有第一个 Blackwell 训练的模型</li><li><strong>预测：XAI 会第一个发布 Blackwell 模型</strong></li>
+</ul>
+---
+<h3>🚀 XAI 的优势</h3>
+<strong>为什么 XAI 会第一个发布 Blackwell 模型？</strong>
+<div class="table-row">原因 | 说明</div>
+|------|------|
+<div class="table-row"><strong>建设速度</strong> | Jensen Huang: "No one builds data centers faster than Elon"</div>
+<div class="table-row"><strong>合作关系</strong> | XAI 帮 Nvidia 调试 Blackwell</div>
+<div class="table-row"><strong>优势循环</strong> | 最快部署 → 最早发现问题 → 帮所有人解决</div>
+<strong>时间线：</strong>
+<ul><li>Blackwell 部署需要 6-9 个月调优</li><li>XAI 因为最快，会第一个完成</li>
+</ul>
+---
+<h3>💡 低成本生产者的战略意义</h3>
+<h4>历史性变化</h4>
+<strong>以前：低成本从不是优势</strong>
+<ul><li>Apple 不是低成本手机生产商</li><li>Microsoft 不是低成本软件生产商</li><li>Nvidia 不是低成本 GPU 生产商</li>
+</ul>
+<strong>现在：低成本至关重要</strong>
+<ul><li>Google 作为低成本 token 生产者</li><li>正在"吸走竞争对手的经济氧气"</li><li>这是"极其理性的策略"</li>
+</ul>
+<h4>对投资者的启示</h4>
+<strong>关注点：</strong>
+<ul><li>谁是最低成本的 token 生产者？</li><li>谁能最快部署新一代芯片？</li><li>谁在"吸走经济氧气"？</li>
+</ul>
+---
+<h3>📈 关键数据点</h3>
+<div class="table-row">指标 | 数据</div>
+|------|------|
+<div class="table-row">最大相干 GPU 集群 | 200,000 Hoppers</div>
+<div class="table-row">Blackwell 部署时间 | 2025 年末开始规模化</div>
+<div class="table-row">GB300 特点 | 与 GB200 机架直接兼容</div>
+<div class="table-row">ARC-AGI 进步 | 8% → 95% (3 个月，reasoning)</div>
+<div class="table-row">Blackwell 模型预测 | 2026 年初，来自 XAI</div>
+<p>---</p>
+<h3>🎯 四大 AI 实验室</h3>
+<p>Gavin 明确指出：</p>
+<div class="table-row">实验室 | 状态</div>
+|--------|------|
+<div class="table-row"><strong>OpenAI</strong> | ✅ 领先</div>
+<div class="table-row"><strong>Google/Gemini</strong> | ✅ 领先</div>
+<div class="table-row"><strong>Anthropic</strong> | ✅ 领先</div>
+<div class="table-row"><strong>XAI</strong> | ✅ 领先</div>
+<blockquote>"These are clearly the four leading labs."</blockquote>
+<p>---</p>
+<h3>💻 如何跟进 AI 进展</h3>
+<strong>Gavin 的方法论：</strong>
+<ul><li><strong>使用最高级别的模型</strong>（$200/月）</li>
+</ul>   - 免费版 = 10 岁小孩的能力
+   - 付费版 = 35 岁成年人的能力
+   - 不要基于免费版做判断
+<ul><li><strong>关注 X/Twitter</strong></li>
+</ul>   - "AI happens on X"
+   - 跟随那 500-1000 个真正懂的人
+   - 实验室之间的公开辩论
+<ul><li><strong>听四大实验室的播客</strong></li>
+</ul>   - 任何来自这些实验室的人上播客都值得听
+<ul><li><strong>用 AI 跟进 AI</strong></li>
+</ul>   - 听播客时让 AI 帮你总结重点
+   - 减少摩擦，即时消化
+<p>---</p>
+<h3>🔑 关键引用</h3>
+<strong>关于 Scaling Laws：</strong>
+<blockquote>"Everything in AI is just downstream of those 500-1000 people who really understand this."</blockquote>
+<strong>关于 Reasoning：</strong>
+<blockquote>"Reasoning kind of saved AI because it let AI make progress without Blackwell."</blockquote>
+<strong>关于竞争优势：</strong>
+<blockquote>"Google has been sucking the economic oxygen out of the AI ecosystem."</blockquote>
+<p>---</p>
+<p>_整理完成：2026-03-02_
+_视频来源：Invest Like The Best_</p></div>
+        </article>
+        <footer style="text-align: center; margin-top: 2rem; color: var(--secondary); padding: 1rem;">
+            <p>由小爪 🐾 整理 · <a href="../index.html">返回索引</a></p>
+        </footer>
+    </div>
+</body>
+</html>

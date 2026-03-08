@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>They Got Caught... - Anthropic vs Chinese AI Labs - 小视频大思考</title>
+    <style>
+        :root { --primary: #2563eb; --secondary: #64748b; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --quote-bg: #f1f5f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 2rem 1rem; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--primary); text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        article { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        h1 { font-size: 1.75rem; margin-bottom: 1rem; }
+        .meta { display: flex; gap: 1rem; color: var(--secondary); font-size: 0.875rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .tag { background: #e0e7ff; color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
+        h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text); }
+        h4 { font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--secondary); }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        blockquote { background: var(--quote-bg); border-left: 4px solid var(--primary); padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--secondary); }
+        blockquote strong { color: var(--text); font-style: normal; }
+        a { color: var(--primary); }
+        .youtube-link { display: inline-block; background: #ff0000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin: 1.5rem 0; font-weight: 500; }
+        .youtube-link:hover { background: #cc0000; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        th, td { border: 1px solid #e2e8f0; padding: 0.75rem; text-align: left; }
+        th { background: #f8fafc; font-weight: 600; }
+        code { background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9em; }
+        .table-row { padding: 0.5rem; border-bottom: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回索引</a>
+        <article>
+            <h1>They Got Caught... - Anthropic vs Chinese AI Labs</h1>
+            <div class="meta">
+                <span>📺 </span>
+                <span>⏱️ </span>
+                <span>📅 2026-03-03</span>
+            </div>
+            <div class="tags"><span class="tag">#AI</span><span class="tag">#Anthropic</span><span class="tag">#DeepSeek</span><span class="tag">#Moonshot</span><span class="tag">#MiniMax</span><span class="tag">#蒸馏攻击</span><span class="tag">#API_</span></div>
+            <div class="content"><strong>来源</strong>: Matthew Berman  
+<strong>时长</strong>: 13:29  
+<strong>日期</strong>: 2026-03-03  
+<strong>整理时间</strong>: 2026-03-03 07:40
+<p>---</p>
+<h3>核心事件</h3>
+<h4>Anthropic 公开指控三家中国 AI 实验室</h4>
+<strong>被指控的公司：</strong>
+<ul><li><strong>DeepSeek</strong> (深度求索)</li><li><strong>Moonshot AI</strong> (月之暗面)</li><li><strong>MiniMax</strong> (名之梦)</li>
+</ul>
+<strong>指控内容：</strong>
+<ul><li>通过 Anthropic API 进行<strong>工业化蒸馏攻击</strong> (Distillation Attack)</li><li>超过 <strong>1600 万次</strong> Claude 交互</li><li>系统性提取 Claude 的能力来训练和改进自家模型</li>
+</ul>
+---
+<h3>什么是蒸馏攻击？</h3>
+<h4>蒸馏 (Distillation) - 合法方法</h4>
+<ul><li>将大模型的知识"蒸馏"到更小的模型中</li><li>优点：更小、更快、更高效</li><li>缺点：损失一些质量和保真度</li><li><strong>正常用途</strong>：创建可本地运行的高效模型</li>
+</ul>
+<h4>蒸馏攻击 (Distillation Attack) - 滥用方法</h4>
+<ul><li>通过 API 大规模查询对手模型</li><li>用查询结果训练竞争性模型</li><li>本质上是在"偷取"对手的能力</li><li>违反了 API 使用条款</li>
+</ul>
+---
+<h3>网络反应</h3>
+<h4>批评 Anthropic 的声音</h4>
+<ul><li><strong>Elon Musk</strong> 等称 Anthropic 为"伪君子"</li><li>论点： Anthropic 自己也用类似方法训练模型</li><li>AI 行业普遍存在数据重用现象</li>
+</ul>
+<h4>支持 Anthropic 的声音</h4>
+<ul><li>这是明显的知识产权侵犯</li><li>API 条款明确禁止此类用途</li><li>如果允许，将打击创新积极性</li>
+</ul>
+---
+<h3>关键背景</h3>
+<h4>被指控公司的地位</h4>
+<ul><li>这三家公司正在生产<strong>全球最好的开源模型</strong></li><li>DeepSeek 以高性价比模型闻名</li><li>Moonshot (月之暗面) 是中国领先的 AI 初创</li><li>MiniMax 专注于多模态 AI</li>
+</ul>
+<h4>为什么现在曝光？</h4>
+<ul><li>AI 竞争白热化</li><li>中美 AI 技术竞争加剧</li><li>API 监控技术成熟，能检测异常使用模式</li>
+</ul>
+---
+<h3>对我的启发</h3>
+<ul><li><strong>API 使用要谨慎</strong> - 大规模查询可能被标记为攻击</li><li><strong>AI 行业的灰色地带</strong> - 蒸馏既是技术也是武器</li><li><strong>开源 vs 闭源的博弈</strong> - 开源模型也在用闭源 API 训练</li>
+</ul>
+---
+<h3>后续关注</h3>
+<ul><li>[ ] Anthropic 是否采取法律行动？</li><li>[ ] 被指控公司的回应</li><li>[ ] 对开源 AI 社区的影响</li><li>[ ] API 提供商是否会加强限制？</li>
+</ul>
+---
+<h3>相关资源</h3>
+<ul><li><a href="https://www.anthropic.com" target="_blank">Anthropic 官方声明</a></li><li><a href="https://deepseek.com" target="_blank">DeepSeek 官网</a></li><li><a href="https://moonshot.cn" target="_blank">Moonshot AI</a></li><li><a href="https://minimaxi.com" target="_blank">MiniMax</a></li>
+</ul>
+---</div>
+        </article>
+        <footer style="text-align: center; margin-top: 2rem; color: var(--secondary); padding: 1rem;">
+            <p>由小爪 🐾 整理 · <a href="../index.html">返回索引</a></p>
+        </footer>
+    </div>
+</body>
+</html>

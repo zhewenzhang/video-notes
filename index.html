@@ -5,78 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小视频大思考 - 深度笔记</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #64748b;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-        }
+        :root { --primary: #2563eb; --secondary: #64748b; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 2rem 1rem;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; }
         .container { max-width: 800px; margin: 0 auto; }
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
-        }
+        header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; }
         h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
         .subtitle { color: var(--secondary); font-size: 1.1rem; }
-        .notes-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-        .note-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .note-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .note-card h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-        .note-card h2 a {
-            color: var(--text);
-            text-decoration: none;
-        }
+        .stats { color: var(--secondary); font-size: 0.9rem; margin-top: 0.5rem; }
+        .notes-grid { display: grid; gap: 1.5rem; }
+        .note-card { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+        .note-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .note-card h2 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .note-card h2 a { color: var(--text); text-decoration: none; }
         .note-card h2 a:hover { color: var(--primary); }
-        .note-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.875rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .note-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag {
-            background: #e0e7ff;
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-        }
-        .note-excerpt { color: var(--secondary); }
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e2e8f0;
-            color: var(--secondary);
-        }
+        .note-meta { display: flex; gap: 1rem; font-size: 0.875rem; color: var(--secondary); margin-bottom: 1rem; flex-wrap: wrap; }
+        .note-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tag { background: #e0e7ff; color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
+        .note-excerpt { color: var(--secondary); font-size: 0.95rem; }
+        footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; color: var(--secondary); }
         .paw { font-size: 1.5rem; }
+        .search-box { margin-bottom: 2rem; }
+        .search-box input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -84,55 +34,477 @@
         <header>
             <h1>📺 小视频大思考</h1>
             <p class="subtitle">深度视频笔记 · 每日更新</p>
+            <p class="stats">已整理 42 篇深度笔记</p>
         </header>
 
+        <div class="search-box">
+            <input type="text" id="search" placeholder="🔍 搜索笔记..." onkeyup="filterNotes()">
+        </div>
+
         <main class="notes-grid">
-            <article class="note-card">
-                <h2><a href="./insights/marc-andreessen-ai-boom.html">Marc Andreessen: The Real AI Boom Hasn't Even Started Yet</a></h2>
-                <div class="note-meta">
-                    <span>📺 a16z</span>
-                    <span>⏱️ 1:44:36</span>
-                    <span>📅 2026-03-08</span>
-                </div>
-                <div class="note-tags">
-                    <span class="tag">#AI</span>
-                    <span class="tag">#投资</span>
-                    <span class="tag">#一人公司</span>
-                </div>
-                <p class="note-excerpt">AI 是"贤者之石"——把沙子变成思考。AI 来得正是时候，填补人口下降的劳动力缺口。一人公司成为可能，剩余人类工人会更珍贵。</p>
-            </article>
 
             <article class="note-card">
-                <h2><a href="./insights/gavin-baker-gpu-tpu.html">Gavin Baker: GPUs, TPUs, & The Economics of AI</a></h2>
-                <div class="note-meta">
-                    <span>📺 Invest Like The Best</span>
-                    <span>⏱️ 1:28:26</span>
-                    <span>📅 2026-03-08</span>
-                </div>
-                <div class="note-tags">
-                    <span class="tag">#AI</span>
-                    <span class="tag">#芯片</span>
-                    <span class="tag">#Nvidia</span>
-                    <span class="tag">#Google</span>
-                </div>
-                <p class="note-excerpt">AI 史上首次：低成本生产者真正重要。Google 是最低成本 token 生产者，正"吸走经济氧气"。三大 Scaling Laws 驱动 AI 进展。</p>
-            </article>
-
-            <article class="note-card">
-                <h2><a href="./insights/henry-ellenbogen-1-percent.html">Henry Ellenbogen: Finding The 1% of Stocks</a></h2>
+                <h2><a href="./insights/henry-ellenbogen-1-percent.html">Finding The 1% of Stocks That Matter</a></h2>
                 <div class="note-meta">
                     <span>📺 Invest Like The Best</span>
                     <span>⏱️ 1:54:50</span>
-                    <span>📅 2026-03-08</span>
+                    <span>📅 Henry Ellenbogen</span>
                 </div>
-                <div class="note-tags">
-                    <span class="tag">#投资</span>
-                    <span class="tag">#复利</span>
-                    <span class="tag">#小盘股</span>
-                    <span class="tag">#思维模型</span>
-                </div>
-                <p class="note-excerpt">1% 法则：4000 家公司中只有 40 家真正伟大。80% 的伟大公司从小盘股起步。好公司 = 所有者思维 + 好文化 + 生态平衡。</p>
+                <div class="note-tags"><span class="tag">#投资</span><span class="tag">#复利</span><span class="tag">#小盘股</span><span class="tag">#思维模型</span></div>
+                <p class="note-excerpt"></p>
             </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/gavin-baker-gpu-tpu.html">GPUs, TPUs, & The Economics of AI</a></h2>
+                <div class="note-meta">
+                    <span>📺 Invest Like The Best</span>
+                    <span>⏱️ 1:28:26</span>
+                    <span>📅 Gavin Baker</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#芯片</span><span class="tag">#Nvidia</span><span class="tag">#Google</span></div>
+                <p class="note-excerpt"></p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-iltb-john-arnold-energy-trader.html">John Arnold: Energy Trader</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-04</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">John Arnold 认为自己成功的关键在于对交易的真正热爱。他把交易视为一种激情而非工作，每天从早上6点工作到晚上6点，晚上还会和业内人士交流，甚至在洗澡时都在思考市场。这种全身心投入让他成为了天然气交易领域的顶尖人物。但他也坦言这种生活方式有代价——对人际关系、身体健康和精神状态都有负面影响。...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-all-in-ai-revolution.html">Why AI Will Dwarf Every Tech Revolution Before It - All-In Podcast</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AllInPodcast</span><span class="tag">#AI</span><span class="tag">#Robotics</span><span class="tag">#AR</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-lex-fridman-demis-hassabis.html">Demis Hassabis: Future of AI & Superintelligence - Lex Fridman #475</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#LexFridman</span><span class="tag">#DemisHassabis</span><span class="tag">#DeepMind</span><span class="tag">#AGI</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-lex-fridman-state-of-ai-2026.html">State of AI in 2026 - Lex Fridman Podcast #490</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#LexFridman</span><span class="tag">#AI2026</span><span class="tag">#DeepSeek</span><span class="tag">#SebastianRaschka</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-marc-andreessen-ai-boom.html">Marc Andreessen: The Real AI Boom Hasn't Even Started Yet</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#a16z</span><span class="tag">#MarcAndreessen</span><span class="tag">#投资趋势</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-matthew-berman-they-got-caught.html">They Got Caught... - Anthropic vs Chinese AI Labs</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#Anthropic</span><span class="tag">#DeepSeek</span><span class="tag">#Moonshot</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-allin-ray-dalio-ai-eating-everything.html">Ray Dalio: "AI Is Eating Everything"</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/marc-andreessen-ai-boom.html">Marc Andreessen: The Real AI Boom Hasn't Even Started Yet</a></h2>
+                <div class="note-meta">
+                    <span>📺 a16z + Lenny's Podcast</span>
+                    <span>⏱️ 1:44:36</span>
+                    <span>📅 2026-03-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#a16z</span><span class="tag">#投资趋势</span><span class="tag">#一人公司</span></div>
+                <p class="note-excerpt"></p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-a16z-3-predictions-2026.html">AI in 2026: 3 Predictions For What's To Come</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#AutonomousLabs</span><span class="tag">#商业模式</span><span class="tag">#a16z</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-a16z-ai-opportunity-beyond-models.html">The AI Opportunity That Goes Beyond Models</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#产品周期</span><span class="tag">#应用层</span><span class="tag">#企业采用</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-a16z-david-george-ai-markets.html">AI Markets: Deep Dive with a16z's David George</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#a16z</span><span class="tag">#SaaS</span><span class="tag">#增长</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-gavin-baker-gpu-tpu-ai-economics.html">GPUs, TPUs, & The Economics of AI | Gavin Baker</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#GPU</span><span class="tag">#TPU</span><span class="tag">#Nvidia</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-henry-ellenbogen-1-percent-stocks.html">Finding The 1% of Stocks That Matter | Henry Ellenbogen</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#投资</span><span class="tag">#复利</span><span class="tag">#小盘股</span><span class="tag">#Henry</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-instabase-operational-productivity.html">Why Does The World Need Another Computer? — Instabase</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#Instabase</span><span class="tag">#OperationalProductivity</span><span class="tag">#企业软件</span><span class="tag">#云计算</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-marc-andreessen-2026-ai-outlook.html">Marc Andreessen: 2026 AI 展望深度整理</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#风投</span><span class="tag">#MarcAndreessen</span><span class="tag">#a16z</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-matthew-berman-21-openclaw-use-cases.html">21 INSANE Use Cases For OpenClaw</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#OpenClaw</span><span class="tag">#AI</span><span class="tag">#生产力</span><span class="tag">#自定义</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-matthew-berman-24-ai-use-cases.html">24 NEW Things You Should Be Using AI For</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#实用工具</span><span class="tag">#生产力</span><span class="tag">#购物</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-matthew-berman-anthropic-dod-guardrails.html">Anthropic vs Department of Defense: The Guardrails Battle</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#Anthropic</span><span class="tag">#国防部</span><span class="tag">#AI安全</span><span class="tag">#Guardrails</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-matthew-berman-how-ai-actually-works.html">We Finally Figured Out How AI Actually Works</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AI</span><span class="tag">#Anthropic</span><span class="tag">#黑盒</span><span class="tag">#思维语言</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-reed-hastings-netflix-culture.html">The Netflix Culture Code | Reed Hastings</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#Netflix</span><span class="tag">#人才密度</span><span class="tag">#企业文化</span><span class="tag">#Reed</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-tensorzero-feedback-loop-llm.html">Building the Feedback Loop for LLM Apps — TensorZero</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#LLM</span><span class="tag">#TensorZero</span><span class="tag">#学习飞轮</span><span class="tag">#MLOps</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-02-thread-ai-angela-mcneal.html">From Palantir to Thread AI: Angela McNeal's AI Blueprint</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#ThreadAI</span><span class="tag">#EnterpriseAI</span><span class="tag">#Agent</span><span class="tag">#Workflow</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-all-in-google-deepmind.html">Inside Google DeepMind: AGI, Robotics & World Models - All-In Podcast</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AllInPodcast</span><span class="tag">#GoogleDeepMind</span><span class="tag">#AGI</span><span class="tag">#Robotics</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-all-in-software-stocks.html">Software Stocks Implode, Claude's Hit List - All-In Podcast</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#AllInPodcast</span><span class="tag">#AI</span><span class="tag">#Anthropic</span><span class="tag">#投资</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-lex-fridman-deepseek-china.html">DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#LexFridman</span><span class="tag">#DeepSeek</span><span class="tag">#China</span><span class="tag">#OpenAI</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-stanford-cs230-career-advice.html">Stanford CS230: Career Advice in AI - Stanford Online</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#Stanford</span><span class="tag">#CS230</span><span class="tag">#AI</span><span class="tag">#AndrewNg</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-stanford-cs336-overview.html">Stanford CS336: Language Modeling from Scratch - Overview</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#Stanford</span><span class="tag">#CS336</span><span class="tag">#LanguageModel</span><span class="tag">#Tokenizer</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-yc-ai-agent-economy.html">The AI Agent Economy Is Here - Y Combinator</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#YCombinator</span><span class="tag">#AIAgents</span><span class="tag">#Startup</span><span class="tag">#创业</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-yc-rag-vs-finetuning.html">The Powerful Alternative To Fine-Tuning - Y Combinator</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#YCombinator</span><span class="tag">#RAG</span><span class="tag">#FineTuning</span><span class="tag">#LLM</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-03-yc-startup-building.html">The New Way To Build A Startup - Y Combinator</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"><span class="tag">#YCombinator</span><span class="tag">#Startup</span><span class="tag">#AI</span><span class="tag">#一人公司</span></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-04-a16z-elevenlabs-story.html">a16z - From $0 to $11B: The ElevenLabs Story</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-04-lex-490-state-of-ai-2026.html">Lex Fridman #490 - State of AI in 2026</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-04-lex-492-rick-beato-guitarists.html">Lex Fridman #492 - Greatest Guitarists with Rick Beato</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-04-matthew-berman-5billion-openclaw.html">Matthew Berman - 5 BILLION tokens perfecting OpenClaw</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-04-matthew-berman-gemini3.html">Matthew Berman - Google just dropped Gemini 3.1</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-03</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">---...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-mberman-5-billion-tokens-openclaw.html">I've spent 5 BILLION tokens perfecting OpenClaw</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-02-24</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">不同模型有不同的提示最佳实践。例如 Claude Opus 不喜欢全大写，而 GPT 则欢迎全大写强调。Matthew 建立了双版本提示栈：根目录是 Claude 优化的文件，另一个文件夹存放其他模型的优化版本。每晚自动同步检查，确保两个版本的核心信息一致且无漂移，如有差异会通过 Telegram ...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-mberman-openai-dime-leaked.html">OpenAI's New Device was LEAKED (Dime)</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2026-02-09</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Ive 为 OpenAI 设计的产品。OpenAI 官方随后否认...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-a16z-3-trillion-ai-coding.html">a16z - The $3 Trillion AI Coding Opportunity</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2025年</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">这个视频揭示了一个重要的趋势：AI 不仅仅是"写代码更快"，而是在重构整个软件开发的工作流和工具链。几个值得深思的点：...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-mberman-big-lie-smarter-ai.html">The Big Lie About Smarter AI Models</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2025-12-19</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">由小爪 🐾 整理 · 返回索引...</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/2026-03-06-a16z-creativity-over-code.html">Why Creativity Will Matter More Than Code</a></h2>
+                <div class="note-meta">
+                    <span>📺 </span>
+                    <span>⏱️ </span>
+                    <span>📅 2024年</span>
+                </div>
+                <div class="note-tags"></div>
+                <p class="note-excerpt">由小爪 🐾 整理 · 返回索引...</p>
+            </article>
+
         </main>
 
         <footer>
@@ -140,5 +512,17 @@
             <p style="margin-top: 0.5rem;"><a href="https://github.com/zhewenzhang/video-notes" style="color: var(--secondary);">GitHub</a></p>
         </footer>
     </div>
+    
+    <script>
+        function filterNotes() {
+            const input = document.getElementById('search');
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.note-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(filter) ? '' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
