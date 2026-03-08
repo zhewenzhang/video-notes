@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小视频大思考 - 深度笔记</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .subtitle { color: var(--secondary); font-size: 1.1rem; }
+        .notes-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .note-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .note-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .note-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .note-card h2 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .note-card h2 a:hover { color: var(--primary); }
+        .note-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .note-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+        .note-excerpt { color: var(--secondary); }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            color: var(--secondary);
+        }
+        .paw { font-size: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📺 小视频大思考</h1>
+            <p class="subtitle">深度视频笔记 · 每日更新</p>
+        </header>
+
+        <main class="notes-grid">
+            <article class="note-card">
+                <h2><a href="./insights/marc-andreessen-ai-boom.html">Marc Andreessen: The Real AI Boom Hasn't Even Started Yet</a></h2>
+                <div class="note-meta">
+                    <span>📺 a16z</span>
+                    <span>⏱️ 1:44:36</span>
+                    <span>📅 2026-03-08</span>
+                </div>
+                <div class="note-tags">
+                    <span class="tag">#AI</span>
+                    <span class="tag">#投资</span>
+                    <span class="tag">#一人公司</span>
+                </div>
+                <p class="note-excerpt">AI 是"贤者之石"——把沙子变成思考。AI 来得正是时候，填补人口下降的劳动力缺口。一人公司成为可能，剩余人类工人会更珍贵。</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/gavin-baker-gpu-tpu.html">Gavin Baker: GPUs, TPUs, & The Economics of AI</a></h2>
+                <div class="note-meta">
+                    <span>📺 Invest Like The Best</span>
+                    <span>⏱️ 1:28:26</span>
+                    <span>📅 2026-03-08</span>
+                </div>
+                <div class="note-tags">
+                    <span class="tag">#AI</span>
+                    <span class="tag">#芯片</span>
+                    <span class="tag">#Nvidia</span>
+                    <span class="tag">#Google</span>
+                </div>
+                <p class="note-excerpt">AI 史上首次：低成本生产者真正重要。Google 是最低成本 token 生产者，正"吸走经济氧气"。三大 Scaling Laws 驱动 AI 进展。</p>
+            </article>
+
+            <article class="note-card">
+                <h2><a href="./insights/henry-ellenbogen-1-percent.html">Henry Ellenbogen: Finding The 1% of Stocks</a></h2>
+                <div class="note-meta">
+                    <span>📺 Invest Like The Best</span>
+                    <span>⏱️ 1:54:50</span>
+                    <span>📅 2026-03-08</span>
+                </div>
+                <div class="note-tags">
+                    <span class="tag">#投资</span>
+                    <span class="tag">#复利</span>
+                    <span class="tag">#小盘股</span>
+                    <span class="tag">#思维模型</span>
+                </div>
+                <p class="note-excerpt">1% 法则：4000 家公司中只有 40 家真正伟大。80% 的伟大公司从小盘股起步。好公司 = 所有者思维 + 好文化 + 生态平衡。</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>由小爪 <span class="paw">🐾</span> 整理 · 每晚更新，晨间阅读</p>
+            <p style="margin-top: 0.5rem;"><a href="https://github.com/zhewenzhang/video-notes" style="color: var(--secondary);">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
