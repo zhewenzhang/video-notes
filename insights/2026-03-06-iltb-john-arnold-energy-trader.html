@@ -1,96 +1,321 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Arnold: Energy Trader - 小视频大思考</title>
-    <style>
-        :root { --primary: #2563eb; --secondary: #64748b; --bg: #f8fafc; --card-bg: #ffffff; --text: #1e293b; --quote-bg: #f1f5f9; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding: 2rem 1rem; }
-        .container { max-width: 700px; margin: 0 auto; }
-        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--primary); text-decoration: none; }
-        .back-link:hover { text-decoration: underline; }
-        article { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        h1 { font-size: 1.75rem; margin-bottom: 1rem; }
-        .meta { display: flex; gap: 1rem; color: var(--secondary); font-size: 0.875rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-        .tag { background: #e0e7ff; color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
-        h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text); }
-        h4 { font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--secondary); }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        blockquote { background: var(--quote-bg); border-left: 4px solid var(--primary); padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; color: var(--secondary); }
-        blockquote strong { color: var(--text); font-style: normal; }
-        a { color: var(--primary); }
-        .youtube-link { display: inline-block; background: #ff0000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin: 1.5rem 0; font-weight: 500; }
-        .youtube-link:hover { background: #cc0000; }
-        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        th, td { border: 1px solid #e2e8f0; padding: 0.75rem; text-align: left; }
-        th { background: #f8fafc; font-weight: 600; }
-        code { background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9em; }
-        .table-row { padding: 0.5rem; border-bottom: 1px solid #e2e8f0; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Arnold: Energy Trader - 小视频大思考</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --primary: #2563eb;
+      --secondary: #64748b;
+      --border: #e2e8f0;
+      --card-bg: #f8fafc;
+    }
+    [data-dark] {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --primary: #60a5fa;
+      --secondary: #94a3b8;
+      --border: #1e293b;
+      --card-bg: #1e293b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    header {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 10px; }
+    header p { color: var(--secondary); }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      padding: 15px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .meta span { color: var(--secondary); font-size: 0.9rem; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
+    .tag {
+      background: var(--card-bg);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+    .content { font-size: 1.1rem; }
+    .content h1, .content h2, .content h3 { margin: 30px 0 15px; }
+    .content h2 { border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+    .content p { margin: 15px 0; }
+    .content blockquote {
+      border-left: 4px solid var(--primary);
+      padding-left: 20px;
+      margin: 20px 0;
+      color: var(--secondary);
+      font-style: italic;
+    }
+    .content pre {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    .content code {
+      background: var(--card-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .content td, .content th {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: left;
+    }
+    .content tr:nth-child(even) { background: var(--card-bg); }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.1s;
+      z-index: 1000;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--secondary);
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+    .nav-button {
+      color: var(--primary);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .nav-button:hover { background: var(--card-bg); }
+    
+    /* 索引页样式 */
+    .search-box {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      margin: 20px 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .note-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .note-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .note-card h2 { margin-bottom: 10px; }
+    .note-card h2 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .note-card h2 a:hover { color: var(--primary); }
+    .note-meta {
+      display: flex;
+      gap: 15px;
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+    .note-summary { color: var(--secondary); margin: 15px 0; }
+    
+    @media (max-width: 600px) {
+      .container { padding: 15px; }
+      header { padding: 20px 0; }
+      header h1 { font-size: 1.5rem; }
+      .meta { flex-direction: column; gap: 10px; }
+      .nav-buttons { flex-direction: column; gap: 10px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-link">← 返回索引</a>
-        <article>
-            <h1>John Arnold: Energy Trader</h1>
-            <div class="meta">
-                <span>📺 </span>
-                <span>⏱️ </span>
-                <span>📅 2026-03-04</span>
-            </div>
-            <div class="tags"></div>
-            <div class="content"><strong>频道</strong>: Invest Like The Best  
+  <div class="progress-bar" id="progressBar"></div>
+  <button class="theme-toggle" id="themeToggle" title="切换深色模式">🌙</button>
+  
+  <div class="container">
+    
+    <a href="../index.html" class="back-link">← 返回索引</a>
+    
+    <header>
+      <h1>John Arnold: Energy Trader</h1>
+    </header>
+    
+    
+    <div class="meta">
+      <span>📺 Invest Like The Best</span>
+      <span>⏱️ 1:22:58</span>
+      <span>📅 2026-03-04</span>
+    </div>
+    
+    
+    
+    
+    <article class="content">
+      <p><h1>John Arnold: Energy Trader</h1></p>
+<p><strong>频道</strong>: Invest Like The Best  
 <strong>发布</strong>: 2026-03-04  
 <strong>时长</strong>: 1:22:58  
-<strong>链接</strong>: https://www.youtube.com/watch?v=oB1nMi7t-uo
-<h3>核心观点</h3>
-<h4>1. 热爱与深度专注：顶级交易员的成功秘诀</h4>
-[00:12:39 - 00:15:05]
+<strong>链接</strong>: https://www.youtube.com/watch?v=oB1nMi7t-uo</p>
+<p><h2>核心观点</h2></p>
+<p><h3>1. 热爱与深度专注：顶级交易员的成功秘诀</h3>
+[00:12:39 - 00:15:05]</p>
 <p>John Arnold 认为自己成功的关键在于对交易的真正热爱。他把交易视为一种激情而非工作，每天从早上6点工作到晚上6点，晚上还会和业内人士交流，甚至在洗澡时都在思考市场。这种全身心投入让他成为了天然气交易领域的顶尖人物。但他也坦言这种生活方式有代价——对人际关系、身体健康和精神状态都有负面影响。他建议自己的孩子找到自己真正热爱的事业，而不是仅仅为了收入而工作。</p>
-<h4>2. 构建"最佳席位"(Best Seat)理论</h4>
-[00:15:45 - 00:18:00]
+<p><h3>2. 构建"最佳席位"(Best Seat)理论</h3>
+[00:15:45 - 00:18:00]</p>
 <p>Arnold 提出了一个独特的职业成功概念——创造"最佳席位"。离开安然后，他创立了自己的对冲基金，获得了经典的2/20分成结构，没有中间商。这让他在经济上获得了行业内最优的待遇，能够雇佣最好的人才，拥有充足的资本和稳定的投资者基础。当业绩下滑时，投资者不是要求赎回，而是主动问是否需要追加投资。这种结构性优势让他能够专注于交易本身，而不必担心资金问题。他认为每个人都应该在行业内寻找或创造这样的"最佳席位"。</p>
-<h4>3. 美国能源系统的多重目标困境</h4>
-[00:30:28 - 00:32:24]
+<p><h3>3. 美国能源系统的多重目标困境</h3>
+[00:30:28 - 00:32:24]</p>
 <p>美国能源系统面临着一个根本性的挑战：多个目标相互冲突。社会需要可靠性（不能停电）、可负担性（价格要低）、环境影响（减少排放）、能源独立（不依赖外国能源）。问题在于，这些目标的优先级每4-8年就会随着政府更替而变化。能源基础设施需要10-20年的规划周期，但政策信号不断变化，导致行业难以做出长期投资决策。再加上数据中心带来的前所未有的电力需求增长——这些科技公司更关心速度而非成本——整个系统面临巨大压力。</p>
-<h4>4. NIMBY主义与建设困境：美国 vs 中国</h4>
-[00:35:05 - 00:37:02]
+<p><h3>4. NIMBY主义与建设困境：美国 vs 中国</h3>
+[00:35:05 - 00:37:02]</p>
 <p>Arnold 指出，美国建设基础设施的最大障碍是政策审批。社区层面存在"NIMBY"(Not In My Back Yard)心态——人们承认需要住房、交通和能源，但不希望建在自己家附近。反对者学会了利用监管法规拖延项目，对于开发商来说时间就是金钱，很多项目因此被扼杀。与之形成鲜明对比的是中国，可以在短时间内大规模建设基础设施。这种差异直接影响了美国在AI时代满足数据中心电力需求的能力。他的基金会正在推动审批改革，让对社会有益的项目能够顺利建设。</p>
-<h4>5. 地热能：下一个能源革命？</h4>
-[00:51:54 - 00:53:23]
+<p><h3>5. 地热能：下一个能源革命？</h3>
+[00:51:54 - 00:53:23]</p>
 <p>Arnold 对先进地热能(Advanced Geothermal)格外看好。这是一种基础负荷能源，环保且成本正在下降。关键优势在于，美国已经拥有来自油气行业的技术人才和设备，可以直接迁移到地热开发中。目前行业类似于页岩气革命早期——技术已验证，但需要时间来扩大规模、证明商业模式，最终获得银行融资。他预测5年后地热可能成为美国最令人兴奋的能源领域。相比之下，机器人自动化数据中心的竞争可能过于拥挤。</p>
-<h4>6. 基金会的"消退"哲学</h4>
-[00:56:48 - 00:57:37]
+<p><h3>6. 基金会的"消退"哲学</h3>
+[00:56:48 - 00:57:37]</p>
 <p>Arnold 提出了一个反直觉的观点：基金会应该随时间变得更弱而非更强。他认为任何机构都会随时间变得低效——无论是公司、政府还是基金会。最创新的时期通常是组织还年轻的时候。基金会的独特价值在于承担私营部门和政府不愿承担的风险——政治风险或经济风险。但永续存在的基金会往往会变得保守、官僚化。因此他选择让基金会在其生命周期内完成使命，而不是追求永久存续。</p>
-<h4>7. 教育技术：承诺与现实的鸿沟</h4>
-[01:09:44 - 01:11:40]
+<p><h3>7. 教育技术：承诺与现实的鸿沟</h3>
+[01:09:44 - 01:11:40]</p>
 <p>Arnold 对教育技术持谨慎态度。过去20年，edtech行业不断承诺革命性的改变，学校采纳了越来越多的技术，但学生成绩却持续下降。每个教育技术平台都能展示"惊人成果"的数据，但这些成果从未在宏观层面体现。他承认AI结合AR/VR可能创造更吸引人的学习体验，但.warned不要过度乐观——屏幕学习往往缺乏真正吸引学生的元素。他回忆自己的经历：有些老师能让人全神贯注60分钟，有些则让人完全无法集中注意力。技术能否复制这种"好的老师"效应，仍然是个未解之谜。</p>
-<h4>8. 从交易员到慈善家：系统思维的迁移</h4>
-[00:28:00 - 00:30:00]
+<p><h3>8. 从交易员到慈善家：系统思维的迁移</h3>
+[00:28:00 - 00:30:00]</p>
 <p>Arnold 描述了从交易员到慈善家的转变过程。交易教会他系统思维——理解各部分如何相互影响，寻找不平衡和套利机会。他把这种思维方式应用到社会问题上：K-12教育、刑事司法、住房负担能力等。每个问题都是一个复杂系统，有多重利益相关者和反馈循环。他的方法是先深入研究系统的运作方式，识别关键杠杆点，然后通过基金会承担风险来推动变革。与交易不同的是，社会问题的回报不是金钱，而是系统改善带来的广泛影响。</p>
-<h3>关键引用</h3>
-<blockquote>"I just loved the battle, the puzzle, the game of it... I would sit there from six in the morning to six at night... and then dream about the industry."</blockquote>
+<p><h2>关键引用</h2></p>
+<p><blockquote>"I just loved the battle, the puzzle, the game of it... I would sit there from six in the morning to six at night... and then dream about the industry."</blockquote>
 <blockquote></blockquote>
-<blockquote>我只是喜欢这场战斗、这个谜题、这个游戏...我从早上6点坐到晚上6点...然后晚上还会梦到这个行业。</blockquote>
-<blockquote>"I had managed to create probably the best seat in the industry... good economics so I could hire the best people... a lot of risk capital... a very solid and stable investor base."</blockquote>
+<blockquote>我只是喜欢这场战斗、这个谜题、这个游戏...我从早上6点坐到晚上6点...然后晚上还会梦到这个行业。</blockquote></p>
+<p><blockquote>"I had managed to create probably the best seat in the industry... good economics so I could hire the best people... a lot of risk capital... a very solid and stable investor base."</blockquote>
 <blockquote></blockquote>
-<blockquote>我成功创造了行业内最好的席位...好的经济回报让我能雇佣最好的人...大量风险资本...非常稳定可靠的投资者基础。</blockquote>
-<blockquote>"Any institution gets less effective over time... the foundations can provide because there's political risks, there might be economic risks that the private sector and governments aren't incentivized to take."</blockquote>
+<blockquote>我成功创造了行业内最好的席位...好的经济回报让我能雇佣最好的人...大量风险资本...非常稳定可靠的投资者基础。</blockquote></p>
+<p><blockquote>"Any institution gets less effective over time... the foundations can provide because there's political risks, there might be economic risks that the private sector and governments aren't incentivized to take."</blockquote>
 <blockquote></blockquote>
-<blockquote>任何机构随时间都会变得低效...基金会可以承担私营部门和政府没有动力去承担的政治风险和经济风险。</blockquote>
-<blockquote>"It's gotten harder and harder to build in this country over the years... there's always this tension between what the needs of society are and what the preferences of a local community are."</blockquote>
+<blockquote>任何机构随时间都会变得低效...基金会可以承担私营部门和政府没有动力去承担的政治风险和经济风险。</blockquote></p>
+<p><blockquote>"It's gotten harder and harder to build in this country over the years... there's always this tension between what the needs of society are and what the preferences of a local community are."</blockquote>
 <blockquote></blockquote>
-<blockquote>这些年来在这个国家建设变得越来越困难...社会需求与当地社区偏好之间始终存在张力。</blockquote>
-<h3>延伸思考</h3>
-<ul><li>"最佳席位"理论适用于任何行业：结构优势往往比个人能力更重要</li><li>美国基础设施建设困境是中国最大的竞争优势之一</li><li>慈善基金会应该有生命周期，而非追求永续存在——这是一个值得深思的制度设计问题</li><li>教育技术的历史教训：新技术承诺与现实成果之间的鸿沟，AI时代是否会重演？</li></ul></div>
-        </article>
-        <footer style="text-align: center; margin-top: 2rem; color: var(--secondary); padding: 1rem;">
-            <p>由小爪 🐾 整理 · <a href="../index.html">返回索引</a></p>
-        </footer>
-    </div>
+<blockquote>这些年来在这个国家建设变得越来越困难...社会需求与当地社区偏好之间始终存在张力。</blockquote></p>
+<p><h2>延伸思考</h2></p>
+<p>- "最佳席位"理论适用于任何行业：结构优势往往比个人能力更重要
+- 美国基础设施建设困境是中国最大的竞争优势之一
+- 慈善基金会应该有生命周期，而非追求永续存在——这是一个值得深思的制度设计问题
+- 教育技术的历史教训：新技术承诺与现实成果之间的鸿沟，AI时代是否会重演？</p>
+    </article>
+    
+    <nav class="nav-buttons">
+      <span></span>
+      <a href="./2026-03-06-mberman-5-billion-tokens-openclaw.html" class="nav-button">下一篇 →</a>
+    </nav>
+  
+    
+    <footer>
+      <p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
+      <p style="margin-top: 10px;">
+        <a href="https://github.com/zhewenzhang/video-notes" style="color: var(--primary);">GitHub</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // 深色模式
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // 检查系统偏好
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.setAttribute('data-dark', '');
+      toggle.textContent = '☀️';
+    }
+    
+    toggle.addEventListener('click', () => {
+      if (html.hasAttribute('data-dark')) {
+        html.removeAttribute('data-dark');
+        toggle.textContent = '🌙';
+      } else {
+        html.setAttribute('data-dark', '');
+        toggle.textContent = '☀️';
+      }
+    });
+    
+    // 阅读进度
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('progressBar');
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      bar.style.width = scrolled + '%';
+    });
+    
+    // 搜索功能（索引页）
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.note-card');
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(query) ? 'block' : 'none';
+        });
+      });
+    }
+  </script>
 </body>
 </html>
