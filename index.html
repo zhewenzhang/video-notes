@@ -6,94 +6,179 @@
 <title>小视频大思考</title>
 <meta name="description" content="深度视频笔记，每日更新">
 <style>
-:root{--bg:#fff;--text:#1a1a1a;--primary:#2563eb;--muted:#64748b;--border:#e2e8f0;--card:#f8fafc;--shadow:rgba(0,0,0,.08)}
-[data-dark]{--bg:#0f172a;--text:#e2e8f0;--primary:#60a5fa;--muted:#94a3b8;--border:#1e293b;--card:#1e293b;--shadow:rgba(0,0,0,.2)}
+:root{
+  --bg:#f8fafc;
+  --text:#1e293b;
+  --text-light:#64748b;
+  --primary:#6366f1;
+  --primary-light:#818cf8;
+  --primary-dark:#4f46e5;
+  --secondary:#ec4899;
+  --accent:#06b6d4;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);
+  --radius:16px;
+  --radius-sm:8px;
+}
+[data-dark]{
+  --bg:#0f172a;
+  --text:#f1f5f9;
+  --text-light:#94a3b8;
+  --primary:#818cf8;
+  --primary-light:#a5b4fc;
+  --primary-dark:#6366f1;
+  --card:#1e293b;
+  --border:#334155;
+  --shadow:0 4px 6px -1px rgba(0,0,0,0.3),0 2px 4px -1px rgba(0,0,0,0.2);
+  --shadow-lg:0 20px 25px -5px rgba(0,0,0,0.4),0 10px 10px -5px rgba(0,0,0,0.3);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .2s}
-.wrap{max-width:900px;margin:0 auto;padding:20px}
-a{color:var(--primary);text-decoration:none}
-a:hover{text-decoration:underline}
-header{padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:20px}
-header h1{font-size:1.8rem;margin-bottom:8px}
-header p{color:var(--muted);font-size:.9rem}
-.stats{display:flex;gap:15px;margin-top:15px;flex-wrap:wrap}
-.stat{background:var(--card);padding:10px 20px;border-radius:10px;text-align:center;flex:1;min-width:100px}
-.stat-num{font-size:1.5rem;font-weight:700;color:var(--primary)}
-.stat-label{font-size:.8rem;color:var(--muted)}
-.search{position:relative;margin:20px 0}
-.search input{width:100%;padding:14px 20px 14px 45px;font-size:1rem;border:2px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text)}
-.search::before{content:"🔍";position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:1.1rem}
-.search input:focus{outline:none;border-color:var(--primary)}
-.filters{background:var(--card);border-radius:12px;margin:20px 0;overflow:hidden;border:1px solid var(--border)}
-.filter-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer}
-.filter-head:hover{background:var(--border)}
-.filter-title{font-weight:600;display:flex;align-items:center;gap:8px}
-.filter-count{background:var(--primary);color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem}
-.filter-toggle{color:var(--muted);transition:transform .3s}
+body{font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s;min-height:100vh}
+
+/* 渐变背景 */
+.hero-bg{position:fixed;top:0;left:0;right:0;height:400px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 50%,var(--accent) 100%);opacity:.08;z-index:-1;pointer-events:none}
+[data-dark] .hero-bg{opacity:.05}
+
+/* 容器 */
+.wrap{max-width:1000px;margin:0 auto;padding:24px}
+
+/* 头部 */
+header{text-align:center;padding:48px 0 32px;position:relative}
+header::before{content:"";position:absolute;top:-24px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;opacity:.1;filter:blur(40px)}
+header h1{font-size:2.5rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.02em}
+header p{color:var(--text-light);font-size:1.1rem;font-weight:400}
+
+/* 统计卡片 */
+.stats{display:flex;gap:16px;margin-top:32px;justify-content:center;flex-wrap:wrap}
+.stat{background:var(--card);padding:20px 28px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;min-width:120px;transition:all .3s;border:1px solid var(--border)}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.85rem;color:var(--text-light);margin-top:4px;font-weight:500}
+
+/* 搜索框 */
+.search{position:relative;margin:32px 0;max-width:600px;margin-left:auto;margin-right:auto}
+.search input{width:100%;padding:18px 24px 18px 56px;font-size:1rem;border:2px solid var(--border);border-radius:var(--radius);background:var(--card);color:var(--text);transition:all .3s;box-shadow:var(--shadow)}
+.search::before{content:"🔍";position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:1.3rem;opacity:.6}
+.search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(99,102,241,.1)}
+
+/* 筛选器 */
+.filters{background:var(--card);border-radius:var(--radius);margin:24px 0;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden}
+.filter-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;transition:all .2s;background:linear-gradient(90deg,rgba(99,102,241,.05),transparent)}
+.filter-head:hover{background:linear-gradient(90deg,rgba(99,102,241,.08),transparent)}
+.filter-title{font-weight:700;font-size:1.1rem;display:flex;align-items:center;gap:12px}
+.filter-count{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;padding:4px 12px;border-radius:20px;font-size:.85rem;font-weight:600;box-shadow:0 2px 8px rgba(99,102,241,.3)}
+.filter-toggle{font-size:1.2rem;transition:transform .3s;color:var(--text-light)}
 .filter-toggle.open{transform:rotate(180deg)}
-.filter-body{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease}
-.filter-body.open{padding:20px;max-height:800px}
-.filter-row{margin-bottom:18px}
+.filter-body{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .4s ease}
+.filter-body.open{padding:24px;max-height:900px}
+.filter-row{margin-bottom:24px}
 .filter-row:last-child{margin-bottom:0}
-.filter-label{font-size:.85rem;color:var(--muted);margin-bottom:10px;font-weight:500}
-.filter-btns{display:flex;flex-wrap:wrap;gap:8px}
-.btn{padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.85rem;transition:all .15s;white-space:nowrap}
-.btn:hover{border-color:var(--primary);transform:translateY(-1px)}
-.btn.on{background:var(--primary);color:#fff;border-color:var(--primary)}
-.btn-sm{padding:6px 12px;font-size:.8rem}
-.tag-more{color:var(--muted);font-size:.8rem;margin-top:8px}
-.notes{display:grid;gap:16px;margin-top:20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .2s}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow)}
-.card h2{font-size:1.15rem;margin-bottom:12px;line-height:1.4}
-.card h2 a{color:var(--text)}
+.filter-label{font-size:.9rem;color:var(--text-light);margin-bottom:12px;font-weight:600;display:flex;align-items:center;gap:8px}
+.filter-btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{padding:10px 18px;border:2px solid var(--border);border-radius:24px;background:var(--card);color:var(--text);cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;white-space:nowrap}
+.btn:hover{border-color:var(--primary-light);transform:translateY(-2px);box-shadow:0 4px 12px rgba(99,102,241,.15)}
+.btn.on{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(99,102,241,.3)}
+.btn-sm{padding:8px 14px;font-size:.85rem;border-radius:20px}
+.tag-more{color:var(--text-light);font-size:.85rem;margin-top:12px;padding:8px 0}
+
+/* 笔记卡片网格 */
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-top:32px}
+.card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--secondary));opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card:hover::before{opacity:1}
+.card h2{font-size:1.25rem;margin-bottom:16px;line-height:1.5;font-weight:700}
+.card h2 a{color:var(--text);text-decoration:none}
 .card h2 a:hover{color:var(--primary)}
-.card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:12px}
-.card-meta span{display:flex;align-items:center;gap:4px}
-.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.card-summary{color:var(--muted);font-size:.9rem;line-height:1.6}
-.empty{text-align:center;padding:80px 20px;color:var(--muted)}
-.empty-icon{font-size:3rem;margin-bottom:16px}
-.back{display:inline-flex;align-items:center;gap:6px;color:var(--primary);margin-bottom:20px;padding:8px 16px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
-.back:hover{background:var(--border)}
-.meta-bar{display:flex;gap:15px;flex-wrap:wrap;padding:15px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:20px 0;font-size:.9rem;color:var(--muted)}
-.content{font-size:1.05rem;line-height:1.8}
-.content h1,.content h2,.content h3{margin:30px 0 15px}
-.content h2{border-bottom:2px solid var(--border);padding-bottom:10px}
-.content p{margin:15px 0}
-.content blockquote{border-left:4px solid var(--primary);padding:15px 20px;margin:20px 0;background:var(--card);border-radius:0 10px 10px 0;font-style:italic}
-.content code{background:var(--card);padding:3px 8px;border-radius:4px;font-size:.9em;font-family:monospace}
-.content pre{background:var(--card);padding:20px;border-radius:10px;overflow-x:auto;margin:20px 0}
-.content pre code{padding:0;background:none}
-.content table{width:100%;border-collapse:collapse;margin:20px 0}
-.content td,.content th{border:1px solid var(--border);padding:12px;text-align:left}
-.content tr:nth-child(even){background:var(--card)}
-.nav-btns{display:flex;justify-content:space-between;margin-top:50px;padding-top:30px;border-top:1px solid var(--border);gap:16px}
-.nav-btn{padding:12px 24px;border:1px solid var(--border);border-radius:10px;color:var(--primary);background:var(--card);transition:all .15s}
-.nav-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
-footer{text-align:center;padding:40px 0;margin-top:50px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
-.progress{position:fixed;top:0;left:0;height:3px;background:var(--primary);width:0;z-index:1000;transition:width .1s}
-.theme-btn{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.3rem;z-index:100;transition:all .2s}
-.theme-btn:hover{transform:scale(1.1);box-shadow:0 4px 12px var(--shadow)}
-.to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100;opacity:0;visibility:hidden;transition:all .3s;box-shadow:0 4px 12px var(--shadow)}
-.to-top.visible{opacity:1;visibility:visible}
-.to-top:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px)}
-@media(max-width:600px){.wrap{padding:15px}header h1{font-size:1.5rem}.stats{gap:10px}.stat{min-width:80px;padding:8px 12px}.filter-body{padding:15px}.card{padding:16px}.nav-btns{flex-direction:column}.nav-btn{width:100%;text-align:center}.to-top{bottom:20px;right:20px;width:44px;height:44px}}
+.card-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;color:var(--text-light);margin-bottom:16px}
+.card-meta span{display:flex;align-items:center;gap:6px;background:rgba(99,102,241,.08);padding:6px 12px;border-radius:20px}
+.card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.card-tags .btn-sm{background:rgba(99,102,241,.08);border-color:transparent;color:var(--primary);font-weight:500}
+.card-tags .btn-sm:hover{background:var(--primary);color:#fff}
+.card-summary{color:var(--text-light);font-size:.95rem;line-height:1.7}
+.empty{text-align:center;padding:100px 40px;color:var(--text-light)}
+.empty-icon{font-size:4rem;margin-bottom:20px;opacity:.5}
+.empty h3{font-size:1.5rem;margin-bottom:12px;color:var(--text)}
+.empty p{font-size:1rem}
+
+/* 详情页 */
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--primary);margin-bottom:24px;padding:12px 20px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);font-weight:500;transition:all .2s}
+.back:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateX(-4px)}
+.meta-bar{display:flex;gap:16px;flex-wrap:wrap;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:24px 0;font-size:.95rem;color:var(--text-light)}
+.meta-bar span{display:flex;align-items:center;gap:8px}
+.content{font-size:1.05rem;line-height:1.9}
+.content h1,.content h2,.content h3{margin:40px 0 20px;font-weight:700}
+.content h2{font-size:1.6rem;color:var(--primary);padding-bottom:12px;border-bottom:2px solid var(--border)}
+.content h3{font-size:1.3rem;color:var(--text-light)}
+.content p{margin:20px 0}
+.content blockquote{border-left:4px solid var(--primary);padding:20px 24px;margin:28px 0;background:linear-gradient(90deg,rgba(99,102,241,.05),transparent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-style:italic;color:var(--text-light)}
+.content code{background:rgba(99,102,241,.1);color:var(--primary);padding:4px 10px;border-radius:6px;font-size:.9em;font-family:monospace;font-weight:500}
+.content pre{background:#1e293b;padding:24px;border-radius:var(--radius);overflow-x:auto;margin:28px 0}
+.content pre code{background:none;color:#e2e8f0;padding:0}
+.content table{width:100%;border-collapse:collapse;margin:28px 0;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow)}
+.content th{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:14px 16px;text-align:left;font-weight:600}
+.content td{border:1px solid var(--border);padding:14px 16px}
+.content tr:nth-child(even){background:rgba(99,102,241,.03)}
+.nav-btns{display:flex;justify-content:space-between;margin-top:60px;padding-top:32px;border-top:2px solid var(--border);gap:20px}
+.nav-btn{flex:1;padding:16px 24px;border:2px solid var(--border);border-radius:var(--radius);color:var(--primary);background:var(--card);font-weight:600;text-align:center;transition:all .2s}
+.nav-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px);box-shadow:0 8px 20px rgba(99,102,241,.25)}
+
+/* 页脚 */
+footer{text-align:center;padding:48px 0;margin-top:60px;border-top:1px solid var(--border);color:var(--text-light)}
+footer p{margin:8px 0}
+footer a{color:var(--primary);font-weight:500}
+footer a:hover{text-decoration:underline}
+
+/* 进度条 */
+.progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));width:0;z-index:1000;transition:width .1s;box-shadow:0 2px 8px rgba(99,102,241,.3)}
+
+/* 浮动按钮 */
+.fab{position:fixed;width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;cursor:pointer;font-size:1.4rem;z-index:100;box-shadow:0 4px 16px rgba(99,102,241,.4);transition:all .3s;display:flex;align-items:center;justify-content:center}
+.fab:hover{transform:scale(1.1) rotate(10deg);box-shadow:0 6px 24px rgba(99,102,241,.5)}
+.theme-btn{top:24px;right:24px}
+.to-top{bottom:32px;right:32px;opacity:0;visibility:hidden;transform:translateY(20px)}
+.to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+
+/* 动画 */
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeIn .5s ease backwards}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.1s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}
+.card:nth-child(5){animation-delay:.25s}
+
+/* 移动端 */
+@media(max-width:768px){
+  .wrap{padding:16px}
+  header h1{font-size:1.9rem}
+  header{padding:32px 0 24px}
+  .stats{gap:12px}
+  .stat{min-width:100px;padding:16px 20px}
+  .stat-num{font-size:1.6rem}
+  .notes{grid-template-columns:1fr}
+  .filter-body{padding:20px}
+  .fab{width:48px;height:48px;font-size:1.2rem}
+  .to-top{bottom:20px;right:20px}
+}
 </style>
 </head>
 <body>
+<div class="hero-bg"></div>
 <div class="progress"></div>
-<button class="theme-btn" aria-label="切换主题">🌙</button>
-<button class="to-top" aria-label="回到顶部">↑</button>
+<button class="fab theme-btn" aria-label="切换主题">🌙</button>
+<button class="fab to-top" aria-label="回到顶部">↑</button>
 <div class="wrap">
 <header>
-<h1>📺 小视频大思考</h1>
+<h1>小视频大思考</h1>
 <p>深度视频笔记 · 每日更新</p>
 <div class="stats">
-<div class="stat"><span class="stat-num" id="resultCount">39</span><span class="stat-label">篇笔记</span></div>
-<div class="stat"><span class="stat-num">5</span><span class="stat-label">个频道</span></div>
-<div class="stat"><span class="stat-num">107</span><span class="stat-label">个标签</span></div>
+<div class="stat"><div class="stat-num" id="resultCount">39</div><div class="stat-label">篇笔记</div></div>
+<div class="stat"><div class="stat-num">5</div><div class="stat-label">个频道</div></div>
+<div class="stat"><div class="stat-num">107</div><div class="stat-label">个标签</div></div>
 </div>
 </header>
 <div class="search"><input type="text" id="search" placeholder="搜索笔记..."></div>
@@ -122,13 +207,13 @@ footer{text-align:center;padding:40px 0;margin-top:50px;border-top:1px solid var
 <div class="filter-row">
 <div class="filter-label">🔀 排序</div>
 <div class="filter-btns">
-<button class="btn-sm on" data-sort="new">最新</button>
-<button class="btn-sm" data-sort="old">最旧</button>
-<button class="btn-sm" data-sort="channel">频道</button>
+<button class="btn-sm on" data-sort="new">最新发布</button>
+<button class="btn-sm" data-sort="old">最早发布</button>
+<button class="btn-sm" data-sort="channel">按频道</button>
 </div>
 </div>
 <div class="filter-row">
-<button class="btn" id="clearBtn">🗑️ 清除筛选</button>
+<button class="btn" id="clearBtn">🗑️ 清除所有筛选</button>
 </div>
 </div>
 </div>
@@ -139,12 +224,12 @@ footer{text-align:center;padding:40px 0;margin-top:50px;border-top:1px solid var
 </footer>
 </div>
 <script>
-const NOTES=[{"file":"2026-03-06-a16z-3-trillion-ai-coding.html","title":"a16z - The $3 Trillion AI Coding Opportunity","channel":"a16z","duration":"37:29","date":"2026-03-06","tags":[],"summary":"企业正在大量使用 LLM 进行旧代码迁移，比如从 Cobol/Fortran 迁移到 Java。Google 早期的研究显示，即使是非常平凡的任务（如在大型代码库中替换 Java 库），LLM 也能表现出色。访谈对象表示，从多家企业听到的反"},{"file":"2026-03-04-lex-492-rick-beato-guitarists.html","title":"Lex Fridman #492 - Greatest Guitarists with Rick Beato","channel":"","duration":"2:33:48","date":"2026-03-04","tags":["#492"],"summary":"点击查看详情..."},{"file":"2026-03-06-iltb-john-arnold-energy-trader.html","title":"John Arnold: Energy Trader","channel":"Invest Like The Best","duration":"1:22:58","date":"2026-03-04","tags":[],"summary":"John Arnold 认为自己成功的关键在于对交易的真正热爱。他把交易视为一种激情而非工作，每天从早上6点工作到晚上6点，晚上还会和业内人士交流，甚至在洗澡时都在思考市场。这种全身心投入让他成为了天然气交易领域的顶尖人物。但他也坦言这种生"},{"file":"2026-03-03-all-in-ai-revolution.html","title":"Why AI Will Dwarf Every Tech Revolution Before It - All-In Podcast","channel":"","duration":"51:02","date":"2026-03-03","tags":["#AllInPodcast","#AI","#Robotics","#AR","#Manufacturing","#CES2026"],"summary":"1. 关注物理世界 AI - 不仅是软件，硬件 +AI 机会更大"},{"file":"2026-03-03-all-in-google-deepmind.html","title":"Inside Google DeepMind: AGI, Robotics & World Models - All-In Podcast","channel":"","duration":"31:48","date":"2026-03-03","tags":["#AllInPodcast","#GoogleDeepMind","#AGI","#Robotics","#WorldModels"],"summary":"1. 机器人是 AGI 的试金石 - 物理世界比数字世界更复杂"},{"file":"2026-03-03-all-in-software-stocks.html","title":"Software Stocks Implode, Claude's Hit List - All-In Podcast","channel":"","duration":"1:21:08","date":"2026-03-03","tags":["#AllInPodcast","#AI","#Anthropic","#投资","#科技股"],"summary":"1. AI 泡沫 vs AI 革命 - 长期革命，短期可能有泡沫"},{"file":"2026-03-03-lex-fridman-deepseek-china.html","title":"DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459","channel":"","duration":"5:06:19","date":"2026-03-03","tags":["#459","#LexFridman","#DeepSeek","#China","#OpenAI","#NVIDIA","#TSMC","#AI"],"summary":"点击查看详情..."},{"file":"2026-03-03-lex-fridman-demis-hassabis.html","title":"Demis Hassabis: Future of AI & Superintelligence - Lex Fridman #475","channel":"","duration":"2:28:15","date":"2026-03-03","tags":["#475","#LexFridman","#DemisHassabis","#DeepMind","#AGI","#AlphaFold","#AI"],"summary":"1. 跨学科思维 - 神经科学 + CS + 游戏设计"},{"file":"2026-03-03-lex-fridman-state-of-ai-2026.html","title":"State of AI in 2026 - Lex Fridman Podcast #490","channel":"","duration":"4:25:13","date":"2026-03-03","tags":["#490","#LexFridman","#AI2026","#DeepSeek","#SebastianRaschka","#NathanLambert","#LLM","#AGI"],"summary":"- 《Build a Large Language Model from Scratch》"},{"file":"2026-03-03-marc-andreessen-ai-boom.html","title":"Marc Andreessen: The Real AI Boom Hasn't Even Started Yet","channel":"","duration":"1:44:36","date":"2026-03-03","tags":["#AI","#a16z","#MarcAndreessen","#投资趋势","#一人公司"],"summary":"1. AI 不是威胁，是解决方案 - 在人口下降的背景下，AI 填补了劳动力缺口"},{"file":"2026-03-03-matthew-berman-they-got-caught.html","title":"They Got Caught... - Anthropic vs Chinese AI Labs","channel":"","duration":"13:29","date":"2026-03-03","tags":["#AI","#Anthropic","#DeepSeek","#Moonshot","#MiniMax","#蒸馏攻击","#API"],"summary":"1. API 使用要谨慎 - 大规模查询可能被标记为攻击"},{"file":"2026-03-03-stanford-cs230-career-advice.html","title":"Stanford CS230: Career Advice in AI - Stanford Online","channel":"","duration":"1:45:09","date":"2026-03-03","tags":["#Stanford","#CS230","#AI","#AndrewNg","#机器学习","#深度学习"],"summary":"点击查看详情..."},{"file":"2026-03-03-stanford-cs336-overview.html","title":"Stanford CS336: Language Modeling from Scratch - Overview","channel":"","duration":"1:18:59","date":"2026-03-03","tags":["#Stanford","#CS336","#LanguageModel","#Tokenizer","#LLM","#深度学习"],"summary":"2. Tokenizer 很重要 - 常被忽视但影响巨大"},{"file":"2026-03-03-yc-ai-agent-economy.html","title":"The AI Agent Economy Is Here - Y Combinator","channel":"","duration":"23:22","date":"2026-03-03","tags":["#YCombinator","#AIAgents","#Startup","#创业","#企业软件"],"summary":"点击查看详情..."},{"file":"2026-03-03-yc-rag-vs-finetuning.html","title":"The Powerful Alternative To Fine-Tuning - Y Combinator","channel":"","duration":"19:46","date":"2026-03-03","tags":["#YCombinator","#RAG","#FineTuning","#LLM","#AI"],"summary":"1. RAG 是大多数场景的首选 - 成本低 + 灵活"},{"file":"2026-03-03-yc-startup-building.html","title":"The New Way To Build A Startup - Y Combinator","channel":"","duration":"7:51","date":"2026-03-03","tags":["#YCombinator","#Startup","#AI","#一人公司","#精益创业"],"summary":"点击查看详情..."},{"file":"2026-03-04-a16z-elevenlabs-story.html","title":"a16z - From $0 to $11B: The ElevenLabs Story","channel":"a16z","duration":"11:12","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-04-matthew-berman-5billion-openclaw.html","title":"Matthew Berman - 5 BILLION tokens perfecting OpenClaw","channel":"Matthew Berman","duration":"40:00","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-04-matthew-berman-gemini3.html","title":"Matthew Berman - Google just dropped Gemini 3.1","channel":"Matthew Berman","duration":"6:22","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-06-allin-ray-dalio-ai-eating-everything.html","title":"Ray Dalio: \"AI Is Eating Everything\"","channel":"All-In Podcast","duration":"49:13","date":"2026-03-03","tags":[],"summary":"Ray Dalio 提出历史上有五大交织力量决定国家命运：债务/货币周期、国内贫富与价值观差距、国际大国冲突、技术创新、以及自然灾害（旱灾、洪水、瘟疫）。他研究过去500年的历史发现，所有货币秩序最终都会因相同原因崩溃，政治秩序也会改变。理"},{"file":"2026-03-02-a16z-3-predictions-2026.html","title":"AI in 2026: 3 Predictions For What's To Come","channel":"a16z","duration":"12:56","date":"2026-03-02","tags":["#AI","#AutonomousLabs","#商业模式","#a16z","#2026"],"summary":"点击查看详情..."},{"file":"2026-03-02-a16z-ai-opportunity-beyond-models.html","title":"The AI Opportunity That Goes Beyond Models","channel":"a16z","duration":"1:09:45","date":"2026-03-02","tags":["#AI","#产品周期","#应用层","#企业采用","#a16z","#AlexRampel"],"summary":"1. 产品周期驱动增长 — 我们正处于 AI 周期的早期"},{"file":"2026-03-02-a16z-david-george-ai-markets.html","title":"AI Markets: Deep Dive with a16z's David George","channel":"a16z","duration":"47:33","date":"2026-03-02","tags":["#AI","#a16z","#SaaS","#增长","#ARR","#投资","#产品周期"],"summary":"2. 毛利率 — 低可能是好事（意味着真正的 AI 使用）"},{"file":"2026-03-02-gavin-baker-gpu-tpu-ai-economics.html","title":"GPUs, TPUs, & The Economics of AI | Gavin Baker","channel":"Invest Like The Best","duration":"1:28:26","date":"2026-03-02","tags":["#AI","#GPU","#TPU","#Nvidia","#Google","#Scaling","#Gavin"],"summary":"点击查看详情..."},{"file":"2026-03-02-henry-ellenbogen-1-percent-stocks.html","title":"Finding The 1% of Stocks That Matter | Henry Ellenbogen","channel":"Invest Like The Best","duration":"1:54:50","date":"2026-03-02","tags":["#投资","#复利","#小盘股","#Henry","#Durable"],"summary":"1. 历史研究：研究 T. Rowe Price 50 年的股东信"},{"file":"2026-03-02-instabase-operational-productivity.html","title":"Why Does The World Need Another Computer? — Instabase","channel":"Data Driven NYC","duration":"20:55","date":"2026-03-02","tags":["#Instabase","#OperationalProductivity","#企业软件","#云计算","#操作系统"],"summary":"点击查看详情..."},{"file":"2026-03-02-marc-andreessen-2026-ai-outlook.html","title":"Marc Andreessen: 2026 AI 展望深度整理","channel":"a16z","duration":"1:21:18","date":"2026-03-02","tags":["#AI","#风投","#MarcAndreessen","#a16z","#2026"],"summary":"- \"Oh my god, this is terrible. It's going to kill all the jobs.\""},{"file":"2026-03-02-matthew-berman-21-openclaw-use-cases.html","title":"21 INSANE Use Cases For OpenClaw","channel":"Matthew Berman","duration":"33:44","date":"2026-03-02","tags":["#OpenClaw","#AI","#生产力","#自定义","#记忆系统"],"summary":"对话 → 每日笔记(memory/YYYY-MM-DD.md)"},{"file":"2026-03-02-matthew-berman-24-ai-use-cases.html","title":"24 NEW Things You Should Be Using AI For","channel":"Matthew Berman","duration":"22:25","date":"2026-03-02","tags":["#AI","#实用工具","#生产力","#购物","#Matthew"],"summary":"点击查看详情..."},{"file":"2026-03-02-matthew-berman-anthropic-dod-guardrails.html","title":"Anthropic vs Department of Defense: The Guardrails Battle","channel":"Matthew Berman","duration":"12:39","date":"2026-03-02","tags":["#Anthropic","#国防部","#AI安全","#Guardrails","#Dario"],"summary":"点击查看详情..."},{"file":"2026-03-02-matthew-berman-how-ai-actually-works.html","title":"We Finally Figured Out How AI Actually Works","channel":"Matthew Berman","duration":"26:05","date":"2026-03-02","tags":["#AI","#Anthropic","#黑盒","#思维语言","#ChainOfThought","#可解释性"],"summary":"1. 不要完全信任 Chain of Thought — 可能是编造的"},{"file":"2026-03-02-reed-hastings-netflix-culture.html","title":"The Netflix Culture Code | Reed Hastings","channel":"Invest Like The Best","duration":"1:01:32","date":"2026-03-02","tags":["#Netflix","#人才密度","#企业文化","#Reed","#领导力"],"summary":"1. 高薪（像 Yankees、Dodgers 能付最高薪水）"},{"file":"2026-03-02-tensorzero-feedback-loop-llm.html","title":"Building the Feedback Loop for LLM Apps — TensorZero","channel":"Data Driven NYC","duration":"10:25","date":"2026-03-02","tags":["#LLM","#TensorZero","#学习飞轮","#MLOps","#持续改进"],"summary":"应用运行 → 积累数据 → 优化模型 → 应用变得更好 → 继续运行..."},{"file":"2026-03-02-thread-ai-angela-mcneal.html","title":"From Palantir to Thread AI: Angela McNeal's AI Blueprint","channel":"Data Driven NYC","duration":"14:02","date":"2026-03-02","tags":["#ThreadAI","#EnterpriseAI","#Agent","#Workflow","#基础设施"],"summary":"3. LLM 进步 → AI 可注入更长运行、更复杂的流程"},{"file":"2026-03-04-lex-490-state-of-ai-2026.html","title":"Lex Fridman #490 - State of AI in 2026","channel":"","duration":"4:25:14","date":"2026-03-01","tags":["#490"],"summary":"点击查看详情..."},{"file":"2026-03-06-mberman-5-billion-tokens-openclaw.html","title":"I've spent 5 BILLION tokens perfecting OpenClaw","channel":"Matthew Berman","duration":"40:00","date":"2026-02-24","tags":[],"summary":"不同模型有不同的提示最佳实践。例如 Claude Opus 不喜欢全大写，而 GPT 则欢迎全大写强调。Matthew 建立了双版本提示栈：根目录是 Claude 优化的文件，另一个文件夹存放其他模型的优化版本。每晚自动同步检查，确保两个版"},{"file":"2026-03-06-mberman-openai-dime-leaked.html","title":"OpenAI's New Device was LEAKED (Dime)","channel":"Matthew Berman","duration":"7:31","date":"2026-02-09","tags":[],"summary":"2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Iv"},{"file":"2026-03-06-mberman-big-lie-smarter-ai.html","title":"The Big Lie About Smarter AI Models","channel":"Matthew Berman","duration":"12:49","date":"2025-12-19","tags":[],"summary":"Matthew 提出\"大谎言\"的核心论点：当前 AI 模型已经达到\"博士级智能\"，对于绝大多数使用场景，继续提升模型能力不会带来明显价值。他以自己为例，日常使用中很少需要深度研究或最高级思考功能，大多数情况下普通模型已经足够。这个观点挑战了"},{"file":"2026-03-06-a16z-creativity-over-code.html","title":"Why Creativity Will Matter More Than Code","channel":"a16z","duration":"1:24:15","date":"","tags":[],"summary":"这是自2010-2012年以来消费者投资领域最好的机会。消费者开始有机地下载产品，愿意为高端订阅付费（ChatGPT $200/月、Gemini Ultra $250/月、Grok $300/月），这种付费意愿在消费者领域多年未见。技术爱好"}],CHANNELS=["a16z","Invest Like The Best","Matthew Berman","All-In Podcast","Data Driven NYC"],TAGS=["#492","#AllInPodcast","#AI","#Robotics","#AR","#Manufacturing","#CES2026","#GoogleDeepMind","#AGI","#WorldModels","#Anthropic","#投资","#科技股","#459","#LexFridman"];
+const NOTES=[{"file":"2026-03-06-a16z-3-trillion-ai-coding.html","title":"a16z - The $3 Trillion AI Coding Opportunity","channel":"a16z","duration":"37:29","date":"2026-03-06","tags":[],"summary":"企业正在大量使用 LLM 进行旧代码迁移，比如从 Cobol/Fortran 迁移到 Java。Google 早期的研究显示，即使是非常平凡的任务（如在大型代码库中替换 Java 库），LLM 也能表现出色。访谈对象表示，从多家企业听到的反"},{"file":"2026-03-04-lex-492-rick-beato-guitarists.html","title":"Lex Fridman #492 - Greatest Guitarists with Rick Beato","channel":"","duration":"2:33:48","date":"2026-03-04","tags":["#492"],"summary":"点击查看详情..."},{"file":"2026-03-06-iltb-john-arnold-energy-trader.html","title":"John Arnold: Energy Trader","channel":"Invest Like The Best","duration":"1:22:58","date":"2026-03-04","tags":[],"summary":"John Arnold 认为自己成功的关键在于对交易的真正热爱。他把交易视为一种激情而非工作，每天从早上6点工作到晚上6点，晚上还会和业内人士交流，甚至在洗澡时都在思考市场。这种全身心投入让他成为了天然气交易领域的顶尖人物。但他也坦言这种生"},{"file":"2026-03-03-all-in-ai-revolution.html","title":"Why AI Will Dwarf Every Tech Revolution Before It - All-In Podcast","channel":"","duration":"51:02","date":"2026-03-03","tags":["#AllInPodcast","#AI","#Robotics","#AR","#Manufacturing","#CES2026"],"summary":"1. 关注物理世界 AI - 不仅是软件，硬件 +AI 机会更大"},{"file":"2026-03-03-all-in-google-deepmind.html","title":"Inside Google DeepMind: AGI, Robotics & World Models - All-In Podcast","channel":"","duration":"31:48","date":"2026-03-03","tags":["#AllInPodcast","#GoogleDeepMind","#AGI","#Robotics","#WorldModels"],"summary":"1. 机器人是 AGI 的试金石 - 物理世界比数字世界更复杂"},{"file":"2026-03-03-all-in-software-stocks.html","title":"Software Stocks Implode, Claude's Hit List - All-In Podcast","channel":"","duration":"1:21:08","date":"2026-03-03","tags":["#AllInPodcast","#AI","#Anthropic","#投资","#科技股"],"summary":"1. AI 泡沫 vs AI 革命 - 长期革命，短期可能有泡沫"},{"file":"2026-03-03-lex-fridman-deepseek-china.html","title":"DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459","channel":"","duration":"5:06:19","date":"2026-03-03","tags":["#459","#LexFridman","#DeepSeek","#China","#OpenAI","#NVIDIA","#TSMC","#AI"],"summary":"点击查看详情..."},{"file":"2026-03-03-lex-fridman-demis-hassabis.html","title":"Demis Hassabis: Future of AI & Superintelligence - Lex Fridman #475","channel":"","duration":"2:28:15","date":"2026-03-03","tags":["#475","#LexFridman","#DemisHassabis","#DeepMind","#AGI","#AlphaFold","#AI"],"summary":"1. 跨学科思维 - 神经科学 + CS + 游戏设计"},{"file":"2026-03-03-lex-fridman-state-of-ai-2026.html","title":"State of AI in 2026 - Lex Fridman Podcast #490","channel":"","duration":"4:25:13","date":"2026-03-03","tags":["#490","#LexFridman","#AI2026","#DeepSeek","#SebastianRaschka","#NathanLambert","#LLM","#AGI"],"summary":"- 《Build a Large Language Model from Scratch》"},{"file":"2026-03-03-marc-andreessen-ai-boom.html","title":"Marc Andreessen: The Real AI Boom Hasn't Even Started Yet","channel":"","duration":"1:44:36","date":"2026-03-03","tags":["#AI","#a16z","#MarcAndreessen","#投资趋势","#一人公司"],"summary":"1. AI 不是威胁，是解决方案 - 在人口下降的背景下，AI 填补了劳动力缺口"},{"file":"2026-03-03-matthew-berman-they-got-caught.html","title":"They Got Caught... - Anthropic vs Chinese AI Labs","channel":"","duration":"13:29","date":"2026-03-03","tags":["#AI","#Anthropic","#DeepSeek","#Moonshot","#MiniMax","#蒸馏攻击","#API"],"summary":"1. API 使用要谨慎 - 大规模查询可能被标记为攻击"},{"file":"2026-03-03-stanford-cs230-career-advice.html","title":"Stanford CS230: Career Advice in AI - Stanford Online","channel":"","duration":"1:45:09","date":"2026-03-03","tags":["#Stanford","#CS230","#AI","#AndrewNg","#机器学习","#深度学习"],"summary":"点击查看详情..."},{"file":"2026-03-03-stanford-cs336-overview.html","title":"Stanford CS336: Language Modeling from Scratch - Overview","channel":"","duration":"1:18:59","date":"2026-03-03","tags":["#Stanford","#CS336","#LanguageModel","#Tokenizer","#LLM","#深度学习"],"summary":"2. Tokenizer 很重要 - 常被忽视但影响巨大"},{"file":"2026-03-03-yc-ai-agent-economy.html","title":"The AI Agent Economy Is Here - Y Combinator","channel":"","duration":"23:22","date":"2026-03-03","tags":["#YCombinator","#AIAgents","#Startup","#创业","#企业软件"],"summary":"点击查看详情..."},{"file":"2026-03-03-yc-rag-vs-finetuning.html","title":"The Powerful Alternative To Fine-Tuning - Y Combinator","channel":"","duration":"19:46","date":"2026-03-03","tags":["#YCombinator","#RAG","#FineTuning","#LLM","#AI"],"summary":"1. RAG 是大多数场景的首选 - 成本低 + 灵活"},{"file":"2026-03-03-yc-startup-building.html","title":"The New Way To Build A Startup - Y Combinator","channel":"","duration":"7:51","date":"2026-03-03","tags":["#YCombinator","#Startup","#AI","#一人公司","#精益创业"],"summary":"点击查看详情..."},{"file":"2026-03-04-a16z-elevenlabs-story.html","title":"a16z - From $0 to $11B: The ElevenLabs Story","channel":"a16z","duration":"11:12","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-04-matthew-berman-5billion-openclaw.html","title":"Matthew Berman - 5 BILLION tokens perfecting OpenClaw","channel":"Matthew Berman","duration":"40:00","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-04-matthew-berman-gemini3.html","title":"Matthew Berman - Google just dropped Gemini 3.1","channel":"Matthew Berman","duration":"6:22","date":"2026-03-03","tags":[],"summary":"点击查看详情..."},{"file":"2026-03-06-allin-ray-dalio-ai-eating-everything.html","title":"Ray Dalio: \"AI Is Eating Everything\"","channel":"All-In Podcast","duration":"49:13","date":"2026-03-03","tags":[],"summary":"Ray Dalio 提出历史上有五大交织力量决定国家命运：债务/货币周期、国内贫富与价值观差距、国际大国冲突、技术创新、以及自然灾害（旱灾、洪水、瘟疫）。他研究过去500年的历史发现，所有货币秩序最终都会因相同原因崩溃，政治秩序也会改变。理"},{"file":"2026-03-02-a16z-3-predictions-2026.html","title":"AI in 2026: 3 Predictions For What's To Come","channel":"a16z","duration":"12:56","date":"2026-03-02","tags":["#AI","#AutonomousLabs","#商业模式","#a16z","#2026"],"summary":"点击查看详情..."},{"file":"2026-03-02-a16z-ai-opportunity-beyond-models.html","title":"The AI Opportunity That Goes Beyond Models","channel":"a16z","duration":"1:09:45","date":"2026-03-02","tags":["#AI","#产品周期","#应用层","#企业采用","#a16z","#AlexRampel"],"summary":"1. 产品周期驱动增长 — 我们正处于 AI 周期的早期"},{"file":"2026-03-02-a16z-david-george-ai-markets.html","title":"AI Markets: Deep Dive with a16z's David George","channel":"a16z","duration":"47:33","date":"2026-03-02","tags":["#AI","#a16z","#SaaS","#增长","#ARR","#投资","#产品周期"],"summary":"2. 毛利率 — 低可能是好事（意味着真正的 AI 使用）"},{"file":"2026-03-02-gavin-baker-gpu-tpu-ai-economics.html","title":"GPUs, TPUs, & The Economics of AI | Gavin Baker","channel":"Invest Like The Best","duration":"1:28:26","date":"2026-03-02","tags":["#AI","#GPU","#TPU","#Nvidia","#Google","#Scaling","#Gavin"],"summary":"点击查看详情..."},{"file":"2026-03-02-henry-ellenbogen-1-percent-stocks.html","title":"Finding The 1% of Stocks That Matter | Henry Ellenbogen","channel":"Invest Like The Best","duration":"1:54:50","date":"2026-03-02","tags":["#投资","#复利","#小盘股","#Henry","#Durable"],"summary":"1. 历史研究：研究 T. Rowe Price 50 年的股东信"},{"file":"2026-03-02-instabase-operational-productivity.html","title":"Why Does The World Need Another Computer? — Instabase","channel":"Data Driven NYC","duration":"20:55","date":"2026-03-02","tags":["#Instabase","#OperationalProductivity","#企业软件","#云计算","#操作系统"],"summary":"点击查看详情..."},{"file":"2026-03-02-marc-andreessen-2026-ai-outlook.html","title":"Marc Andreessen: 2026 AI 展望深度整理","channel":"a16z","duration":"1:21:18","date":"2026-03-02","tags":["#AI","#风投","#MarcAndreessen","#a16z","#2026"],"summary":"- \"Oh my god, this is terrible. It's going to kill all the jobs.\""},{"file":"2026-03-02-matthew-berman-21-openclaw-use-cases.html","title":"21 INSANE Use Cases For OpenClaw","channel":"Matthew Berman","duration":"33:44","date":"2026-03-02","tags":["#OpenClaw","#AI","#生产力","#自定义","#记忆系统"],"summary":"对话 → 每日笔记(memory/YYYY-MM-DD.md)"},{"file":"2026-03-02-matthew-berman-24-ai-use-cases.html","title":"24 NEW Things You Should Be Using AI For","channel":"Matthew Berman","duration":"22:25","date":"2026-03-02","tags":["#AI","#实用工具","#生产力","#购物","#Matthew"],"summary":"点击查看详情..."},{"file":"2026-03-02-matthew-berman-anthropic-dod-guardrails.html","title":"Anthropic vs Department of Defense: The Guardrails Battle","channel":"Matthew Berman","duration":"12:39","date":"2026-03-02","tags":["#Anthropic","#国防部","#AI安全","#Guardrails","#Dario"],"summary":"点击查看详情..."},{"file":"2026-03-02-matthew-berman-how-ai-actually-works.html","title":"We Finally Figured Out How AI Actually Works","channel":"Matthew Berman","duration":"26:05","date":"2026-03-02","tags":["#AI","#Anthropic","#黑盒","#思维语言","#ChainOfThought","#可解释性"],"summary":"1. 不要完全信任 Chain of Thought — 可能是编造的"},{"file":"2026-03-02-reed-hastings-netflix-culture.html","title":"The Netflix Culture Code | Reed Hastings","channel":"Invest Like The Best","duration":"1:01:32","date":"2026-03-02","tags":["#Netflix","#人才密度","#企业文化","#Reed","#领导力"],"summary":"1. 高薪（像 Yankees、Dodgers 能付最高薪水）"},{"file":"2026-03-02-tensorzero-feedback-loop-llm.html","title":"Building the Feedback Loop for LLM Apps — TensorZero","channel":"Data Driven NYC","duration":"10:25","date":"2026-03-02","tags":["#LLM","#TensorZero","#学习飞轮","#MLOps","#持续改进"],"summary":"应用运行 → 积累数据 → 优化模型 → 应用变得更好 → 继续运行..."},{"file":"2026-03-02-thread-ai-angela-mcneal.html","title":"From Palantir to Thread AI: Angela McNeal's AI Blueprint","channel":"Data Driven NYC","duration":"14:02","date":"2026-03-02","tags":["#ThreadAI","#EnterpriseAI","#Agent","#Workflow","#基础设施"],"summary":"3. LLM 进步 → AI 可注入更长运行、更复杂的流程"},{"file":"2026-03-04-lex-490-state-of-ai-2026.html","title":"Lex Fridman #490 - State of AI in 2026","channel":"","duration":"4:25:14","date":"2026-03-01","tags":["#490"],"summary":"点击查看详情..."},{"file":"2026-03-06-mberman-5-billion-tokens-openclaw.html","title":"I've spent 5 BILLION tokens perfecting OpenClaw","channel":"Matthew Berman","duration":"40:00","date":"2026-02-24","tags":[],"summary":"不同模型有不同的提示最佳实践。例如 Claude Opus 不喜欢全大写，而 GPT 则欢迎全大写强调。Matthew 建立了双版本提示栈：根目录是 Claude 优化的文件，另一个文件夹存放其他模型的优化版本。每晚自动同步检查，确保两个版"},{"file":"2026-03-06-mberman-openai-dime-leaked.html","title":"OpenAI's New Device was LEAKED (Dime)","channel":"Matthew Berman","duration":"7:31","date":"2026-02-09","tags":[],"summary":"2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Iv"},{"file":"2026-03-06-mberman-big-lie-smarter-ai.html","title":"The Big Lie About Smarter AI Models","channel":"Matthew Berman","duration":"12:49","date":"2025-12-19","tags":[],"summary":"Matthew 提出\"大谎言\"的核心论点：当前 AI 模型已经达到\"博士级智能\"，对于绝大多数使用场景，继续提升模型能力不会带来明显价值。他以自己为例，日常使用中很少需要深度研究或最高级思考功能，大多数情况下普通模型已经足够。这个观点挑战了"},{"file":"2026-03-06-a16z-creativity-over-code.html","title":"Why Creativity Will Matter More Than Code","channel":"a16z","duration":"1:24:15","date":"","tags":[],"summary":"这是自2010-2012年以来消费者投资领域最好的机会。消费者开始有机地下载产品，愿意为高端订阅付费（ChatGPT $200/月、Gemini Ultra $250/月、Grok $300/月），这种付费意愿在消费者领域多年未见。技术爱好"}],CHANNELS=["a16z","Invest Like The Best","Matthew Berman","All-In Podcast","Data Driven NYC"],TAGS=["#492","#AllInPodcast","#AI","#Robotics","#AR","#Manufacturing","#CES2026","#GoogleDeepMind","#AGI","#WorldModels","#Anthropic","#投资"];
 const state={channel:'all',tag:'all',date:'all',sort:'new',query:''};
 function init(){renderFilters();applyFilters();bindEvents();if(matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-dark','');document.querySelector('.theme-btn').textContent='☀️';}if(location.hash)loadHash();}
-function renderFilters(){document.getElementById('chList').innerHTML='<button class="btn on" data-ch="all">全部</button>'+CHANNELS.map(c=>'<button class="btn" data-ch="'+c+'">'+c+'</button>').join('');document.getElementById('tagList').innerHTML='<button class="btn-sm on" data-tag="all">全部</button>'+TAGS.map(t=>'<button class="btn-sm" data-tag="'+t+'">'+t+'</button>').join('')+(TAGS.length>=15?'<div class="tag-more">还有 '+(TAGS.length-15)+' 个标签</div>':'');}
-function applyFilters(){let results=NOTES.filter(n=>{if(state.channel!=='all'&&n.channel!==state.channel)return false;if(state.tag!=='all'&&!n.tags.includes(state.tag))return false;if(state.date!=='all'){const d=new Date(n.date||'2000-01-01'),now=new Date();if(state.date==='week'&&(now-d)>7*24*60*60*1000)return false;if(state.date==='month'&&(now-d)>30*24*60*60*1000)return false;}if(state.query){const q=state.query.toLowerCase();if(!n.title.toLowerCase().includes(q)&&!n.summary.toLowerCase().includes(q))return false;}return true;});if(state.sort==='new')results.sort((a,b)=>(b.date||'').localeCompare(a.date||''));if(state.sort==='old')results.sort((a,b)=>(a.date||'').localeCompare(b.date||''));if(state.sort==='channel')results.sort((a,b)=>a.channel.localeCompare(b.channel));const grid=document.getElementById('notes'),count=document.getElementById('resultCount'),filterCount=document.getElementById('filterCount');count.textContent=results.length+' 篇';filterCount.textContent=results.length;if(results.length===0){grid.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><p>没有找到匹配的笔记</p><p style="font-size:.85rem;margin-top:8px">试试其他筛选条件</p></div>';}else{grid.innerHTML=results.map(n=>'<article class="card"><h2><a href="./insights/'+n.file+'">'+n.title+'</a></h2><div class="card-meta">'+(n.channel?'<span>📺 '+n.channel+'</span>':'')+(n.duration?'<span>⏱️ '+n.duration+'</span>':'')+(n.date?'<span>📅 '+n.date+'</span>':'')+'</div>'+(n.tags.length?'<div class="card-tags">'+n.tags.slice(0,5).map(t=>'<span class="btn-sm">'+t+'</span>').join('')+'</div>':'')+'<p class="card-summary">'+n.summary+'</p></article>').join('');}const h=[];if(state.channel!=='all')h.push('ch='+encodeURIComponent(state.channel));if(state.tag!=='all')h.push('tag='+encodeURIComponent(state.tag));if(state.date!=='all')h.push('date='+state.date);if(state.sort!=='new')h.push('sort='+state.sort);history.replaceState(null,'',h.length?'#'+h.join('&'):location.pathname);}
-function bindEvents(){document.getElementById('search').addEventListener('input',e=>{state.query=e.target.value;applyFilters();});document.querySelector('.filter-head').addEventListener('click',()=>{document.querySelector('.filter-body').classList.toggle('open');document.querySelector('.filter-toggle').classList.toggle('open');});document.getElementById('chList').addEventListener('click',e=>{if(e.target.matches('[data-ch]')){document.querySelectorAll('#chList .btn').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');state.channel=e.target.dataset.ch;applyFilters();}});document.getElementById('tagList').addEventListener('click',e=>{if(e.target.matches('[data-tag]')){document.querySelectorAll('#tagList .btn-sm').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');state.tag=e.target.dataset.tag;applyFilters();}});document.querySelectorAll('[data-date]').forEach(b=>{b.addEventListener('click',e=>{document.querySelectorAll('[data-date]').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');state.date=e.target.dataset.date;applyFilters();});});document.querySelectorAll('[data-sort]').forEach(b=>{b.addEventListener('click',e=>{document.querySelectorAll('[data-sort]').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');state.sort=e.target.dataset.sort;applyFilters();});});document.getElementById('clearBtn').addEventListener('click',()=>{state.channel=state.tag='all';state.date='all';state.sort='new';state.query='';document.getElementById('search').value='';document.querySelectorAll('.btn.on,.btn-sm.on').forEach(b=>b.classList.remove('on'));document.querySelector('[data-ch="all"]').classList.add('on');document.querySelector('[data-tag="all"]').classList.add('on');document.querySelector('[data-date="all"]').classList.add('on');document.querySelector('[data-sort="new"]').classList.add('on');applyFilters();});document.querySelector('.theme-btn').addEventListener('click',()=>{const isDark=document.documentElement.toggleAttribute('data-dark');document.querySelector('.theme-btn').textContent=isDark?'☀️':'🌙';});const toTop=document.querySelector('.to-top');window.addEventListener('scroll',()=>{document.querySelector('.progress').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';toTop.classList.toggle('visible',scrollY>300);});toTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});}
+function renderFilters(){document.getElementById('chList').innerHTML='<button class="btn on" data-ch="all">全部频道</button>'+CHANNELS.map(c=>'<button class="btn" data-ch="'+c+'">'+c+'</button>').join('');document.getElementById('tagList').innerHTML='<button class="btn-sm on" data-tag="all">全部标签</button>'+TAGS.map(t=>'<button class="btn-sm" data-tag="'+t+'">'+t+'</button>').join('')+(TAGS.length>=12?'<div class="tag-more">还有 '+(TAGS.length-12)+' 个标签...</div>':'');}
+function applyFilters(){let results=NOTES.filter(n=>{if(state.channel!=='all'&&n.channel!==state.channel)return false;if(state.tag!=='all'&&!n.tags.includes(state.tag))return false;if(state.date!=='all'){const d=new Date(n.date||'2000-01-01'),now=new Date();if(state.date==='week'&&(now-d)>7*24*60*60*1000)return false;if(state.date==='month'&&(now-d)>30*24*60*60*1000)return false;}if(state.query){const q=state.query.toLowerCase();if(!n.title.toLowerCase().includes(q)&&!n.summary.toLowerCase().includes(q))return false;}return true;});if(state.sort==='new')results.sort((a,b)=>(b.date||'').localeCompare(a.date||''));if(state.sort==='old')results.sort((a,b)=>(a.date||'').localeCompare(b.date||''));if(state.sort==='channel')results.sort((a,b)=>a.channel.localeCompare(b.channel));const grid=document.getElementById('notes'),count=document.getElementById('resultCount'),filterCount=document.getElementById('filterCount');count.textContent=results.length;filterCount.textContent=results.length;if(results.length===0){grid.innerHTML='<div class="empty"><div class="empty-icon">🔍</div><h3>没有找到匹配的笔记</h3><p>试试调整筛选条件或搜索其他关键词</p></div>';}else{grid.innerHTML=results.map(n=>'<article class="card"><h2><a href="./insights/'+n.file+'">'+n.title+'</a></h2><div class="card-meta">'+(n.channel?'<span>📺 '+n.channel+'</span>':'')+(n.duration?'<span>⏱️ '+n.duration+'</span>':'')+(n.date?'<span>📅 '+n.date+'</span>':'')+'</div>'+(n.tags.length?'<div class="card-tags">'+n.tags.slice(0,4).map(t=>'<span class="btn-sm">'+t+'</span>').join('')+'</div>':'')+'<p class="card-summary">'+n.summary+'</p></article>').join('');}const h=[];if(state.channel!=='all')h.push('ch='+encodeURIComponent(state.channel));if(state.tag!=='all')h.push('tag='+encodeURIComponent(state.tag));if(state.date!=='all')h.push('date='+state.date);if(state.sort!=='new')h.push('sort='+state.sort);history.replaceState(null,'',h.length?'#'+h.join('&'):location.pathname);}
+function bindEvents(){document.getElementById('search').addEventListener('input',e=>{state.query=e.target.value;applyFilters();});document.querySelector('.filter-head').addEventListener('click',()=>{document.querySelector('.filter-body').classList.toggle('open');document.querySelector('.filter-toggle').classList.toggle('open');});document.getElementById('chList').addEventListener('click',e=>{if(e.target.matches('[data-ch]')){document.querySelectorAll('#chList .btn').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');state.channel=e.target.dataset.ch;applyFilters();}});document.getElementById('tagList').addEventListener('click',e=>{if(e.target.matches('[data-tag]')){document.querySelectorAll('#tagList .btn-sm').forEach(b=>b.classList.remove('on'));e.target.classList.add('on');state.tag=e.target.dataset.tag;applyFilters();}});document.querySelectorAll('[data-date]').forEach(b=>{b.addEventListener('click',e=>{document.querySelectorAll('[data-date]').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');state.date=e.target.dataset.date;applyFilters();});});document.querySelectorAll('[data-sort]').forEach(b=>{b.addEventListener('click',e=>{document.querySelectorAll('[data-sort]').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');state.sort=e.target.dataset.sort;applyFilters();});});document.getElementById('clearBtn').addEventListener('click',()=>{state.channel=state.tag='all';state.date='all';state.sort='new';state.query='';document.getElementById('search').value='';document.querySelectorAll('.btn.on,.btn-sm.on').forEach(b=>b.classList.remove('on'));document.querySelector('[data-ch="all"]').classList.add('on');document.querySelector('[data-tag="all"]').classList.add('on');document.querySelector('[data-date="all"]').classList.add('on');applyFilters();});document.querySelector('.theme-btn').addEventListener('click',()=>{const isDark=document.documentElement.toggleAttribute('data-dark');document.querySelector('.theme-btn').textContent=isDark?'☀️':'🌙';});const toTop=document.querySelector('.to-top');window.addEventListener('scroll',()=>{document.querySelector('.progress').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';toTop.classList.toggle('visible',scrollY>400);});toTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});}
 function loadHash(){const params=new URLSearchParams(location.hash.slice(1));if(params.has('ch')){state.channel=params.get('ch');const btn=document.querySelector('[data-ch="'+state.channel+'"]');if(btn){document.querySelectorAll('#chList .btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}}if(params.has('tag')){state.tag=params.get('tag');const btn=document.querySelector('[data-tag="'+state.tag+'"]');if(btn){document.querySelectorAll('#tagList .btn-sm').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}}if(params.has('date')){state.date=params.get('date');document.querySelectorAll('[data-date]').forEach(x=>x.classList.remove('on'));const btn=document.querySelector('[data-date="'+state.date+'"]');if(btn)btn.classList.add('on');}if(params.has('sort')){state.sort=params.get('sort');document.querySelectorAll('[data-sort]').forEach(x=>x.classList.remove('on'));const btn=document.querySelector('[data-sort="'+state.sort+'"]');if(btn)btn.classList.add('on');}}
 init();
 </script>
