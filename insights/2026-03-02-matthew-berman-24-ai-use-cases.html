@@ -2,363 +2,109 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>24 NEW Things You Should Be Using AI For - 小视频大思考</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --primary: #2563eb;
-      --secondary: #64748b;
-      --border: #e2e8f0;
-      --card-bg: #f8fafc;
-    }
-    [data-dark] {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --primary: #60a5fa;
-      --secondary: #94a3b8;
-      --border: #1e293b;
-      --card-bg: #1e293b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-    header {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 40px;
-    }
-    header h1 { font-size: 2rem; margin-bottom: 10px; }
-    header p { color: var(--secondary); }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--primary);
-      text-decoration: none;
-      margin-bottom: 20px;
-    }
-    .back-link:hover { text-decoration: underline; }
-    .meta {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-      padding: 15px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .meta span { color: var(--secondary); font-size: 0.9rem; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
-    .tag {
-      background: var(--card-bg);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--primary);
-    }
-    .content { font-size: 1.1rem; }
-    .content h1, .content h2, .content h3 { margin: 30px 0 15px; }
-    .content h2 { border-bottom: 2px solid var(--border); padding-bottom: 10px; }
-    .content p { margin: 15px 0; }
-    .content blockquote {
-      border-left: 4px solid var(--primary);
-      padding-left: 20px;
-      margin: 20px 0;
-      color: var(--secondary);
-      font-style: italic;
-    }
-    .content pre {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 20px 0;
-    }
-    .content code {
-      background: var(--card-bg);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.9em;
-    }
-    .content table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    .content td, .content th {
-      border: 1px solid var(--border);
-      padding: 12px;
-      text-align: left;
-    }
-    .content tr:nth-child(even) { background: var(--card-bg); }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: var(--primary);
-      width: 0%;
-      transition: width 0.1s;
-      z-index: 1000;
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-    footer {
-      margin-top: 60px;
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--secondary);
-    }
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-    }
-    .nav-button {
-      color: var(--primary);
-      text-decoration: none;
-      padding: 10px 20px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .nav-button:hover { background: var(--card-bg); }
-    
-    /* 索引页样式 */
-    .search-box {
-      width: 100%;
-      padding: 15px;
-      font-size: 1rem;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      margin: 20px 0;
-      background: var(--bg);
-      color: var(--text);
-    }
-    .note-grid {
-      display: grid;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .note-card {
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-    .note-card h2 { margin-bottom: 10px; }
-    .note-card h2 a {
-      color: var(--text);
-      text-decoration: none;
-    }
-    .note-card h2 a:hover { color: var(--primary); }
-    .note-meta {
-      display: flex;
-      gap: 15px;
-      color: var(--secondary);
-      font-size: 0.9rem;
-      margin: 10px 0;
-    }
-    .note-summary { color: var(--secondary); margin: 15px 0; }
-    
-    /* 筛选器样式 */
-    .filters-container {
-      margin: 20px 0;
-    }
-    .filters-toggle {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text);
-      margin-bottom: 15px;
-    }
-    .filters-toggle:hover {
-      background: var(--border);
-    }
-    .toggle-icon {
-      font-size: 0.9rem;
-      transition: transform 0.3s;
-    }
-    .result-count {
-      background: var(--primary);
-      color: white;
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-    }
-    .filters-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .filters-panel.collapsed {
-      display: none;
-    }
-    .stats-panel {
-      display: flex;
-      gap: 20px;
-      padding: 15px;
-      background: var(--bg);
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .stat-item {
-      flex: 1;
-      text-align: center;
-      padding: 10px;
-      background: var(--card-bg);
-      border-radius: 8px;
-    }
-    .stat-value {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary);
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--secondary);
-    }
-    .filter-section {
-      margin-bottom: 20px;
-    }
-    .filter-title {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .filter-btn {
-      padding: 6px 14px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: var(--text);
-      transition: all 0.2s;
-    }
-    .filter-btn:hover {
-      border-color: var(--primary);
-    }
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-    .tag-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag-btn {
-      padding: 4px 12px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      color: var(--primary);
-      transition: all 0.2s;
-    }
-    .tag-btn:hover {
-      background: var(--primary);
-      color: white;
-    }
-    .tag-btn.active {
-      background: var(--primary);
-      color: white;
-    }
-    .tag-more {
-      font-size: 0.85rem;
-      color: var(--secondary);
-      margin-top: 8px;
-    }
-    .filter-actions {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid var(--border);
-    }
-    .clear-filters {
-      width: 100%;
-      padding: 10px;
-      background: transparent;
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      color: var(--secondary);
-      font-size: 0.9rem;
-    }
-    .clear-filters:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-    .empty-message {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--secondary);
-    }
-    
-    @media (max-width: 600px) {
-      .container { padding: 15px; }
-      header { padding: 20px 0; }
-      header h1 { font-size: 1.5rem; }
-      .meta { flex-direction: column; gap: 10px; }
-      .nav-buttons { flex-direction: column; gap: 10px; }
-      .stats-panel { flex-wrap: wrap; }
-      .filter-btn, .tag-btn {
-        font-size: 0.85rem;
-        padding: 5px 10px;
-      }
-    }
-  </style>
+:root{--bg:#fff;--text:#1a1a1a;--primary:#2563eb;--muted:#64748b;--border:#e2e8f0;--card:#f8fafc}
+[data-dark]{--bg:#0f172a;--text:#e2e8f0;--primary:#60a5fa;--muted:#94a3b8;--border:#1e293b;--card:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .2s}
+.wrap{max-width:900px;margin:0 auto;padding:20px}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* 头部 */
+header{padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:30px}
+header h1{font-size:1.8rem;margin-bottom:8px}
+header p{color:var(--muted);font-size:.9rem}
+.stats{display:flex;gap:15px;margin-top:15px}
+.stat{background:var(--card);padding:8px 16px;border-radius:8px;text-align:center}
+.stat-num{font-size:1.4rem;font-weight:700;color:var(--primary)}
+.stat-label{font-size:.75rem;color:var(--muted)}
+
+/* 搜索 */
+.search{position:relative;margin:20px 0}
+.search input{width:100%;padding:14px 20px;font-size:1rem;border:2px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text)}
+.search input:focus{outline:none;border-color:var(--primary)}
+
+/* 筛选器 */
+.filters{background:var(--card);border-radius:12px;margin:20px 0;overflow:hidden}
+.filter-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer;border-bottom:1px solid var(--border)}
+.filter-head:hover{background:var(--border)}
+.filter-title{font-weight:600}
+.filter-toggle{color:var(--muted);transition:transform .2s}
+.filter-toggle.open{transform:rotate(180deg)}
+.filter-body{padding:0 20px;max-height:0;overflow:hidden;transition:all .3s}
+.filter-body.open{padding:20px;max-height:1000px}
+.filter-row{margin-bottom:16px}
+.filter-label{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.filter-btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.85rem;transition:all .15s}
+.btn:hover{border-color:var(--primary)}
+.btn.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn-sm{padding:4px 10px;font-size:.8rem}
+
+/* 笔记卡片 */
+.notes{display:grid;gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.card h2{font-size:1.1rem;margin-bottom:10px}
+.card h2 a{color:var(--text)}
+.card h2 a:hover{color:var(--primary)}
+.card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.card-summary{color:var(--muted);font-size:.9rem;line-height:1.5}
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+
+/* 详情页 */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--primary);margin-bottom:20px}
+.meta-bar{display:flex;gap:15px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:15px 0;font-size:.9rem;color:var(--muted)}
+.content{font-size:1.05rem;line-height:1.8}
+.content h1,.content h2,.content h3{margin:25px 0 12px}
+.content h2{border-bottom:2px solid var(--border);padding-bottom:8px}
+.content p{margin:12px 0}
+.content blockquote{border-left:4px solid var(--primary);padding:10px 20px;margin:15px 0;background:var(--card);border-radius:0 8px 8px 0}
+.content code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:.9em}
+.content pre{background:var(--card);padding:16px;border-radius:8px;overflow-x:auto;margin:15px 0}
+.content table{width:100%;border-collapse:collapse;margin:15px 0}
+.content td,.content th{border:1px solid var(--border);padding:10px;text-align:left}
+.nav-btns{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+.nav-btn{padding:10px 20px;border:1px solid var(--border);border-radius:8px;color:var(--primary)}
+
+/* 页脚 */
+footer{text-align:center;padding:30px 0;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+
+/* 进度条 */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--primary);width:0;z-index:1000;transition:width .1s}
+
+/* 深色按钮 */
+.theme-btn{position:fixed;top:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+
+/* 移动端 */
+@media(max-width:600px){
+  .wrap{padding:15px}
+  header h1{font-size:1.5rem}
+  .stats{flex-wrap:wrap}
+  .stat{flex:1;min-width:80px}
+  .filter-body{padding:15px}
+  .card{padding:16px}
+}
+</style>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
-  <button class="theme-toggle" id="themeToggle" title="切换深色模式">🌙</button>
+  <div class="progress"></div>
+  <button class="theme-btn" aria-label="切换主题">🌙</button>
   
-  <div class="container">
-    
-    <a href="../index.html" class="back-link">← 返回索引</a>
+  <div class="wrap">
+    <a href="../index.html" class="back">← 返回目录</a>
     
     <header>
       <h1>24 NEW Things You Should Be Using AI For</h1>
     </header>
     
     
-    <div class="meta">
+    <div class="meta-bar">
       <span>📺 Matthew Berman</span>
       <span>⏱️ 22:25</span>
       <span>📅 2026-03-02</span>
@@ -366,175 +112,94 @@
     
     
     
-    <div class="tags">
-      <span class="tag">#AI</span><span class="tag">#实用工具</span><span class="tag">#生产力</span><span class="tag">#购物</span><span class="tag">#Matthew</span>
+    <div class="card-tags" style="margin-bottom:20px">
+      <span class="btn-sm">#AI</span><span class="btn-sm">#实用工具</span><span class="btn-sm">#生产力</span><span class="btn-sm">#购物</span><span class="btn-sm">#Matthew</span>
     </div>
     
     
-    <article class="content">
-      <p><h1>24 NEW Things You Should Be Using AI For</h1></p>
-<p><strong>视频信息：</strong>
-- 标题：24 NEW Things You Should Be Using AI For...
-- 频道：Matthew Berman
-- 时长：22:25
-- 观看数：84,443
-- 整理时间：2026-03-02</p>
-<p>---</p>
-<p><h2>🎯 核心观点</h2></p>
-<p><strong>Matthew Berman 的核心信息：</strong>
-- 这些都是他<strong>实际使用过</strong>的 AI 用例
-- 大多数可以在<strong>本地电脑</strong>运行
-- 不是炒作，是真正实用的工具</p>
-<p>---</p>
-<p><h2>📋 24 个 AI 用例分类</h2></p>
-<p><h3>1️⃣ 购物与优惠</h3></p>
-<table><tr> 用例 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>产品比较</strong> | 输入一个产品，AI 找可比替代品并对比 </tr>
-<tr> <strong>最佳购买时机</strong> | 问"现在买 MacBook Air 合适吗？"会给出更新周期和购买建议 </tr>
-<tr> <strong>折扣预测</strong> | "这个产品会在黑五打折吗？"给出概率估计 </tr></table>
-<p><strong>实际案例：</strong>
-- Matthew 用 AI 找 Dyson 吸尘器的替代品 → 选了 Shark
-- 查 MacBook Air 更新周期 → 确认 M4 刚发布，是好时机</p>
-<p>---</p>
-<p><h3>2️⃣ 食品与家居</h3></p>
-<table><tr> 用例 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>技术支持</strong> | 描述设备问题，AI 查手册给解决方案 </tr>
-<tr> <strong>食谱替代</strong> | 缺食材时问替代品 </tr>
-<tr> <strong>动物识别</strong> | 拍照识别虫子/动物 </tr></table>
-<p><strong>实际案例：</strong>
-- 打印机灯闪烁 → AI 诊断是墨盒没装好
-- Apple TV 无信号 → AI 建议换 HDMI 线，解决
-- 家里发现虫子 → 拍照识别是白蚁，但雨后正常</p>
-<p>---</p>
-<p><h3>3️⃣ 生产力与组织</h3></p>
-<table><tr> 用例 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>办公室租赁研究</strong> | 问 AI 某地点的租金，会拉对比数据 </tr>
-<tr> <strong>搬家规划</strong> | 查社区信息、学校评分、通勤时间 </tr></table>
-<p><strong>实际案例：</strong>
-- Matthew 查旧金山办公室租金
-- AI 建议拉 comps（可比成交），给出每平方英尺价格范围</p>
-<p>---</p>
-<p><h3>4️⃣ 本地运行</h3></p>
-<p><strong>Matthew 强调：</strong>
-<blockquote>"You can run most of these use cases locally on your computer."</blockquote></p>
-<p><strong>推荐硬件：</strong>
-- Dell Pro Max 系列工作站
-- Nvidia GB300 / GB10 GPU</p>
-<p>---</p>
-<p><h2>💡 关键洞察</h2></p>
-<p><h3>为什么这些用例重要？</h3></p>
-<p><strong>Matthew 的观点：</strong>
-1. <strong>实用性</strong> — 不是演示，是他真正在用
-2. <strong>节省时间</strong> — 技术支持、产品研究等都变得快速
-3. <strong>省钱</strong> — 找替代品、预测折扣、避免错误购买</p>
-<p><h3>如何使用？</h3></p>
-<p><strong>基本方法：</strong>
-- 直接问，不需要复杂提示词
-- 可以追问细化
-- 可以提供更多上下文</p>
-<p><strong>示例对话：</strong>
-<pre><code>
-用户：Dyson 吸尘器有什么替代品？
-AI：Shark 是个好选择，质量更高...（给出对比）
-用户：Dyson 经常坏
-AI：那 Shark 更适合你，它的 X 型号更可靠...
-</code></pre></p>
-<p>---</p>
-<p><h2>🎯 对用户的启示</h2></p>
-<p><h3>可以立即尝试</h3></p>
-<table><tr> 场景 | 怎么问 AI </tr>
-<tr>------|----------</tr>
-<tr> 购物决策 | "X 产品有什么好的替代品？" </tr>
-<tr> 技术问题 | "我的 X 设备出现 Y 现象，怎么办？" </tr>
-<tr> 食谱问题 | "我没 X 食材，可以用什么替代？" </tr>
-<tr> 购买时机 | "现在买 X 产品合适吗？什么时候更新？" </tr></table>
-<p><h3>原则</h3></p>
-<p>- <strong>描述清楚</strong>：品牌、型号、具体问题
-- <strong>提供上下文</strong>：预算、偏好、使用场景
-- <strong>追问细化</strong>：不满意就追问</p>
-<p>---</p>
-<p><h2>📊 用例效果对比</h2></p>
-<table><tr> 用例 | 省时程度 | 省钱潜力 </tr>
-<tr>------|---------|---------</tr>
-<tr> 产品比较 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ </tr>
-<tr> 技术支持 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ </tr>
-<tr> 折扣预测 | ⭐⭐⭐ | ⭐⭐⭐⭐ </tr>
-<tr> 食谱替代 | ⭐⭐⭐⭐ | ⭐⭐ </tr></table>
-<p>---</p>
-<p><h2>🔑 关键引用</h2></p>
-<p><strong>关于实用性：</strong>
-<blockquote>"These are use cases that I have actually been using."</blockquote></p>
-<p><strong>关于本地运行：</strong>
-<blockquote>"You can run most of these use cases locally on your computer."</blockquote></p>
-<p>---</p>
-<p>_整理完成：2026-03-02_
-_视频来源：Matthew Berman_
-_标签：#AI #实用工具 #生产力 #购物 #Matthew Berman_</p>
-    </article>
+    <article class="content"><h1>24 NEW Things You Should Be Using AI For</h1></p><p><strong>视频信息：</strong>
+<p>- 标题：24 NEW Things You Should Be Using AI For...</p>
+<p>- 频道：Matthew Berman</p>
+<p>- 时长：22:25</p>
+<p>- 观看数：84,443</p>
+<p>- 整理时间：2026-03-02</p><p>---</p><p><h2>🎯 核心观点</h2></p><p><strong>Matthew Berman 的核心信息：</strong></p>
+<p>- 这些都是他<strong>实际使用过</strong>的 AI 用例</p>
+<p>- 大多数可以在<strong>本地电脑</strong>运行</p>
+<p>- 不是炒作，是真正实用的工具</p><p>---</p><p><h2>📋 24 个 AI 用例分类</h2></p><p><h3>1️⃣ 购物与优惠</h3></p><p>| 用例 | 说明 |</p>
+<p>|------|------|</p>
+<p>| <strong>产品比较</strong> | 输入一个产品，AI 找可比替代品并对比 |</p>
+<p>| <strong>最佳购买时机</strong> | 问"现在买 MacBook Air 合适吗？"会给出更新周期和购买建议 |</p>
+<p>| <strong>折扣预测</strong> | "这个产品会在黑五打折吗？"给出概率估计 |</p><p><strong>实际案例：</strong></p>
+<p>- Matthew 用 AI 找 Dyson 吸尘器的替代品 → 选了 Shark</p>
+<p>- 查 MacBook Air 更新周期 → 确认 M4 刚发布，是好时机</p><p>---</p><p><h3>2️⃣ 食品与家居</h3></p><p>| 用例 | 说明 |</p>
+<p>|------|------|</p>
+<p>| <strong>技术支持</strong> | 描述设备问题，AI 查手册给解决方案 |</p>
+<p>| <strong>食谱替代</strong> | 缺食材时问替代品 |</p>
+<p>| <strong>动物识别</strong> | 拍照识别虫子/动物 |</p><p><strong>实际案例：</strong></p>
+<p>- 打印机灯闪烁 → AI 诊断是墨盒没装好</p>
+<p>- Apple TV 无信号 → AI 建议换 HDMI 线，解决</p>
+<p>- 家里发现虫子 → 拍照识别是白蚁，但雨后正常</p><p>---</p><p><h3>3️⃣ 生产力与组织</h3></p><p>| 用例 | 说明 |</p>
+<p>|------|------|</p>
+<p>| <strong>办公室租赁研究</strong> | 问 AI 某地点的租金，会拉对比数据 |</p>
+<p>| <strong>搬家规划</strong> | 查社区信息、学校评分、通勤时间 |</p><p><strong>实际案例：</strong></p>
+<p>- Matthew 查旧金山办公室租金</p>
+<p>- AI 建议拉 comps（可比成交），给出每平方英尺价格范围</p><p>---</p><p><h3>4️⃣ 本地运行</h3></p><p><strong>Matthew 强调：</strong></p>
+<blockquote>"You can run most of these use cases locally on your computer."</blockquote></p><p><strong>推荐硬件：</strong>
+<p>- Dell Pro Max 系列工作站</p>
+<p>- Nvidia GB300 / GB10 GPU</p><p>---</p><p><h2>💡 关键洞察</h2></p><p><h3>为什么这些用例重要？</h3></p><p><strong>Matthew 的观点：</strong></p>
+<p>1. <strong>实用性</strong> — 不是演示，是他真正在用</p>
+<p>2. <strong>节省时间</strong> — 技术支持、产品研究等都变得快速</p>
+<p>3. <strong>省钱</strong> — 找替代品、预测折扣、避免错误购买</p><p><h3>如何使用？</h3></p><p><strong>基本方法：</strong></p>
+<p>- 直接问，不需要复杂提示词</p>
+<p>- 可以追问细化</p>
+<p>- 可以提供更多上下文</p><p><strong>示例对话：</strong></p>
+<p>``<code></p>
+<p>用户：Dyson 吸尘器有什么替代品？</p>
+<p>AI：Shark 是个好选择，质量更高...（给出对比）</p>
+<p>用户：Dyson 经常坏</p>
+<p>AI：那 Shark 更适合你，它的 X 型号更可靠...</p>
+</code>``</p><p>---</p><p><h2>🎯 对用户的启示</h2></p><p><h3>可以立即尝试</h3></p><p>| 场景 | 怎么问 AI |
+<p>|------|----------|</p>
+<p>| 购物决策 | "X 产品有什么好的替代品？" |</p>
+<p>| 技术问题 | "我的 X 设备出现 Y 现象，怎么办？" |</p>
+<p>| 食谱问题 | "我没 X 食材，可以用什么替代？" |</p>
+<p>| 购买时机 | "现在买 X 产品合适吗？什么时候更新？" |</p><p><h3>原则</h3></p><p>- <strong>描述清楚</strong>：品牌、型号、具体问题</p>
+<p>- <strong>提供上下文</strong>：预算、偏好、使用场景</p>
+<p>- <strong>追问细化</strong>：不满意就追问</p><p>---</p><p><h2>📊 用例效果对比</h2></p><p>| 用例 | 省时程度 | 省钱潜力 |</p>
+<p>|------|---------|---------|</p>
+<p>| 产品比较 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |</p>
+<p>| 技术支持 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |</p>
+<p>| 折扣预测 | ⭐⭐⭐ | ⭐⭐⭐⭐ |</p>
+<p>| 食谱替代 | ⭐⭐⭐⭐ | ⭐⭐ |</p><p>---</p><p><h2>🔑 关键引用</h2></p><p><strong>关于实用性：</strong></p>
+<blockquote>"These are use cases that I have actually been using."</blockquote></p><p><strong>关于本地运行：</strong>
+<blockquote>"You can run most of these use cases locally on your computer."</blockquote></p><p>---</p><p>_整理完成：2026-03-02_
+<p>_视频来源：Matthew Berman_</p>
+<p>_标签：#AI #实用工具 #生产力 #购物 #Matthew Berman_</p></article>
     
-    <nav class="nav-buttons">
-      <a href="./2026-03-02-matthew-berman-21-openclaw-use-cases.html" class="nav-button">← 上一篇</a>
-      <a href="./2026-03-02-matthew-berman-anthropic-dod-guardrails.html" class="nav-button">下一篇 →</a>
+    <nav class="nav-btns">
+      <a href="./2026-03-02-matthew-berman-21-openclaw-use-cases.html" class="nav-btn">← 上一篇</a>
+      <a href="./2026-03-02-matthew-berman-anthropic-dod-guardrails.html" class="nav-btn">下一篇 →</a>
     </nav>
-  
     
     <footer>
-      <p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
-      <p style="margin-top: 10px;">
-        <a href="https://github.com/zhewenzhang/video-notes" style="color: var(--primary);">GitHub</a>
-      </p>
+      <p>由小爪 🐾 整理</p>
     </footer>
   </div>
   
   <script>
     // 深色模式
-    const toggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    // 检查系统偏好
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      html.setAttribute('data-dark', '');
-      toggle.textContent = '☀️';
+    if(matchMedia('(prefers-color-scheme:dark)').matches){
+      document.documentElement.setAttribute('data-dark','');
+      document.querySelector('.theme-btn').textContent='☀️';
     }
-    
-    toggle.addEventListener('click', () => {
-      if (html.hasAttribute('data-dark')) {
-        html.removeAttribute('data-dark');
-        toggle.textContent = '🌙';
-      } else {
-        html.setAttribute('data-dark', '');
-        toggle.textContent = '☀️';
-      }
+    document.querySelector('.theme-btn').addEventListener('click', () => {
+      const isDark = document.documentElement.toggleAttribute('data-dark');
+      document.querySelector('.theme-btn').textContent = isDark ? '☀️' : '🌙';
     });
-    
-    // 阅读进度
+    // 进度条
     window.addEventListener('scroll', () => {
-      const bar = document.getElementById('progressBar');
-      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      bar.style.width = scrolled + '%';
+      document.querySelector('.progress').style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
     });
-    
-    // 搜索功能（索引页）
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.note-card');
-        cards.forEach(card => {
-          const text = card.textContent.toLowerCase();
-          card.style.display = text.includes(query) ? 'block' : 'none';
-        });
-      });
-    }
-    
-    // 初始化筛选器（仅索引页）
-    if (window.notesData) {
-      initFilters(window.notesData);
-    }
   </script>
-  
 </body>
 </html>

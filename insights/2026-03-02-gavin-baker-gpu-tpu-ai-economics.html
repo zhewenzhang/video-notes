@@ -2,363 +2,109 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPUs, TPUs, & The Economics of AI | Gavin Baker - 小视频大思考</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GPUs, TPUs, &amp; The Economics of AI | Gavin Baker - 小视频大思考</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --primary: #2563eb;
-      --secondary: #64748b;
-      --border: #e2e8f0;
-      --card-bg: #f8fafc;
-    }
-    [data-dark] {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --primary: #60a5fa;
-      --secondary: #94a3b8;
-      --border: #1e293b;
-      --card-bg: #1e293b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-    header {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 40px;
-    }
-    header h1 { font-size: 2rem; margin-bottom: 10px; }
-    header p { color: var(--secondary); }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--primary);
-      text-decoration: none;
-      margin-bottom: 20px;
-    }
-    .back-link:hover { text-decoration: underline; }
-    .meta {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-      padding: 15px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .meta span { color: var(--secondary); font-size: 0.9rem; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
-    .tag {
-      background: var(--card-bg);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--primary);
-    }
-    .content { font-size: 1.1rem; }
-    .content h1, .content h2, .content h3 { margin: 30px 0 15px; }
-    .content h2 { border-bottom: 2px solid var(--border); padding-bottom: 10px; }
-    .content p { margin: 15px 0; }
-    .content blockquote {
-      border-left: 4px solid var(--primary);
-      padding-left: 20px;
-      margin: 20px 0;
-      color: var(--secondary);
-      font-style: italic;
-    }
-    .content pre {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 20px 0;
-    }
-    .content code {
-      background: var(--card-bg);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.9em;
-    }
-    .content table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    .content td, .content th {
-      border: 1px solid var(--border);
-      padding: 12px;
-      text-align: left;
-    }
-    .content tr:nth-child(even) { background: var(--card-bg); }
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: var(--primary);
-      width: 0%;
-      transition: width 0.1s;
-      z-index: 1000;
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-    footer {
-      margin-top: 60px;
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--secondary);
-    }
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-    }
-    .nav-button {
-      color: var(--primary);
-      text-decoration: none;
-      padding: 10px 20px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-    .nav-button:hover { background: var(--card-bg); }
-    
-    /* 索引页样式 */
-    .search-box {
-      width: 100%;
-      padding: 15px;
-      font-size: 1rem;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      margin: 20px 0;
-      background: var(--bg);
-      color: var(--text);
-    }
-    .note-grid {
-      display: grid;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .note-card {
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-    .note-card h2 { margin-bottom: 10px; }
-    .note-card h2 a {
-      color: var(--text);
-      text-decoration: none;
-    }
-    .note-card h2 a:hover { color: var(--primary); }
-    .note-meta {
-      display: flex;
-      gap: 15px;
-      color: var(--secondary);
-      font-size: 0.9rem;
-      margin: 10px 0;
-    }
-    .note-summary { color: var(--secondary); margin: 15px 0; }
-    
-    /* 筛选器样式 */
-    .filters-container {
-      margin: 20px 0;
-    }
-    .filters-toggle {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text);
-      margin-bottom: 15px;
-    }
-    .filters-toggle:hover {
-      background: var(--border);
-    }
-    .toggle-icon {
-      font-size: 0.9rem;
-      transition: transform 0.3s;
-    }
-    .result-count {
-      background: var(--primary);
-      color: white;
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-    }
-    .filters-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .filters-panel.collapsed {
-      display: none;
-    }
-    .stats-panel {
-      display: flex;
-      gap: 20px;
-      padding: 15px;
-      background: var(--bg);
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .stat-item {
-      flex: 1;
-      text-align: center;
-      padding: 10px;
-      background: var(--card-bg);
-      border-radius: 8px;
-    }
-    .stat-value {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary);
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--secondary);
-    }
-    .filter-section {
-      margin-bottom: 20px;
-    }
-    .filter-title {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .filter-btn {
-      padding: 6px 14px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: var(--text);
-      transition: all 0.2s;
-    }
-    .filter-btn:hover {
-      border-color: var(--primary);
-    }
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-    .tag-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag-btn {
-      padding: 4px 12px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      color: var(--primary);
-      transition: all 0.2s;
-    }
-    .tag-btn:hover {
-      background: var(--primary);
-      color: white;
-    }
-    .tag-btn.active {
-      background: var(--primary);
-      color: white;
-    }
-    .tag-more {
-      font-size: 0.85rem;
-      color: var(--secondary);
-      margin-top: 8px;
-    }
-    .filter-actions {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid var(--border);
-    }
-    .clear-filters {
-      width: 100%;
-      padding: 10px;
-      background: transparent;
-      border: 1px dashed var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      color: var(--secondary);
-      font-size: 0.9rem;
-    }
-    .clear-filters:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-    .empty-message {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--secondary);
-    }
-    
-    @media (max-width: 600px) {
-      .container { padding: 15px; }
-      header { padding: 20px 0; }
-      header h1 { font-size: 1.5rem; }
-      .meta { flex-direction: column; gap: 10px; }
-      .nav-buttons { flex-direction: column; gap: 10px; }
-      .stats-panel { flex-wrap: wrap; }
-      .filter-btn, .tag-btn {
-        font-size: 0.85rem;
-        padding: 5px 10px;
-      }
-    }
-  </style>
+:root{--bg:#fff;--text:#1a1a1a;--primary:#2563eb;--muted:#64748b;--border:#e2e8f0;--card:#f8fafc}
+[data-dark]{--bg:#0f172a;--text:#e2e8f0;--primary:#60a5fa;--muted:#94a3b8;--border:#1e293b;--card:#1e293b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .2s}
+.wrap{max-width:900px;margin:0 auto;padding:20px}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* 头部 */
+header{padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:30px}
+header h1{font-size:1.8rem;margin-bottom:8px}
+header p{color:var(--muted);font-size:.9rem}
+.stats{display:flex;gap:15px;margin-top:15px}
+.stat{background:var(--card);padding:8px 16px;border-radius:8px;text-align:center}
+.stat-num{font-size:1.4rem;font-weight:700;color:var(--primary)}
+.stat-label{font-size:.75rem;color:var(--muted)}
+
+/* 搜索 */
+.search{position:relative;margin:20px 0}
+.search input{width:100%;padding:14px 20px;font-size:1rem;border:2px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text)}
+.search input:focus{outline:none;border-color:var(--primary)}
+
+/* 筛选器 */
+.filters{background:var(--card);border-radius:12px;margin:20px 0;overflow:hidden}
+.filter-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer;border-bottom:1px solid var(--border)}
+.filter-head:hover{background:var(--border)}
+.filter-title{font-weight:600}
+.filter-toggle{color:var(--muted);transition:transform .2s}
+.filter-toggle.open{transform:rotate(180deg)}
+.filter-body{padding:0 20px;max-height:0;overflow:hidden;transition:all .3s}
+.filter-body.open{padding:20px;max-height:1000px}
+.filter-row{margin-bottom:16px}
+.filter-label{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.filter-btns{display:flex;flex-wrap:wrap;gap:6px}
+.btn{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.85rem;transition:all .15s}
+.btn:hover{border-color:var(--primary)}
+.btn.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn-sm{padding:4px 10px;font-size:.8rem}
+
+/* 笔记卡片 */
+.notes{display:grid;gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.card h2{font-size:1.1rem;margin-bottom:10px}
+.card h2 a{color:var(--text)}
+.card h2 a:hover{color:var(--primary)}
+.card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.card-summary{color:var(--muted);font-size:.9rem;line-height:1.5}
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+
+/* 详情页 */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--primary);margin-bottom:20px}
+.meta-bar{display:flex;gap:15px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:15px 0;font-size:.9rem;color:var(--muted)}
+.content{font-size:1.05rem;line-height:1.8}
+.content h1,.content h2,.content h3{margin:25px 0 12px}
+.content h2{border-bottom:2px solid var(--border);padding-bottom:8px}
+.content p{margin:12px 0}
+.content blockquote{border-left:4px solid var(--primary);padding:10px 20px;margin:15px 0;background:var(--card);border-radius:0 8px 8px 0}
+.content code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:.9em}
+.content pre{background:var(--card);padding:16px;border-radius:8px;overflow-x:auto;margin:15px 0}
+.content table{width:100%;border-collapse:collapse;margin:15px 0}
+.content td,.content th{border:1px solid var(--border);padding:10px;text-align:left}
+.nav-btns{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+.nav-btn{padding:10px 20px;border:1px solid var(--border);border-radius:8px;color:var(--primary)}
+
+/* 页脚 */
+footer{text-align:center;padding:30px 0;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+
+/* 进度条 */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--primary);width:0;z-index:1000;transition:width .1s}
+
+/* 深色按钮 */
+.theme-btn{position:fixed;top:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+
+/* 移动端 */
+@media(max-width:600px){
+  .wrap{padding:15px}
+  header h1{font-size:1.5rem}
+  .stats{flex-wrap:wrap}
+  .stat{flex:1;min-width:80px}
+  .filter-body{padding:15px}
+  .card{padding:16px}
+}
+</style>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
-  <button class="theme-toggle" id="themeToggle" title="切换深色模式">🌙</button>
+  <div class="progress"></div>
+  <button class="theme-btn" aria-label="切换主题">🌙</button>
   
-  <div class="container">
-    
-    <a href="../index.html" class="back-link">← 返回索引</a>
+  <div class="wrap">
+    <a href="../index.html" class="back">← 返回目录</a>
     
     <header>
-      <h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1>
+      <h1>GPUs, TPUs, &amp; The Economics of AI | Gavin Baker</h1>
     </header>
     
     
-    <div class="meta">
+    <div class="meta-bar">
       <span>📺 Invest Like The Best</span>
       <span>⏱️ 1:28:26</span>
       <span>📅 2026-03-02</span>
@@ -366,223 +112,118 @@
     
     
     
-    <div class="tags">
-      <span class="tag">#AI</span><span class="tag">#GPU</span><span class="tag">#TPU</span><span class="tag">#Nvidia</span><span class="tag">#Google</span><span class="tag">#Scaling</span><span class="tag">#Gavin</span>
+    <div class="card-tags" style="margin-bottom:20px">
+      <span class="btn-sm">#AI</span><span class="btn-sm">#GPU</span><span class="btn-sm">#TPU</span><span class="btn-sm">#Nvidia</span><span class="btn-sm">#Google</span><span class="btn-sm">#Scaling</span><span class="btn-sm">#Gavin</span>
     </div>
     
     
-    <article class="content">
-      <p><h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1></p>
-<p><strong>视频信息：</strong>
-- 标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview
-- 频道：Invest Like The Best
-- 时长：1:28:26
-- 观看数：--
-- 整理时间：2026-03-02</p>
-<p>---</p>
-<p><h2>🎯 核心观点</h2></p>
-<p><strong>Gavin Baker 的核心判断：</strong>
-<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote></p>
-<p><strong>翻译：</strong>
-<blockquote>"AI 是我作为科技投资者职业生涯中，第一次出现'低成本生产者'真正重要的情况。"</blockquote></p>
-<p>---</p>
-<p><h2>📊 AI 进展的三个 Scaling Laws</h2></p>
-<p><h3>1️⃣ Pre-training Scaling Laws</h3></p>
-<p><strong>核心发现：Gemini 3 证明了预训练扩展定律依然有效</strong></p>
-<table><tr> 要点 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>验证</strong> | Gemini 3 是自 Hopper 以来的首次验证 </tr>
-<tr> <strong>意义</strong> | 证明更大规模的预训练仍然有效 </tr>
-<tr> <strong>比喻</strong> | 像"古埃及人对太阳的理解"——能精确测量，但不完全理解原理 </tr></table>
-<p><strong>关键洞察：</strong>
-<blockquote>"No one on planet Earth knows how or why scaling laws for pre-training work. It's actually not a law. It's an empirical observation."</blockquote></p>
-<p><strong>翻译：</strong>
-<blockquote>"地球上没人知道预训练扩展定律为什么有效。它实际上不是定律，而是经验观察。"</blockquote></p>
-<p>---</p>
-<p><h3>2️⃣ Post-training Scaling Laws (RLVR)</h3></p>
-<p><strong>Reinforcement Learning with Verified Rewards</strong></p>
-<table><tr> 要点 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>核心概念</strong> | 任何可验证的事情都可以自动化 </tr>
-<tr> <strong>来源</strong> | Andrej Karpathy 的洞察 </tr>
-<tr> <strong>公式</strong> | With AI, anything you can verify, you can automate </tr></table>
-<p><strong>为什么重要：</strong>
-- 在 Blackwell 延期期间，RLVR 让 AI 继续进步
-- "Reasoning saved AI" —— 填补了 18 个月的硬件空白</p>
-<p>---</p>
-<p><h3>3️⃣ Test-time Compute Scaling</h3></p>
-<p><strong>测试时计算的扩展</strong></p>
-<table><tr> 要点 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>作用</strong> | 让模型在推理时"思考更久" </tr>
-<tr> <strong>效果</strong> | ARC-AGI 从 8% → 95% 只用了 3 个月 </tr>
-<tr> <strong>意义</strong> | 新的进步维度，不依赖预训练规模 </tr></table>
-<p>---</p>
-<p><h2>🔧 GPU vs TPU：Nvidia vs Google</h2></p>
-<p><h3>竞争格局</h3></p>
-<table><tr> 维度 | Nvidia (GPU) | Google (TPU) </tr>
-<tr>------|-------------|--------------</tr>
-<tr> <strong>策略</strong> | 全栈解决方案 | 只做 TPU + 其他网络芯片 </tr>
-<tr> <strong>优势</strong> | 生态系统完整 | 成本优势 </tr>
-<tr> <strong>产品</strong> | Hopper → Blackwell | TPU v6 (2024) → v7 (2025) </tr>
-<tr> <strong>部署难度</strong> | 高（液冷、3000磅机架） | 低（更成熟） </tr></table>
-<p><h3>Blackwell 的挑战</h3></p>
-<p><strong>产品过渡的复杂性：</strong></p>
-<table><tr> 变化 | Hopper | Blackwell </tr>
-<tr>------|--------|-----------</tr>
-<tr> 冷却 | 风冷 | 液冷 </tr>
-<tr> 机架重量 | ~1000 磅 | ~3000 磅 </tr>
-<tr> 功耗 | 30 kW | 130 kW </tr>
-<tr> 等效家庭用电 | 30 户 | 130 户 </tr></table>
-<p><strong>Gavin 的比喻：</strong>
-<blockquote>"Imagine if to get a new iPhone you had to change all the outlets in your house to 220 volt, put in a Tesla power wall, put in a generator, put in solar panels..."</blockquote></p>
-<p><strong>翻译：</strong>
-<blockquote>"想象一下，为了换个新 iPhone，你得把家里所有插座换成 220 伏，装个特斯拉 Powerwall，装个发电机，装太阳能板……"</blockquote></p>
-<p><h3>谁领先？</h3></p>
-<p><strong>短期：Google 有优势</strong>
-- TPU v6/v7 比 Blackwell 更早部署
-- 是"最低成本的 token 生产者"
-- 正在"吸走 AI 生态系统的经济氧气"</p>
-<p><strong>中期：Blackwell 会追上</strong>
-- GB300 是"直接替换"，不需要新基础设施
-- 2026 年初会有第一个 Blackwell 训练的模型
-- <strong>预测：XAI 会第一个发布 Blackwell 模型</strong></p>
-<p>---</p>
-<p><h2>🚀 XAI 的优势</h2></p>
-<p><strong>为什么 XAI 会第一个发布 Blackwell 模型？</strong></p>
-<table><tr> 原因 | 说明 </tr>
-<tr>------|------</tr>
-<tr> <strong>建设速度</strong> | Jensen Huang: "No one builds data centers faster than Elon" </tr>
-<tr> <strong>合作关系</strong> | XAI 帮 Nvidia 调试 Blackwell </tr>
-<tr> <strong>优势循环</strong> | 最快部署 → 最早发现问题 → 帮所有人解决 </tr></table>
-<p><strong>时间线：</strong>
-- Blackwell 部署需要 6-9 个月调优
-- XAI 因为最快，会第一个完成</p>
-<p>---</p>
-<p><h2>💡 低成本生产者的战略意义</h2></p>
-<p><h3>历史性变化</h3></p>
-<p><strong>以前：低成本从不是优势</strong>
-- Apple 不是低成本手机生产商
-- Microsoft 不是低成本软件生产商
-- Nvidia 不是低成本 GPU 生产商</p>
-<p><strong>现在：低成本至关重要</strong>
-- Google 作为低成本 token 生产者
-- 正在"吸走竞争对手的经济氧气"
-- 这是"极其理性的策略"</p>
-<p><h3>对投资者的启示</h3></p>
-<p><strong>关注点：</strong>
-1. 谁是最低成本的 token 生产者？
-2. 谁能最快部署新一代芯片？
-3. 谁在"吸走经济氧气"？</p>
-<p>---</p>
-<p><h2>📈 关键数据点</h2></p>
-<table><tr> 指标 | 数据 </tr>
-<tr>------|------</tr>
-<tr> 最大相干 GPU 集群 | 200,000 Hoppers </tr>
-<tr> Blackwell 部署时间 | 2025 年末开始规模化 </tr>
-<tr> GB300 特点 | 与 GB200 机架直接兼容 </tr>
-<tr> ARC-AGI 进步 | 8% → 95% (3 个月，reasoning) </tr>
-<tr> Blackwell 模型预测 | 2026 年初，来自 XAI </tr></table>
-<p>---</p>
-<p><h2>🎯 四大 AI 实验室</h2></p>
-<p>Gavin 明确指出：</p>
-<table><tr> 实验室 | 状态 </tr>
-<tr>--------|------</tr>
-<tr> <strong>OpenAI</strong> | ✅ 领先 </tr>
-<tr> <strong>Google/Gemini</strong> | ✅ 领先 </tr>
-<tr> <strong>Anthropic</strong> | ✅ 领先 </tr>
-<tr> <strong>XAI</strong> | ✅ 领先 </tr></table>
-<p><blockquote>"These are clearly the four leading labs."</blockquote></p>
-<p>---</p>
-<p><h2>💻 如何跟进 AI 进展</h2></p>
-<p><strong>Gavin 的方法论：</strong></p>
-<p>1. <strong>使用最高级别的模型</strong>（$200/月）
-   - 免费版 = 10 岁小孩的能力
-   - 付费版 = 35 岁成年人的能力
-   - 不要基于免费版做判断</p>
-<p>2. <strong>关注 X/Twitter</strong>
-   - "AI happens on X"
-   - 跟随那 500-1000 个真正懂的人
-   - 实验室之间的公开辩论</p>
-<p>3. <strong>听四大实验室的播客</strong>
-   - 任何来自这些实验室的人上播客都值得听</p>
-<p>4. <strong>用 AI 跟进 AI</strong>
-   - 听播客时让 AI 帮你总结重点
-   - 减少摩擦，即时消化</p>
-<p>---</p>
-<p><h2>🔑 关键引用</h2></p>
-<p><strong>关于 Scaling Laws：</strong>
-<blockquote>"Everything in AI is just downstream of those 500-1000 people who really understand this."</blockquote></p>
-<p><strong>关于 Reasoning：</strong>
-<blockquote>"Reasoning kind of saved AI because it let AI make progress without Blackwell."</blockquote></p>
-<p><strong>关于竞争优势：</strong>
-<blockquote>"Google has been sucking the economic oxygen out of the AI ecosystem."</blockquote></p>
-<p>---</p>
-<p>_整理完成：2026-03-02_
-_视频来源：Invest Like The Best_
-_标签：#AI #GPU #TPU #Nvidia #Google #Scaling Laws #Gavin Baker_</p>
-    </article>
+    <article class="content"><h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1></p><p><strong>视频信息：</strong>
+<p>- 标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview</p>
+<p>- 频道：Invest Like The Best</p>
+<p>- 时长：1:28:26</p>
+<p>- 观看数：--</p>
+<p>- 整理时间：2026-03-02</p><p>---</p><p><h2>🎯 核心观点</h2></p><p><strong>Gavin Baker 的核心判断：</strong></p>
+<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote></p><p><strong>翻译：</strong>
+<blockquote>"AI 是我作为科技投资者职业生涯中，第一次出现'低成本生产者'真正重要的情况。"</blockquote></p><p>---</p><p><h2>📊 AI 进展的三个 Scaling Laws</h2></p><p><h3>1️⃣ Pre-training Scaling Laws</h3></p><p><strong>核心发现：Gemini 3 证明了预训练扩展定律依然有效</strong></p><p>| 要点 | 说明 |
+<p>|------|------|</p>
+<p>| <strong>验证</strong> | Gemini 3 是自 Hopper 以来的首次验证 |</p>
+<p>| <strong>意义</strong> | 证明更大规模的预训练仍然有效 |</p>
+<p>| <strong>比喻</strong> | 像"古埃及人对太阳的理解"——能精确测量，但不完全理解原理 |</p><p><strong>关键洞察：</strong></p>
+<blockquote>"No one on planet Earth knows how or why scaling laws for pre-training work. It's actually not a law. It's an empirical observation."</blockquote></p><p><strong>翻译：</strong>
+<blockquote>"地球上没人知道预训练扩展定律为什么有效。它实际上不是定律，而是经验观察。"</blockquote></p><p>---</p><p><h3>2️⃣ Post-training Scaling Laws (RLVR)</h3></p><p><strong>Reinforcement Learning with Verified Rewards</strong></p><p>| 要点 | 说明 |
+<p>|------|------|</p>
+<p>| <strong>核心概念</strong> | 任何可验证的事情都可以自动化 |</p>
+<p>| <strong>来源</strong> | Andrej Karpathy 的洞察 |</p>
+<p>| <strong>公式</strong> | With AI, anything you can verify, you can automate |</p><p><strong>为什么重要：</strong></p>
+<p>- 在 Blackwell 延期期间，RLVR 让 AI 继续进步</p>
+<p>- "Reasoning saved AI" —— 填补了 18 个月的硬件空白</p><p>---</p><p><h3>3️⃣ Test-time Compute Scaling</h3></p><p><strong>测试时计算的扩展</strong></p><p>| 要点 | 说明 |</p>
+<p>|------|------|</p>
+<p>| <strong>作用</strong> | 让模型在推理时"思考更久" |</p>
+<p>| <strong>效果</strong> | ARC-AGI 从 8% → 95% 只用了 3 个月 |</p>
+<p>| <strong>意义</strong> | 新的进步维度，不依赖预训练规模 |</p><p>---</p><p><h2>🔧 GPU vs TPU：Nvidia vs Google</h2></p><p><h3>竞争格局</h3></p><p>| 维度 | Nvidia (GPU) | Google (TPU) |</p>
+<p>|------|-------------|--------------|</p>
+<p>| <strong>策略</strong> | 全栈解决方案 | 只做 TPU + 其他网络芯片 |</p>
+<p>| <strong>优势</strong> | 生态系统完整 | 成本优势 |</p>
+<p>| <strong>产品</strong> | Hopper → Blackwell | TPU v6 (2024) → v7 (2025) |</p>
+<p>| <strong>部署难度</strong> | 高（液冷、3000磅机架） | 低（更成熟） |</p><p><h3>Blackwell 的挑战</h3></p><p><strong>产品过渡的复杂性：</strong></p><p>| 变化 | Hopper | Blackwell |</p>
+<p>|------|--------|-----------|</p>
+<p>| 冷却 | 风冷 | 液冷 |</p>
+<p>| 机架重量 | ~1000 磅 | ~3000 磅 |</p>
+<p>| 功耗 | 30 kW | 130 kW |</p>
+<p>| 等效家庭用电 | 30 户 | 130 户 |</p><p><strong>Gavin 的比喻：</strong></p>
+<blockquote>"Imagine if to get a new iPhone you had to change all the outlets in your house to 220 volt, put in a Tesla power wall, put in a generator, put in solar panels..."</blockquote></p><p><strong>翻译：</strong>
+<blockquote>"想象一下，为了换个新 iPhone，你得把家里所有插座换成 220 伏，装个特斯拉 Powerwall，装个发电机，装太阳能板……"</blockquote></p><p><h3>谁领先？</h3></p><p><strong>短期：Google 有优势</strong>
+<p>- TPU v6/v7 比 Blackwell 更早部署</p>
+<p>- 是"最低成本的 token 生产者"</p>
+<p>- 正在"吸走 AI 生态系统的经济氧气"</p><p><strong>中期：Blackwell 会追上</strong></p>
+<p>- GB300 是"直接替换"，不需要新基础设施</p>
+<p>- 2026 年初会有第一个 Blackwell 训练的模型</p>
+<p>- <strong>预测：XAI 会第一个发布 Blackwell 模型</strong></p><p>---</p><p><h2>🚀 XAI 的优势</h2></p><p><strong>为什么 XAI 会第一个发布 Blackwell 模型？</strong></p><p>| 原因 | 说明 |</p>
+<p>|------|------|</p>
+<p>| <strong>建设速度</strong> | Jensen Huang: "No one builds data centers faster than Elon" |</p>
+<p>| <strong>合作关系</strong> | XAI 帮 Nvidia 调试 Blackwell |</p>
+<p>| <strong>优势循环</strong> | 最快部署 → 最早发现问题 → 帮所有人解决 |</p><p><strong>时间线：</strong></p>
+<p>- Blackwell 部署需要 6-9 个月调优</p>
+<p>- XAI 因为最快，会第一个完成</p><p>---</p><p><h2>💡 低成本生产者的战略意义</h2></p><p><h3>历史性变化</h3></p><p><strong>以前：低成本从不是优势</strong></p>
+<p>- Apple 不是低成本手机生产商</p>
+<p>- Microsoft 不是低成本软件生产商</p>
+<p>- Nvidia 不是低成本 GPU 生产商</p><p><strong>现在：低成本至关重要</strong></p>
+<p>- Google 作为低成本 token 生产者</p>
+<p>- 正在"吸走竞争对手的经济氧气"</p>
+<p>- 这是"极其理性的策略"</p><p><h3>对投资者的启示</h3></p><p><strong>关注点：</strong></p>
+<p>1. 谁是最低成本的 token 生产者？</p>
+<p>2. 谁能最快部署新一代芯片？</p>
+<p>3. 谁在"吸走经济氧气"？</p><p>---</p><p><h2>📈 关键数据点</h2></p><p>| 指标 | 数据 |</p>
+<p>|------|------|</p>
+<p>| 最大相干 GPU 集群 | 200,000 Hoppers |</p>
+<p>| Blackwell 部署时间 | 2025 年末开始规模化 |</p>
+<p>| GB300 特点 | 与 GB200 机架直接兼容 |</p>
+<p>| ARC-AGI 进步 | 8% → 95% (3 个月，reasoning) |</p>
+<p>| Blackwell 模型预测 | 2026 年初，来自 XAI |</p><p>---</p><p><h2>🎯 四大 AI 实验室</h2></p><p>Gavin 明确指出：</p><p>| 实验室 | 状态 |</p>
+<p>|--------|------|</p>
+<p>| <strong>OpenAI</strong> | ✅ 领先 |</p>
+<p>| <strong>Google/Gemini</strong> | ✅ 领先 |</p>
+<p>| <strong>Anthropic</strong> | ✅ 领先 |</p>
+<p>| <strong>XAI</strong> | ✅ 领先 |</p><p><blockquote>"These are clearly the four leading labs."</blockquote></p><p>---</p><p><h2>💻 如何跟进 AI 进展</h2></p><p><strong>Gavin 的方法论：</strong></p><p>1. <strong>使用最高级别的模型</strong>（$200/月）</p>
+<p>   - 免费版 = 10 岁小孩的能力</p>
+<p>   - 付费版 = 35 岁成年人的能力</p>
+<p>   - 不要基于免费版做判断</p><p>2. <strong>关注 X/Twitter</strong></p>
+<p>   - "AI happens on X"</p>
+<p>   - 跟随那 500-1000 个真正懂的人</p>
+<p>   - 实验室之间的公开辩论</p><p>3. <strong>听四大实验室的播客</strong></p>
+<p>   - 任何来自这些实验室的人上播客都值得听</p><p>4. <strong>用 AI 跟进 AI</strong></p>
+<p>   - 听播客时让 AI 帮你总结重点</p>
+<p>   - 减少摩擦，即时消化</p><p>---</p><p><h2>🔑 关键引用</h2></p><p><strong>关于 Scaling Laws：</strong></p>
+<blockquote>"Everything in AI is just downstream of those 500-1000 people who really understand this."</blockquote></p><p><strong>关于 Reasoning：</strong>
+<blockquote>"Reasoning kind of saved AI because it let AI make progress without Blackwell."</blockquote></p><p><strong>关于竞争优势：</strong>
+<blockquote>"Google has been sucking the economic oxygen out of the AI ecosystem."</blockquote></p><p>---</p><p>_整理完成：2026-03-02_
+<p>_视频来源：Invest Like The Best_</p>
+<p>_标签：#AI #GPU #TPU #Nvidia #Google #Scaling Laws #Gavin Baker_</p></article>
     
-    <nav class="nav-buttons">
-      <a href="./2026-03-02-a16z-david-george-ai-markets.html" class="nav-button">← 上一篇</a>
-      <a href="./2026-03-02-henry-ellenbogen-1-percent-stocks.html" class="nav-button">下一篇 →</a>
+    <nav class="nav-btns">
+      <a href="./2026-03-02-a16z-david-george-ai-markets.html" class="nav-btn">← 上一篇</a>
+      <a href="./2026-03-02-henry-ellenbogen-1-percent-stocks.html" class="nav-btn">下一篇 →</a>
     </nav>
-  
     
     <footer>
-      <p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
-      <p style="margin-top: 10px;">
-        <a href="https://github.com/zhewenzhang/video-notes" style="color: var(--primary);">GitHub</a>
-      </p>
+      <p>由小爪 🐾 整理</p>
     </footer>
   </div>
   
   <script>
     // 深色模式
-    const toggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    // 检查系统偏好
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      html.setAttribute('data-dark', '');
-      toggle.textContent = '☀️';
+    if(matchMedia('(prefers-color-scheme:dark)').matches){
+      document.documentElement.setAttribute('data-dark','');
+      document.querySelector('.theme-btn').textContent='☀️';
     }
-    
-    toggle.addEventListener('click', () => {
-      if (html.hasAttribute('data-dark')) {
-        html.removeAttribute('data-dark');
-        toggle.textContent = '🌙';
-      } else {
-        html.setAttribute('data-dark', '');
-        toggle.textContent = '☀️';
-      }
+    document.querySelector('.theme-btn').addEventListener('click', () => {
+      const isDark = document.documentElement.toggleAttribute('data-dark');
+      document.querySelector('.theme-btn').textContent = isDark ? '☀️' : '🌙';
     });
-    
-    // 阅读进度
+    // 进度条
     window.addEventListener('scroll', () => {
-      const bar = document.getElementById('progressBar');
-      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      bar.style.width = scrolled + '%';
+      document.querySelector('.progress').style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
     });
-    
-    // 搜索功能（索引页）
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.note-card');
-        cards.forEach(card => {
-          const text = card.textContent.toLowerCase();
-          card.style.display = text.includes(query) ? 'block' : 'none';
-        });
-      });
-    }
-    
-    // 初始化筛选器（仅索引页）
-    if (window.notesData) {
-      initFilters(window.notesData);
-    }
   </script>
-  
 </body>
 </html>
