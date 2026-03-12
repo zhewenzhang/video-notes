@@ -180,12 +180,168 @@
     }
     .note-summary { color: var(--secondary); margin: 15px 0; }
     
+    /* 筛选器样式 */
+    .filters-container {
+      margin: 20px 0;
+    }
+    .filters-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+    .filters-toggle:hover {
+      background: var(--border);
+    }
+    .toggle-icon {
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+    }
+    .result-count {
+      background: var(--primary);
+      color: white;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+    .filters-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .filters-panel.collapsed {
+      display: none;
+    }
+    .stats-panel {
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      background: var(--bg);
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      background: var(--card-bg);
+      border-radius: 8px;
+    }
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--secondary);
+    }
+    .filter-section {
+      margin-bottom: 20px;
+    }
+    .filter-title {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-btn {
+      padding: 4px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--primary);
+      transition: all 0.2s;
+    }
+    .tag-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .tag-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+    .tag-more {
+      font-size: 0.85rem;
+      color: var(--secondary);
+      margin-top: 8px;
+    }
+    .filter-actions {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+    }
+    .clear-filters {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+    .clear-filters:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .empty-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--secondary);
+    }
+    
     @media (max-width: 600px) {
       .container { padding: 15px; }
       header { padding: 20px 0; }
       header h1 { font-size: 1.5rem; }
       .meta { flex-direction: column; gap: 10px; }
       .nav-buttons { flex-direction: column; gap: 10px; }
+      .stats-panel { flex-wrap: wrap; }
+      .filter-btn, .tag-btn {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+      }
     }
   </style>
 </head>
@@ -317,6 +473,12 @@ Git 仓库是为人类设计的：低频率的 commit、人类阅读的提交信
         });
       });
     }
+    
+    // 初始化筛选器（仅索引页）
+    if (window.notesData) {
+      initFilters(window.notesData);
+    }
   </script>
+  
 </body>
 </html>
