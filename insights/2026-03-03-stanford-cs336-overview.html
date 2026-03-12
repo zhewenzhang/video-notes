@@ -85,56 +85,36 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <header class="article-header">
 <h1>Stanford CS336: Language Modeling from Scratch - Overview</h1>
 <div class="article-meta">
-
+<span>未知</span>
 <span>1:18:59</span>
 <span>2026-03-03</span>
 </div>
 </header>
-<div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#Stanford</span><span class="note-tag">#CS336</span><span class="note-tag">#LanguageModel</span><span class="note-tag">#Tokenizer</span><span class="note-tag">#LLM</span><span class="note-tag">#深度学习</span></div>
-<article class="article-content"><h1>Stanford CS336: Language Modeling from Scratch - Overview</h1></p><p><strong>来源</strong>: Stanford CS336 课程  
+<div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#Stanford</span><span class="note-tag">#CS336</span><span class="note-tag">#LanguageModel</span><span class="note-tag">#Tokenizer</span><span class="note-tag">#LLM</span></div>
+<article class="article-content"><h1>Stanford CS336: Language Modeling from Scratch - Overview</h1></p><p><h2>📺 视频信息</h2>
+<p>- <strong>频道</strong>: 未知</p>
+<p>- <strong>时长</strong>: 1:18:59  </p>
+<p>- <strong>发布日期</strong>: 未知</p>
+<p>- <strong>标签</strong>: #Stanford #CS336 #LanguageModel #Tokenizer #LLM</p><p>---</p><p><h2>🎯 核心观点</h2></p><p>1. <strong>从 0 构建是最佳学习</strong> - 理解每个细节</p>
+<p>2. <strong>Tokenizer 很重要</strong> - 常被忽视但影响巨大</p>
+<p>3. <strong>实践驱动</strong> - 理论 + 代码结合</p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>来源</strong>: Stanford CS336 课程  </p>
 <strong>讲师</strong>: 待确认  
 <strong>主题</strong>: 从零构建语言模型  
 <strong>时长</strong>: 1:18:59  
-<strong>整理时间</strong>: 2026-03-03 08:27</p><p>---</p><p><h2>课程概述</h2></p><p><h3>CS336 课程目标</h3>
-<strong>从零开始构建语言模型</strong> - 深入理解 LLM 原理</p><p><strong>核心内容</strong>:
+<strong>整理时间</strong>: 2026-03-03 08:27</p><p>---</p><p>---</p><p><h2>🔑 关键要点</h2></p><p><h3>要点 1</h3>
+<p>文本的基本单位</p><p><h3>要点 2</h3></p>
+<p>可以是词、子词、或字符</p><p><h3>要点 3</h3></p>
+<p>影响模型性能的关键</p><p><h3>要点 4</h3></p>
+<p>太小：序列过长，计算慢</p><p><h3>要点 5</h3></p>
+<p>太大：Embedding 参数多</p><p></p>
+<p>---</p><p><h2>💡 深度洞察</h2></p><p><strong>核心内容</strong>:</p>
 <p>1. Tokenization (分词)</p>
 <p>2. 模型架构 (Transformer)</p>
 <p>3. 训练流程</p>
 <p>4. 评估方法</p>
-<p>5. 优化技术</p><p>---</p><p><h2>第一讲：Overview and Tokenization</h2></p><p><h3>Tokenization 基础</h3></p><p><strong>什么是 Token</strong>:</p>
-<p>- 文本的基本单位</p>
-<p>- 可以是词、子词、或字符</p>
-<p>- 影响模型性能的关键</p><p><strong>主流 Tokenizer</strong>:</p>
-<p>| 方法 | 代表 | 特点 |</p>
-<p>|------|------|------|</p>
-<p>| BPE | GPT 系列 | 平衡效率 + 词汇量 |</p>
-<p>| WordPiece | BERT | Google 系采用 |</p>
-<p>| Unigram | SentencePiece | 多语言支持 |</p>
-<p>| Char | - | 简单但效率低 |</p><p><h3>实践要点</h3></p><p><strong>词汇量选择</strong>:</p>
-<p>- 太小：序列过长，计算慢</p>
-<p>- 太大：Embedding 参数多</p>
-<p>- 平衡点：32k-100k</p><p><strong>特殊 Token</strong>:</p>
-<p>- <code>[BOS]</code> / <code>[EOS]</code> - 序列边界</p>
-<p>- <code>[PAD]</code> - 填充</p>
-<p>- <code>[UNK]</code> - 未知词</p>
-<p>- <code>[SEP]</code> - 分隔符</p><p>---</p><p><h2>课程项目</h2></p><p><strong>预期产出</strong>:</p>
-<p>1. 实现自己的 Tokenizer</p>
-<p>2. 构建小型 Transformer</p>
-<p>3. 训练语言模型</p>
-<p>4. 评估生成质量</p><p>---</p><p><h2>学习资源</h2></p><p><h3>前置知识</h3></p>
-<p>- Python 编程</p>
-<p>- 线性代数</p>
-<p>- 概率论</p>
-<p>- 基础机器学习</p><p><h3>参考材料</h3></p>
-<p>- <a href="https://stanford-cs336.github.io">CS336 课程网站</a></p>
-<p>- 《Language Models from Scratch》- Sebastian Raschka</p>
-<p>- <a href="https://huggingface.co/docs/tokenizers">Hugging Face Tokenizers</a></p><p>---</p><p><h2>对我的启发</h2></p><p>1. <strong>从 0 构建是最佳学习</strong> - 理解每个细节</p>
-<p>2. <strong>Tokenizer 很重要</strong> - 常被忽视但影响巨大</p>
-<p>3. <strong>实践驱动</strong> - 理论 + 代码结合</p><p>---</p><p><h2>后续行动</h2></p><p>- [ ] 完成 CS336 全部课程</p>
-<p>- [ ] 实现自己的 Tokenizer</p>
-<p>- [ ] 训练小型语言模型</p>
-<p>- [ ] 对比不同 Tokenization 方法</p><p>---</p>
-<p>_标签：#Stanford #CS336 #LanguageModel #Tokenizer #LLM #深度学习_</p>
+<p>5. 优化技术</p><p>---</p><p><h2>🎬 精彩片段</h2></p><p>待补充精彩片段...</p><p>---</p><p><h2>📝 个人思考</h2></p><p>待补充个人思考...</p><p>---</p><p><h2>🔗 相关链接</h2></p>
+<p>- <a href="待补充">原始视频</a></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>
