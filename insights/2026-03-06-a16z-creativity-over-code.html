@@ -60,6 +60,15 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
 .empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
 .empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
+
+/* 表格样式 */
+.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.content-table thead{background:var(--bg-elevated)}
+.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
+.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.content-table tr:hover{background:rgba(255,107,53,0.05)}
+.content-table tr:last-child td{border-bottom:none}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -70,13 +79,16 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
 .article-content p{margin:24px 0}
 .article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
+.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
+.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
+.article-content pre code{padding:0;background:none}
 .site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
 .site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
 .site-footer a{color:var(--accent);text-decoration:none}
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -91,11 +103,19 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 </div>
 </header>
 <div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#视频笔记</span></div>
-<article class="article-content"><h1>Why Creativity Will Matter More Than Code</h1></p><p><h2>📺 视频信息</h2>
+<article class="article-content"><h1>Why Creativity Will Matter More Than Code</h1>
+
+<h2>📺 视频信息</h2>
 <p>- <strong>频道</strong>: a16z</p>
 <p>- <strong>时长</strong>: 1:24:15</p>
 <p>- <strong>发布日期</strong>: 2024年</p>
-<p>- <strong>标签</strong>: #视频笔记</p><p>---</p><p><h2>🎯 核心观点</h2></p><p><blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote></p>
+<p>- <strong>标签</strong>: #视频笔记</p>
+
+<p>---</p>
+
+<h2>🎯 核心观点</h2>
+
+<blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote>
 <p>> </p>
 <blockquote>"When it looks awkward, it's going to be contrarian. No one's going to want to do that weird thing. Those are the hardest deals to do."</blockquote>
 <p>> </p>
@@ -103,10 +123,18 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <p>> </p>
 <blockquote>"I want them to look back on dad's career and not say he was the best investor. Not say he made the most money but look back and say wow, he took a lot of risk and he was wrong a lot but he got to scratch every personal itch that he had and try everything."</blockquote>
 <p>> </p>
-<blockquote>"One of the interesting opportunities in AI is addressing parts of the human experience that a thousand committees at Google and Facebook don't want addressed."</blockquote></p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>频道</strong>: a16z
+<blockquote>"One of the interesting opportunities in AI is addressing parts of the human experience that a thousand committees at Google and Facebook don't want addressed."</blockquote>
+
+<p>---</p>
+
+<h2>📋 内容摘要</h2>
+
+<strong>频道</strong>: a16z
 <strong>发布</strong>: 2024年
 <strong>时长</strong>: 1:24:15
-<strong>链接</strong>: https://www.youtube.com/watch?v=VOUCufY_0nA</p><p><blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote>
+<strong>链接</strong>: https://www.youtube.com/watch?v=VOUCufY_0nA
+
+<blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote>
 <p>> </p>
 <blockquote>"When it looks awkward, it's going to be contrarian. No one's going to want to do that weird thing. Those are the hardest deals to do."</blockquote>
 <p>> </p>
@@ -114,15 +142,55 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <p>> </p>
 <blockquote>"I want them to look back on dad's career and not say he was the best investor. Not say he made the most money but look back and say wow, he took a lot of risk and he was wrong a lot but he got to scratch every personal itch that he had and try everything."</blockquote>
 <p>> </p>
-<blockquote>"One of the interesting opportunities in AI is addressing parts of the human experience that a thousand committees at Google and Facebook don't want addressed."</blockquote></p><p>---</p><p><h2>🔑 关键要点</h2></p><p><h3>要点 1</h3>
-<p>创造力与执行力的权重正在重新分配：当执行成本趋近于零时，"做什么"比"怎么做"更有价值</p><p><h3>要点 2</h3></p>
-<p>大厂的组织结构决定了他们无法触及某些市场——这不仅仅是技术限制，更是文化限制</p><p><h3>要点 3</h3></p>
-<p>未来的竞争优势可能不在于技术壁垒，而在于"情感共鸣"和"产品灵魂"</p><p></p>
-<p>---</p><p><h2>💡 深度洞察</h2></p><p><h3>3. 创业公司的机会：大厂不敢碰的领域 [10:00]</h3></p>
-<p>AI 技术可以触及人类经验中大厂不愿意涉及的领域：陪伴（companionship）、性、争议性话题等。Google 和 Meta 的无数委员会不会批准这些产品，这正是创业公司的护城河——产品的"灵魂"是大厂无法复制的。这些领域的防御性来自于产品本质，而非技术壁垒。</p><p>---</p><p><h2>🎬 精彩片段</h2></p><p><blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote></p><p><blockquote>"When it looks awkward, it's going to be contrarian. No one's going to want to do that weird thing. Those are the hardest deals to do."</blockquote></p><p><blockquote>"The best investments were the ones that were the most contentious internally because people don't see it. Not everyone sees it. And that's actually a positive signal."</blockquote></p><p>---</p><p><h2>📝 个人思考</h2></p><p><h3>7. 技术思维比以往任何时候都重要 [73:20]</h3></p>
-<p>虽然传统的编码可能变得价值降低，但"技术思维"比以往更重要。问题不在于是否能写出某种算法，而在于能否用技术视角思考问题。建议年轻人不要因为"CS 已死"而放弃计算机科学——这正是错误的信号。未来的技术人员可能不以我们熟悉的方式编程，但他们需要理解技术本质。</p><p>---</p><p><h2>🔗 相关链接</h2></p>
+<blockquote>"One of the interesting opportunities in AI is addressing parts of the human experience that a thousand committees at Google and Facebook don't want addressed."</blockquote>
+
+<p>---</p>
+
+<h2>🔑 关键要点</h2>
+
+<h3>要点 1</h3>
+<p>创造力与执行力的权重正在重新分配：当执行成本趋近于零时，"做什么"比"怎么做"更有价值</p>
+
+<h3>要点 2</h3>
+<p>大厂的组织结构决定了他们无法触及某些市场——这不仅仅是技术限制，更是文化限制</p>
+
+<h3>要点 3</h3>
+<p>未来的竞争优势可能不在于技术壁垒，而在于"情感共鸣"和"产品灵魂"</p>
+
+
+<p>---</p>
+
+<h2>💡 深度洞察</h2>
+
+<h3>3. 创业公司的机会：大厂不敢碰的领域 [10:00]</h3>
+<p>AI 技术可以触及人类经验中大厂不愿意涉及的领域：陪伴（companionship）、性、争议性话题等。Google 和 Meta 的无数委员会不会批准这些产品，这正是创业公司的护城河——产品的"灵魂"是大厂无法复制的。这些领域的防御性来自于产品本质，而非技术壁垒。</p>
+
+<p>---</p>
+
+<h2>🎬 精彩片段</h2>
+
+<blockquote>"I think engineering is over. I think we're going to be orchestrators of information, not engineers. Anything where there is a non-subjective outcome, AI will tackle that and solve that problem."</blockquote>
+
+<blockquote>"When it looks awkward, it's going to be contrarian. No one's going to want to do that weird thing. Those are the hardest deals to do."</blockquote>
+
+<blockquote>"The best investments were the ones that were the most contentious internally because people don't see it. Not everyone sees it. And that's actually a positive signal."</blockquote>
+
+<p>---</p>
+
+<h2>📝 个人思考</h2>
+
+<h3>7. 技术思维比以往任何时候都重要 [73:20]</h3>
+<p>虽然传统的编码可能变得价值降低，但"技术思维"比以往更重要。问题不在于是否能写出某种算法，而在于能否用技术视角思考问题。建议年轻人不要因为"CS 已死"而放弃计算机科学——这正是错误的信号。未来的技术人员可能不以我们熟悉的方式编程，但他们需要理解技术本质。</p>
+
+<p>---</p>
+
+<h2>🔗 相关链接</h2>
 <p>- <a href="待补充">原始视频</a></p>
-<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p>
+
+<p>---</p>
+
+<em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>

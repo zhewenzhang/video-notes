@@ -60,6 +60,15 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
 .empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
 .empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
+
+/* 表格样式 */
+.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.content-table thead{background:var(--bg-elevated)}
+.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
+.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.content-table tr:hover{background:rgba(255,107,53,0.05)}
+.content-table tr:last-child td{border-bottom:none}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -70,13 +79,16 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
 .article-content p{margin:24px 0}
 .article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
+.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
+.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
+.article-content pre code{padding:0;background:none}
 .site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
 .site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
 .site-footer a{color:var(--accent);text-decoration:none}
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -91,16 +103,68 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 </div>
 </header>
 <div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#视频笔记</span></div>
-<article class="article-content"><h1>OpenAI's New Device was LEAKED (Dime)</h1></p><p><h2>📺 视频信息</h2>
+<article class="article-content"><h1>OpenAI's New Device was LEAKED (Dime)</h1>
+
+<h2>📺 视频信息</h2>
 <p>- <strong>频道</strong>: Matthew Berman</p>
 <p>- <strong>时长</strong>: 7:31</p>
 <p>- <strong>发布日期</strong>: 2026-02-09</p>
-<p>- <strong>标签</strong>: #视频笔记</p><p>---</p><p><h2>🎯 核心观点</h2></p><p>2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Ive 为 OpenAI 设计的产品。OpenAI 官方随后否认这是他们的广告，但这个"泄露"引发了广泛讨论。视频博主认为这个广告的制作水准很高，很难判断真伪。</p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>频道</strong>: Matthew Berman</p>
+<p>- <strong>标签</strong>: #视频笔记</p>
+
+<p>---</p>
+
+<h2>🎯 核心观点</h2>
+
+<p>2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Ive 为 OpenAI 设计的产品。OpenAI 官方随后否认这是他们的广告，但这个"泄露"引发了广泛讨论。视频博主认为这个广告的制作水准很高，很难判断真伪。</p>
+
+<p>---</p>
+
+<h2>📋 内容摘要</h2>
+
+<strong>频道</strong>: Matthew Berman
 <strong>发布</strong>: 2026-02-09
 <strong>时长</strong>: 7:31
-<strong>链接</strong>: https://www.youtube.com/watch?v=boP_p-2YoZs</p><p>2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Ive 为 OpenAI 设计的产品。OpenAI 官方随后否认这是他们的广告，但这个"泄露"引发了广泛讨论。视频博主认为这个广告的制作水准很高，很难判断真伪。</p><p>---</p><p><h2>🔑 关键要点</h2></p><p>待补充关键要点...</p><p>---</p><p><h2>💡 深度洞察</h2></p><p>尽管官方否认，但有多个来源支持广告中设备的存在。Hypebeast 报道 OpenAI 和 Johnny Ive 的团队正在开发代号"Sweet Pea"的耳戴式设备，定位为 AirPods 的直接竞争者，采用耳后佩戴设计。更关键的是，有来自中国的泄露文件确认"Sweet Pea" AirPod 类产品的消费者名称就是"Dime"。这些证据让博主认为，虽然广告本身可能是假的，但其展示的设备形态很可能就是 OpenAI 未来硬件的方向。</p><p>---</p><p><h2>🎬 精彩片段</h2></p><p><blockquote>"I truly believe earbuds is the way, but it's not just enough to have earbuds because the AI has to be able to read the world around you. And that means vision and audio and maybe other sensors."</blockquote></p><p><blockquote>"The problem is [the phone] already exists and Apple and Android own the entire ecosystem... If you're OpenAI and you're Johnny IV and you're trying to think about what device are we going to sell? How do we replace the phone? That is a massive undertaking."</blockquote></p><p><blockquote>"What made that fake leak so convincing is that it really looks like something that Johnny IV would have made."</blockquote></p><p>---</p><p><h2>📝 个人思考</h2></p><p>待补充个人思考...</p><p>---</p><p><h2>🔗 相关链接</h2>
+<strong>链接</strong>: https://www.youtube.com/watch?v=boP_p-2YoZs
+
+<p>2026 年超级碗期间 AI 广告扎堆出现，OpenAI、Anthropic、GenSpark 等公司都投放了广告。然而，一个疑似 OpenAI 硬件设备的广告在 Reddit 上泄露，该广告推广一款未来硬件设备，据传是 Johnny Ive 为 OpenAI 设计的产品。OpenAI 官方随后否认这是他们的广告，但这个"泄露"引发了广泛讨论。视频博主认为这个广告的制作水准很高，很难判断真伪。</p>
+
+<p>---</p>
+
+<h2>🔑 关键要点</h2>
+
+<p>待补充关键要点...</p>
+
+<p>---</p>
+
+<h2>💡 深度洞察</h2>
+
+<p>尽管官方否认，但有多个来源支持广告中设备的存在。Hypebeast 报道 OpenAI 和 Johnny Ive 的团队正在开发代号"Sweet Pea"的耳戴式设备，定位为 AirPods 的直接竞争者，采用耳后佩戴设计。更关键的是，有来自中国的泄露文件确认"Sweet Pea" AirPod 类产品的消费者名称就是"Dime"。这些证据让博主认为，虽然广告本身可能是假的，但其展示的设备形态很可能就是 OpenAI 未来硬件的方向。</p>
+
+<p>---</p>
+
+<h2>🎬 精彩片段</h2>
+
+<blockquote>"I truly believe earbuds is the way, but it's not just enough to have earbuds because the AI has to be able to read the world around you. And that means vision and audio and maybe other sensors."</blockquote>
+
+<blockquote>"The problem is [the phone] already exists and Apple and Android own the entire ecosystem... If you're OpenAI and you're Johnny IV and you're trying to think about what device are we going to sell? How do we replace the phone? That is a massive undertaking."</blockquote>
+
+<blockquote>"What made that fake leak so convincing is that it really looks like something that Johnny IV would have made."</blockquote>
+
+<p>---</p>
+
+<h2>📝 个人思考</h2>
+
+<p>待补充个人思考...</p>
+
+<p>---</p>
+
+<h2>🔗 相关链接</h2>
 <p>- <a href="待补充">原始视频</a></p>
-<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p>
+
+<p>---</p>
+
+<em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>

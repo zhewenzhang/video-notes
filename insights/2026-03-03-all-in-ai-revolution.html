@@ -60,6 +60,15 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
 .empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
 .empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
+
+/* 表格样式 */
+.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.content-table thead{background:var(--bg-elevated)}
+.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
+.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.content-table tr:hover{background:rgba(255,107,53,0.05)}
+.content-table tr:last-child td{border-bottom:none}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -70,13 +79,16 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
 .article-content p{margin:24px 0}
 .article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
+.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
+.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
+.article-content pre code{padding:0;background:none}
 .site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
 .site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
 .site-footer a{color:var(--accent);text-decoration:none}
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -91,31 +103,82 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 </div>
 </header>
 <div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#AllInPodcast</span><span class="note-tag">#AI</span><span class="note-tag">#Robotics</span><span class="note-tag">#AR</span><span class="note-tag">#Manufacturing</span></div>
-<article class="article-content"><h1>Why AI Will Dwarf Every Tech Revolution Before It - All-In Podcast</h1></p><p><h2>📺 视频信息</h2>
+<article class="article-content"><h1>Why AI Will Dwarf Every Tech Revolution Before It - All-In Podcast</h1>
+
+<h2>📺 视频信息</h2>
 <p>- <strong>频道</strong>: 未知</p>
 <p>- <strong>时长</strong>: 51:02  </p>
 <p>- <strong>发布日期</strong>: 未知</p>
-<p>- <strong>标签</strong>: #AllInPodcast #AI #Robotics #AR #Manufacturing</p><p>---</p><p><h2>🎯 核心观点</h2></p><p>| 领域 | 2025 市场规模 | 2030 预测 | CAGR |</p>
-<p>|------|------------|----------|------|</p>
-<p>| AI 机器人 | $150 亿 | $800 亿 | 40% |</p>
-<p>| AI 制造 | $80 亿 | $500 亿 | 45% |</p>
-<p>| AR 眼镜 | $30 亿 | $300 亿 | 58% |</p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>来源</strong>: All-In Podcast  </p>
+<p>- <strong>标签</strong>: #AllInPodcast #AI #Robotics #AR #Manufacturing</p>
+
+<p>---</p>
+
+<h2>🎯 核心观点</h2>
+
+<table class="content-table"><thead><tr><th>领域</th><th>2025 市场规模</th><th>2030 预测</th><th>CAGR</th></tr></thead><tbody><tr><td>AI 机器人</td><td>$150 亿</td><td>$800 亿</td><td>40%</td></tr><tr><td>AI 制造</td><td>$80 亿</td><td>$500 亿</td><td>45%</td></tr><tr><td>AR 眼镜</td><td>$30 亿</td><td>$300 亿</td><td>58%</td></tr></tbody></table>
+<p>---</p>
+
+<h2>📋 内容摘要</h2>
+
+<strong>来源</strong>: All-In Podcast  
 <strong>主题</strong>: CES 2026 AI 亮点 - 机器人/制造/AR 眼镜  
 <strong>时长</strong>: 51:02  
 <strong>日期</strong>: 2026-03-03  
-<strong>整理时间</strong>: 2026-03-03 07:50</p><p>---</p><p>---</p><p><h2>🔑 关键要点</h2></p><p><h3>要点 1</h3>
-<p>互联网 (1990s)</p><p><h3>要点 2</h3></p>
-<p>移动互联网 (2000s)</p><p><h3>要点 3</h3></p>
-<p>云计算 (2010s)</p><p><h3>要点 4</h3></p>
-<strong>AI (2020s)</strong> ← 规模最大</p><p><h3>要点 5</h3>
-<strong>人形机器人</strong>开始量产</p><p>
-<p>---</p><p><h2>💡 深度洞察</h2></p><p><h3>1. 🤖 机器人 (Robotics)</h3></p>
+<strong>整理时间</strong>: 2026-03-03 07:50
+
+<p>---</p>
+
+<p>---</p>
+
+<h2>🔑 关键要点</h2>
+
+<h3>要点 1</h3>
+<p>互联网 (1990s)</p>
+
+<h3>要点 2</h3>
+<p>移动互联网 (2000s)</p>
+
+<h3>要点 3</h3>
+<p>云计算 (2010s)</p>
+
+<h3>要点 4</h3>
+<strong>AI (2020s)</strong> ← 规模最大
+
+<h3>要点 5</h3>
+<strong>人形机器人</strong>开始量产
+
+
+<p>---</p>
+
+<h2>💡 深度洞察</h2>
+
+<h3>1. 🤖 机器人 (Robotics)</h3>
 <p>- <strong>人形机器人</strong>开始量产</p>
 <p>- <strong>家庭助手</strong>机器人亮相</p>
 <p>- <strong>工业机器</strong>人集成 AI 视觉</p>
-<p>- <strong>关键突破</strong>: 从预编程到自主决策</p><p>---</p><p><h2>🎬 精彩片段</h2></p><p>待补充精彩片段...</p><p>---</p><p><h2>📝 个人思考</h2></p><p>待补充个人思考...</p><p>---</p><p><h2>🔗 相关链接</h2></p>
+<p>- <strong>关键突破</strong>: 从预编程到自主决策</p>
+
+<p>---</p>
+
+<h2>🎬 精彩片段</h2>
+
+<p>待补充精彩片段...</p>
+
+<p>---</p>
+
+<h2>📝 个人思考</h2>
+
+<p>待补充个人思考...</p>
+
+<p>---</p>
+
+<h2>🔗 相关链接</h2>
 <p>- <a href="待补充">原始视频</a></p>
-<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p>
+
+<p>---</p>
+
+<em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>

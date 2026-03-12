@@ -60,6 +60,15 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
 .empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
 .empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
+
+/* 表格样式 */
+.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.content-table thead{background:var(--bg-elevated)}
+.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
+.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.content-table tr:hover{background:rgba(255,107,53,0.05)}
+.content-table tr:last-child td{border-bottom:none}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -70,13 +79,16 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
 .article-content p{margin:24px 0}
 .article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
+.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
+.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
+.article-content pre code{padding:0;background:none}
 .site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
 .site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
 .site-footer a{color:var(--accent);text-decoration:none}
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -91,33 +103,83 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 </div>
 </header>
 <div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#AI</span><span class="note-tag">#GPU</span><span class="note-tag">#TPU</span><span class="note-tag">#Nvidia</span><span class="note-tag">#Google</span></div>
-<article class="article-content"><h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1></p><p><h2>📺 视频信息</h2>
+<article class="article-content"><h1>GPUs, TPUs, & The Economics of AI | Gavin Baker</h1>
+
+<h2>📺 视频信息</h2>
 <p>- <strong>频道</strong>: 未知</p>
 <p>- <strong>时长</strong>: 未知</p>
 <p>- <strong>发布日期</strong>: 未知</p>
-<p>- <strong>标签</strong>: #AI #GPU #TPU #Nvidia #Google</p><p>---</p><p><h2>🎯 核心观点</h2></p><p>| 要点 | 说明 |</p>
-<p>|------|------|</p>
-<p>| <strong>验证</strong> | Gemini 3 是自 Hopper 以来的首次验证 |</p>
-<p>| <strong>意义</strong> | 证明更大规模的预训练仍然有效 |</p>
-<p>| <strong>比喻</strong> | 像"古埃及人对太阳的理解"——能精确测量，但不完全理解原理 |</p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>视频信息：</strong></p>
+<p>- <strong>标签</strong>: #AI #GPU #TPU #Nvidia #Google</p>
+
+<p>---</p>
+
+<h2>🎯 核心观点</h2>
+
+<table class="content-table"><thead><tr><th>要点</th><th>说明</th></tr></thead><tbody><tr><td><strong>验证</strong></td><td>Gemini 3 是自 Hopper 以来的首次验证</td></tr><tr><td><strong>意义</strong></td><td>证明更大规模的预训练仍然有效</td></tr><tr><td><strong>比喻</strong></td><td>像"古埃及人对太阳的理解"——能精确测量，但不完全理解原理</td></tr></tbody></table>
+<p>---</p>
+
+<h2>📋 内容摘要</h2>
+
+<strong>视频信息：</strong>
 <p>- 标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview</p>
 <p>- 频道：Invest Like The Best</p>
 <p>- 时长：1:28:26</p>
 <p>- 观看数：--</p>
-<p>- 整理时间：2026-03-02</p><p>---</p><p>---</p><p><h2>🔑 关键要点</h2></p><p><h3>要点 1</h3></p>
-<p>标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview</p><p><h3>要点 2</h3></p>
-<p>频道：Invest Like The Best</p><p><h3>要点 3</h3></p>
-<p>时长：1:28:26</p><p><h3>要点 4</h3></p>
-<p>观看数：--</p><p><h3>要点 5</h3></p>
-<p>整理时间：2026-03-02</p><p></p>
-<p>---</p><p><h2>💡 深度洞察</h2></p><p><strong>Gavin Baker 的核心判断：</strong></p>
-<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote></p><p>---</p><p><h2>🎬 精彩片段</h2></p><p><blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote></p><p><blockquote>"AI 是我作为科技投资者职业生涯中，第一次出现'低成本生产者'真正重要的情况。"</blockquote></p><p><blockquote>"No one on planet Earth knows how or why scaling laws for pre-training work. It's actually not a law. It's an empirical observation."</blockquote></p><p>---</p><p><h2>📝 个人思考</h2></p><p>| 要点 | 说明 |
-<p>|------|------|</p>
-<p>| <strong>作用</strong> | 让模型在推理时"思考更久" |</p>
-<p>| <strong>效果</strong> | ARC-AGI 从 8% → 95% 只用了 3 个月 |</p>
-<p>| <strong>意义</strong> | 新的进步维度，不依赖预训练规模 |</p><p>---</p><p><h2>🔗 相关链接</h2></p>
+<p>- 整理时间：2026-03-02</p>
+
+<p>---</p>
+
+<p>---</p>
+
+<h2>🔑 关键要点</h2>
+
+<h3>要点 1</h3>
+<p>标题：GPUs, TPUs, & The Economics of AI Explained | Gavin Baker Interview</p>
+
+<h3>要点 2</h3>
+<p>频道：Invest Like The Best</p>
+
+<h3>要点 3</h3>
+<p>时长：1:28:26</p>
+
+<h3>要点 4</h3>
+<p>观看数：--</p>
+
+<h3>要点 5</h3>
+<p>整理时间：2026-03-02</p>
+
+
+<p>---</p>
+
+<h2>💡 深度洞察</h2>
+
+<strong>Gavin Baker 的核心判断：</strong>
+<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote>
+
+<p>---</p>
+
+<h2>🎬 精彩片段</h2>
+
+<blockquote>"AI is the first time in my career as a tech investor that being the low-cost producer has ever mattered."</blockquote>
+
+<blockquote>"AI 是我作为科技投资者职业生涯中，第一次出现'低成本生产者'真正重要的情况。"</blockquote>
+
+<blockquote>"No one on planet Earth knows how or why scaling laws for pre-training work. It's actually not a law. It's an empirical observation."</blockquote>
+
+<p>---</p>
+
+<h2>📝 个人思考</h2>
+
+<table class="content-table"><thead><tr><th>要点</th><th>说明</th></tr></thead><tbody><tr><td><strong>作用</strong></td><td>让模型在推理时"思考更久"</td></tr><tr><td><strong>效果</strong></td><td>ARC-AGI 从 8% → 95% 只用了 3 个月</td></tr><tr><td><strong>意义</strong></td><td>新的进步维度，不依赖预训练规模</td></tr></tbody></table>
+<p>---</p>
+
+<h2>🔗 相关链接</h2>
 <p>- <a href="待补充">原始视频</a></p>
-<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p>
+
+<p>---</p>
+
+<em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>

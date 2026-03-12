@@ -60,6 +60,15 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
 .empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
 .empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
+
+/* 表格样式 */
+.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.content-table thead{background:var(--bg-elevated)}
+.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
+.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+.content-table tr:hover{background:rgba(255,107,53,0.05)}
+.content-table tr:last-child td{border-bottom:none}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -70,13 +79,16 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
 .article-content p{margin:24px 0}
 .article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
+.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
+.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
+.article-content pre code{padding:0;background:none}
 .site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
 .site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
 .site-footer a{color:var(--accent);text-decoration:none}
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -91,16 +103,68 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 </div>
 </header>
 <div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#视频笔记</span></div>
-<article class="article-content"><h1>Ray Dalio: "AI Is Eating Everything"</h1></p><p><h2>📺 视频信息</h2>
+<article class="article-content"><h1>Ray Dalio: "AI Is Eating Everything"</h1>
+
+<h2>📺 视频信息</h2>
 <p>- <strong>频道</strong>: All-In Podcast  </p>
 <p>- <strong>时长</strong>: 49:13  </p>
 <p>- <strong>发布日期</strong>: 2026-03-03  </p>
-<p>- <strong>标签</strong>: #视频笔记</p><p>---</p><p><h2>🎯 核心观点</h2></p><p>Ray Dalio 提出历史上有五大交织力量决定国家命运：债务/货币周期、国内贫富与价值观差距、国际大国冲突、技术创新、以及自然灾害（旱灾、洪水、瘟疫）。他研究过去500年的历史发现，所有货币秩序最终都会因相同原因崩溃，政治秩序也会改变。理解这五大力量的相互作用，才能判断美国当前处于大周期的哪个阶段。</p><p>---</p><p><h2>📋 内容摘要</h2></p><p><strong>频道</strong>: All-In Podcast  </p>
+<p>- <strong>标签</strong>: #视频笔记</p>
+
+<p>---</p>
+
+<h2>🎯 核心观点</h2>
+
+<p>Ray Dalio 提出历史上有五大交织力量决定国家命运：债务/货币周期、国内贫富与价值观差距、国际大国冲突、技术创新、以及自然灾害（旱灾、洪水、瘟疫）。他研究过去500年的历史发现，所有货币秩序最终都会因相同原因崩溃，政治秩序也会改变。理解这五大力量的相互作用，才能判断美国当前处于大周期的哪个阶段。</p>
+
+<p>---</p>
+
+<h2>📋 内容摘要</h2>
+
+<strong>频道</strong>: All-In Podcast  
 <strong>发布</strong>: 2026-03-03  
 <strong>时长</strong>: 49:13  
-<strong>链接</strong>: https://www.youtube.com/watch?v=u-vMNzHgSHI</p><p>---</p><p>---</p><p><h2>🔑 关键要点</h2></p><p>待补充关键要点...</p><p>---</p><p><h2>💡 深度洞察</h2></p><p>黄金从每盎司2900美元涨至5200美元，核心原因在于它是央行第二大储备资产。Dalio强调黄金不是投机品，而是最古老的货币形式——它不会被增发、不依赖他人承诺支付、可跨国转移。当主权债务风险上升（政治风险、制裁风险）时，央行和投资者都在寻求"硬资产"而非"信用资产"。他区分了财富与货币：财富是房子、公司等实物，但不能直接花销；货币是交易媒介，但存在被印钞稀释的风险。</p><p>---</p><p><h2>🎬 精彩片段</h2></p><p><blockquote>"Money mechanistically is debt. What I mean by that is if you're holding money, you're holding it in the form of a debt instrument... The power of the central banks when they have too much debt is to print money."</blockquote></p><p><blockquote>"Gold is not a precious metal that's speculated on... It is the most established money, the second largest reserve currency that central banks hold."</blockquote></p><p><blockquote>"AI basically is eating everything and it might eat itself. And what I mean by that is not produce adequate profits."</blockquote></p><p>---</p><p><h2>📝 个人思考</h2></p><p>待补充个人思考...</p><p>---</p><p><h2>🔗 相关链接</h2>
+<strong>链接</strong>: https://www.youtube.com/watch?v=u-vMNzHgSHI
+
+<p>---</p>
+
+<p>---</p>
+
+<h2>🔑 关键要点</h2>
+
+<p>待补充关键要点...</p>
+
+<p>---</p>
+
+<h2>💡 深度洞察</h2>
+
+<p>黄金从每盎司2900美元涨至5200美元，核心原因在于它是央行第二大储备资产。Dalio强调黄金不是投机品，而是最古老的货币形式——它不会被增发、不依赖他人承诺支付、可跨国转移。当主权债务风险上升（政治风险、制裁风险）时，央行和投资者都在寻求"硬资产"而非"信用资产"。他区分了财富与货币：财富是房子、公司等实物，但不能直接花销；货币是交易媒介，但存在被印钞稀释的风险。</p>
+
+<p>---</p>
+
+<h2>🎬 精彩片段</h2>
+
+<blockquote>"Money mechanistically is debt. What I mean by that is if you're holding money, you're holding it in the form of a debt instrument... The power of the central banks when they have too much debt is to print money."</blockquote>
+
+<blockquote>"Gold is not a precious metal that's speculated on... It is the most established money, the second largest reserve currency that central banks hold."</blockquote>
+
+<blockquote>"AI basically is eating everything and it might eat itself. And what I mean by that is not produce adequate profits."</blockquote>
+
+<p>---</p>
+
+<h2>📝 个人思考</h2>
+
+<p>待补充个人思考...</p>
+
+<p>---</p>
+
+<h2>🔗 相关链接</h2>
 <p>- <a href="待补充">原始视频</a></p>
-<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p><p>---</p><p><em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em></p>
+<p>- <a href="https://zhewenzhang.github.io/video-notes/">更多笔记</a></p>
+
+<p>---</p>
+
+<em>最后更新: 2026-03-12 | 由 小爪 🐾 整理</em>
 </article>
 <footer class="site-footer">
 <p>由小爪 🐾 整理</p>
