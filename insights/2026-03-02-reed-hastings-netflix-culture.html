@@ -69,6 +69,10 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .content-table tr:hover{background:rgba(255,107,53,0.05)}
 .content-table tr:last-child td{border-bottom:none}
 
+/* 文本图形样式（思维导图、流程图） */
+.text-diagram{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:20px;margin:24px 0;font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:14px;line-height:1.6;color:var(--text);overflow-x:auto;white-space:pre}
+.text-diagram:hover{border-color:var(--accent)}
+
 .back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
 .back-link:hover{border-color:var(--accent);color:var(--accent)}
 .article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
@@ -88,7 +92,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 .fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
 .fab.visible{opacity:1;visibility:visible}
 .fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}}
+@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}.text-diagram{font-size:12px;padding:15px}}
 </style>
 </head>
 <body>
@@ -147,7 +151,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>2. 证据链分析 (Evidence Chain)</h3>
 
-<table class="content-table"><thead><tr><th>证据类型</th><th>具体内容</th><th>可信度</th><th>来源</th></tr></thead><tbody><tr><td><strong>反面案例</strong></td><td>Pure Software: 人才密度下降 → 增加规则 → 优秀人才离开 → 恶性循环</td><td>高</td><td>Hastings 亲身经历</td></tr><tr><td><strong>正面案例</strong></td><td>Netflix: 20% 第一年离职率是"设计好的"，用实际工作筛选而非面试</td><td>高</td><td>Netflix 实践</td></tr><tr><td><strong>数据</strong></td><td>顶级工程师产出是普通工程师的 10 倍（不是 2 倍）</td><td>中</td><td>行业研究</td></tr><tr><td><strong>逻辑推理</strong></td><td>流程是人才密度不足的补丁；足够高的人才密度让流程变得不必要</td><td>高</td><td>演绎推理</td></tr><tr><td><strong>对比实验</strong></td><td>"家庭"模式 vs "职业体育队"模式的隐含对比</td><td>中</td><td>类比论证</td></tr></tbody></table>
+<table class="content-table"><thead><tr><th>证据类型</th><th>具体内容</th><th>可信度</th><th>来源</th></tr></thead><tbody><tr><td><strong>反面案例</strong></td><td>Pure Software: 人才密度下降 → 增加规则 → 优秀人才离开 → 恶性循环</td><td>高</td><td>Hastings 亲身经历</td></tr><tr><td><strong>正面案例</strong></td><td>Netflix: 20% 第一年离职率是&quot;设计好的&quot;，用实际工作筛选而非面试</td><td>高</td><td>Netflix 实践</td></tr><tr><td><strong>数据</strong></td><td>顶级工程师产出是普通工程师的 10 倍（不是 2 倍）</td><td>中</td><td>行业研究</td></tr><tr><td><strong>逻辑推理</strong></td><td>流程是人才密度不足的补丁；足够高的人才密度让流程变得不必要</td><td>高</td><td>演绎推理</td></tr><tr><td><strong>对比实验</strong></td><td>&quot;家庭&quot;模式 vs &quot;职业体育队&quot;模式的隐含对比</td><td>中</td><td>类比论证</td></tr></tbody></table>
 <strong>证据之间的逻辑关系:</strong>
 <p>Hastings 构建了一个<strong>对比论证结构</strong>：先用 Pure Software 的惨痛教训（反面案例）证明"流程控制"路径的失败，再用 Netflix 的成功（正面案例）证明"自由+责任"路径的可行性。中间的逻辑桥梁是"人才密度"——这是两个案例分化的根本原因。</p>
 
@@ -163,19 +167,19 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <p>- <strong>Hook (开场钩子)</strong> ⏱️ 0:00-5:00  </p>
 <p>  Hastings 开场就抛出反直觉观点："我们故意设计让 20% 的人第一年离职"。这个惊人的数字立即抓住注意力——什么公司会故意让 1/5 的新人离开？</p>
-
+  
 <p>- <strong>Setup (背景铺垫)</strong> ⏱️ 5:00-15:00  </p>
 <p>  讲述 Pure Software 的故事：早期的高人才密度，随着公司增长逐渐稀释，为了弥补开始增加流程，结果优秀人才感到窒息离开，导致人才密度进一步下降——恶性循环。</p>
-
+  
 <p>- <strong>Conflict (冲突/问题)</strong> ⏱️ 15:00-30:00  </p>
 <p>  核心冲突：<strong>"家庭"文化 vs "职业体育队"文化</strong>。家庭文化追求和谐、忠诚、不抛弃；职业体育队文化追求胜利、升级、对位置负责。Hastings 认为大多数公司错误地选择了家庭模式。</p>
-
+  
 <p>- <strong>Climax (高潮/洞察)</strong> ⏱️ 30:00-45:00  </p>
 <p>  关键洞察：<strong>"自由与责任"的框架</strong>。不是简单的"给员工自由"，而是在极高人才密度的前提下，用坦诚的反馈取代流程控制，让成年人自我管理。这是 Hastings 对"管理"的重新定义。</p>
-
+  
 <p>- <strong>Resolution (解决方案)</strong> ⏱️ 45:00-55:00  </p>
 <p>  具体落地机制：高薪（市场 top 薪资）、4% 规则（每年淘汰底部绩效者）、坦诚反馈（"这很糟糕"而非"这还可以"）、情景管理而非控制管理。</p>
-
+  
 <p>- <strong>Takeaway (核心收获)</strong> ⏱️ 55:00-结束  </p>
 <p>  观众应该记住：流程是人才密度不足的补丁。与其增加规则，不如增加人才密度。这不是"对员工好"，而是"对组织绩效好"——两者恰好一致。</p>
 
@@ -187,8 +191,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <h3>4. 知识框架 (Knowledge Framework)</h3>
 
 <strong>核心概念图谱:</strong>
-<p>``<code></p>
-<p>                    人才密度</p>
+<pre><code class="lang-">                    人才密度
 <p>                   ↙        ↘</p>
 <p>        高人才密度          低人才密度</p>
 <p>           ↓                    ↓</p>
@@ -197,7 +200,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <p>      高绩效组织          官僚主义组织</p>
 <p>           ↓                    ↓</p>
 <p>    持续创新增长          缓慢僵化死亡</p>
-<p></code>`<code></p>
+</code></pre>
 
 <strong>概念之间的关系:</strong>
 <p>- <strong>人才密度</strong>是核心自变量，决定了后续路径</p>
@@ -351,21 +354,20 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <h2>🎨 视觉化笔记</h2>
 
 <strong>思维导图:</strong>
-<p></code>`<code></p>
-<p>Netflix 文化的核心</p>
+<pre><code class="lang-">Netflix 文化的核心
 <p>├── 人才密度（基础）</p>
 <p>│   ├── 高薪吸引顶尖人才</p>
 <p>│   ├── 20% 离职率筛选</p>
 <p>│   └── 4% 规则淘汰底部</p>
 <p>├── 坦诚文化（机制）</p>
 <p>│   ├── 直接反馈取代流程</p>
-<p>│   ├── "这很糟糕"而非"还可以"</p>
+<p>│   ├── &quot;这很糟糕&quot;而非&quot;还可以&quot;</p>
 <p>│   └── 情境管理而非控制</p>
 <p>└── 自由与责任（结果）</p>
 <p>    ├── 取消愚蠢规则</p>
 <p>    ├── 自我管理</p>
 <p>    └── 超高绩效</p>
-<p></code>``</p>
+</code></pre>
 
 <strong>关键数据可视化:</strong>
 <p>- 顶级工程师产出: 10x (不是 2x)</p>
