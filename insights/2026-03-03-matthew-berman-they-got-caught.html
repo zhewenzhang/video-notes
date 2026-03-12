@@ -1,123 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>They Got Caught... - Anthropic vs Chinese AI Labs - 小视频大思考</title>
-  <style>
-:root{--bg:#fff;--text:#1a1a1a;--primary:#2563eb;--muted:#64748b;--border:#e2e8f0;--card:#f8fafc}
-[data-dark]{--bg:#0f172a;--text:#e2e8f0;--primary:#60a5fa;--muted:#94a3b8;--border:#1e293b;--card:#1e293b}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>They Got Caught... - Anthropic vs Chinese AI Labs - 小视频大思考</title>
+<style>
+:root{--bg:#fff;--text:#1a1a1a;--primary:#2563eb;--muted:#64748b;--border:#e2e8f0;--card:#f8fafc;--shadow:rgba(0,0,0,.08)}
+[data-dark]{--bg:#0f172a;--text:#e2e8f0;--primary:#60a5fa;--muted:#94a3b8;--border:#1e293b;--card:#1e293b;--shadow:rgba(0,0,0,.2)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);transition:background .2s}
 .wrap{max-width:900px;margin:0 auto;padding:20px}
 a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
-
-/* 头部 */
-header{padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:30px}
+header{padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:20px}
 header h1{font-size:1.8rem;margin-bottom:8px}
 header p{color:var(--muted);font-size:.9rem}
-.stats{display:flex;gap:15px;margin-top:15px}
-.stat{background:var(--card);padding:8px 16px;border-radius:8px;text-align:center}
-.stat-num{font-size:1.4rem;font-weight:700;color:var(--primary)}
-.stat-label{font-size:.75rem;color:var(--muted)}
-
-/* 搜索 */
+.stats{display:flex;gap:15px;margin-top:15px;flex-wrap:wrap}
+.stat{background:var(--card);padding:10px 20px;border-radius:10px;text-align:center;flex:1;min-width:100px}
+.stat-num{font-size:1.5rem;font-weight:700;color:var(--primary)}
+.stat-label{font-size:.8rem;color:var(--muted)}
 .search{position:relative;margin:20px 0}
-.search input{width:100%;padding:14px 20px;font-size:1rem;border:2px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text)}
+.search input{width:100%;padding:14px 20px 14px 45px;font-size:1rem;border:2px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text)}
+.search::before{content:"🔍";position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:1.1rem}
 .search input:focus{outline:none;border-color:var(--primary)}
-
-/* 筛选器 */
-.filters{background:var(--card);border-radius:12px;margin:20px 0;overflow:hidden}
-.filter-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer;border-bottom:1px solid var(--border)}
+.filters{background:var(--card);border-radius:12px;margin:20px 0;overflow:hidden;border:1px solid var(--border)}
+.filter-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer}
 .filter-head:hover{background:var(--border)}
-.filter-title{font-weight:600}
-.filter-toggle{color:var(--muted);transition:transform .2s}
+.filter-title{font-weight:600;display:flex;align-items:center;gap:8px}
+.filter-count{background:var(--primary);color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem}
+.filter-toggle{color:var(--muted);transition:transform .3s}
 .filter-toggle.open{transform:rotate(180deg)}
-.filter-body{padding:0 20px;max-height:0;overflow:hidden;transition:all .3s}
-.filter-body.open{padding:20px;max-height:1000px}
-.filter-row{margin-bottom:16px}
-.filter-label{font-size:.85rem;color:var(--muted);margin-bottom:8px}
-.filter-btns{display:flex;flex-wrap:wrap;gap:6px}
-.btn{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.85rem;transition:all .15s}
-.btn:hover{border-color:var(--primary)}
+.filter-body{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease}
+.filter-body.open{padding:20px;max-height:800px}
+.filter-row{margin-bottom:18px}
+.filter-row:last-child{margin-bottom:0}
+.filter-label{font-size:.85rem;color:var(--muted);margin-bottom:10px;font-weight:500}
+.filter-btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{padding:8px 16px;border:1px solid var(--border);border-radius:20px;background:var(--bg);color:var(--text);cursor:pointer;font-size:.85rem;transition:all .15s;white-space:nowrap}
+.btn:hover{border-color:var(--primary);transform:translateY(-1px)}
 .btn.on{background:var(--primary);color:#fff;border-color:var(--primary)}
-.btn-sm{padding:4px 10px;font-size:.8rem}
-
-/* 笔记卡片 */
+.btn-sm{padding:6px 12px;font-size:.8rem}
+.tag-more{color:var(--muted);font-size:.8rem;margin-top:8px}
 .notes{display:grid;gap:16px;margin-top:20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.card h2{font-size:1.1rem;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow)}
+.card h2{font-size:1.15rem;margin-bottom:12px;line-height:1.4}
 .card h2 a{color:var(--text)}
 .card h2 a:hover{color:var(--primary)}
-.card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:10px}
-.card-tags{display:flex;gap:6px;flex-wrap:wrap}
-.card-summary{color:var(--muted);font-size:.9rem;line-height:1.5}
-.empty{text-align:center;padding:60px 20px;color:var(--muted)}
-
-/* 详情页 */
-.back{display:inline-flex;align-items:center;gap:6px;color:var(--primary);margin-bottom:20px}
-.meta-bar{display:flex;gap:15px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:15px 0;font-size:.9rem;color:var(--muted)}
+.card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin-bottom:12px}
+.card-meta span{display:flex;align-items:center;gap:4px}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.card-summary{color:var(--muted);font-size:.9rem;line-height:1.6}
+.empty{text-align:center;padding:80px 20px;color:var(--muted)}
+.empty-icon{font-size:3rem;margin-bottom:16px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--primary);margin-bottom:20px;padding:8px 16px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
+.back:hover{background:var(--border)}
+.meta-bar{display:flex;gap:15px;flex-wrap:wrap;padding:15px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:20px 0;font-size:.9rem;color:var(--muted)}
 .content{font-size:1.05rem;line-height:1.8}
-.content h1,.content h2,.content h3{margin:25px 0 12px}
-.content h2{border-bottom:2px solid var(--border);padding-bottom:8px}
-.content p{margin:12px 0}
-.content blockquote{border-left:4px solid var(--primary);padding:10px 20px;margin:15px 0;background:var(--card);border-radius:0 8px 8px 0}
-.content code{background:var(--card);padding:2px 6px;border-radius:4px;font-size:.9em}
-.content pre{background:var(--card);padding:16px;border-radius:8px;overflow-x:auto;margin:15px 0}
-.content table{width:100%;border-collapse:collapse;margin:15px 0}
-.content td,.content th{border:1px solid var(--border);padding:10px;text-align:left}
-.nav-btns{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
-.nav-btn{padding:10px 20px;border:1px solid var(--border);border-radius:8px;color:var(--primary)}
-
-/* 页脚 */
-footer{text-align:center;padding:30px 0;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
-
-/* 进度条 */
+.content h1,.content h2,.content h3{margin:30px 0 15px}
+.content h2{border-bottom:2px solid var(--border);padding-bottom:10px}
+.content p{margin:15px 0}
+.content blockquote{border-left:4px solid var(--primary);padding:15px 20px;margin:20px 0;background:var(--card);border-radius:0 10px 10px 0;font-style:italic}
+.content code{background:var(--card);padding:3px 8px;border-radius:4px;font-size:.9em;font-family:monospace}
+.content pre{background:var(--card);padding:20px;border-radius:10px;overflow-x:auto;margin:20px 0}
+.content pre code{padding:0;background:none}
+.content table{width:100%;border-collapse:collapse;margin:20px 0}
+.content td,.content th{border:1px solid var(--border);padding:12px;text-align:left}
+.content tr:nth-child(even){background:var(--card)}
+.nav-btns{display:flex;justify-content:space-between;margin-top:50px;padding-top:30px;border-top:1px solid var(--border);gap:16px}
+.nav-btn{padding:12px 24px;border:1px solid var(--border);border-radius:10px;color:var(--primary);background:var(--card);transition:all .15s}
+.nav-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+footer{text-align:center;padding:40px 0;margin-top:50px;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
 .progress{position:fixed;top:0;left:0;height:3px;background:var(--primary);width:0;z-index:1000;transition:width .1s}
-
-/* 深色按钮 */
-.theme-btn{position:fixed;top:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
-
-/* 移动端 */
-@media(max-width:600px){
-  .wrap{padding:15px}
-  header h1{font-size:1.5rem}
-  .stats{flex-wrap:wrap}
-  .stat{flex:1;min-width:80px}
-  .filter-body{padding:15px}
-  .card{padding:16px}
-}
+.theme-btn{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.3rem;z-index:100;transition:all .2s}
+.theme-btn:hover{transform:scale(1.1);box-shadow:0 4px 12px var(--shadow)}
+.to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100;opacity:0;visibility:hidden;transition:all .3s;box-shadow:0 4px 12px var(--shadow)}
+.to-top.visible{opacity:1;visibility:visible}
+.to-top:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px)}
+@media(max-width:600px){.wrap{padding:15px}header h1{font-size:1.5rem}.stats{gap:10px}.stat{min-width:80px;padding:8px 12px}.filter-body{padding:15px}.card{padding:16px}.nav-btns{flex-direction:column}.nav-btn{width:100%;text-align:center}.to-top{bottom:20px;right:20px;width:44px;height:44px}}
 </style>
 </head>
 <body>
-  <div class="progress"></div>
-  <button class="theme-btn" aria-label="切换主题">🌙</button>
-  
-  <div class="wrap">
-    <a href="../index.html" class="back">← 返回目录</a>
-    
-    <header>
-      <h1>They Got Caught... - Anthropic vs Chinese AI Labs</h1>
-    </header>
-    
-    
-    <div class="meta-bar">
-      
-      <span>⏱️ 13:29</span>
-      <span>📅 2026-03-03</span>
-    </div>
-    
-    
-    
-    <div class="card-tags" style="margin-bottom:20px">
-      <span class="btn-sm">#AI</span><span class="btn-sm">#Anthropic</span><span class="btn-sm">#DeepSeek</span><span class="btn-sm">#Moonshot</span><span class="btn-sm">#MiniMax</span><span class="btn-sm">#蒸馏攻击</span><span class="btn-sm">#API_</span>
-    </div>
-    
-    
-    <article class="content"><h1>They Got Caught... - Anthropic vs Chinese AI Labs</h1></p><p><strong>来源</strong>: Matthew Berman  
+<div class="progress"></div>
+<button class="theme-btn" aria-label="切换主题">🌙</button>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<div class="wrap">
+<a href="../index.html" class="back">← 返回目录</a>
+<header><h1>They Got Caught... - Anthropic vs Chinese AI Labs</h1></header>
+<div class="meta-bar"><span>⏱️ 13:29</span><span>📅 2026-03-03</span></div>
+<div class="card-tags" style="margin-bottom:20px"><span class="btn-sm">#AI</span><span class="btn-sm">#Anthropic</span><span class="btn-sm">#DeepSeek</span><span class="btn-sm">#Moonshot</span><span class="btn-sm">#MiniMax</span><span class="btn-sm">#蒸馏攻击</span><span class="btn-sm">#API</span></div>
+<article class="content"><h1>They Got Caught... - Anthropic vs Chinese AI Labs</h1></p><p><strong>来源</strong>: Matthew Berman  
 <strong>时长</strong>: 13:29  
 <strong>日期</strong>: 2026-03-03  
 <strong>整理时间</strong>: 2026-03-03 07:40</p><p>---</p><p><h2>核心事件</h2></p><p><h3>Anthropic 公开指控三家中国 AI 实验室</h3></p><p><strong>被指控的公司：</strong>
@@ -158,31 +131,15 @@ footer{text-align:center;padding:30px 0;margin-top:40px;border-top:1px solid var
 <p>- <a href="https://minimaxi.com">MiniMax</a></p><p>---</p>
 <p>_标签：#AI #Anthropic #DeepSeek #Moonshot #MiniMax #蒸馏攻击 #API_</p>
 </article>
-    
-    <nav class="nav-btns">
-      <a href="./2026-03-03-marc-andreessen-ai-boom.html" class="nav-btn">← 上一篇</a>
-      <a href="./2026-03-03-stanford-cs230-career-advice.html" class="nav-btn">下一篇 →</a>
-    </nav>
-    
-    <footer>
-      <p>由小爪 🐾 整理</p>
-    </footer>
-  </div>
-  
-  <script>
-    // 深色模式
-    if(matchMedia('(prefers-color-scheme:dark)').matches){
-      document.documentElement.setAttribute('data-dark','');
-      document.querySelector('.theme-btn').textContent='☀️';
-    }
-    document.querySelector('.theme-btn').addEventListener('click', () => {
-      const isDark = document.documentElement.toggleAttribute('data-dark');
-      document.querySelector('.theme-btn').textContent = isDark ? '☀️' : '🌙';
-    });
-    // 进度条
-    window.addEventListener('scroll', () => {
-      document.querySelector('.progress').style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
-    });
-  </script>
+<nav class="nav-btns"><a href="./2026-03-03-marc-andreessen-ai-boom.html" class="nav-btn">← 上一篇</a><a href="./2026-03-03-stanford-cs230-career-advice.html" class="nav-btn">下一篇 →</a></nav>
+<footer><p>由小爪 🐾 整理</p></footer>
+</div>
+<script>
+if(matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-dark','');document.querySelector('.theme-btn').textContent='☀️';}
+document.querySelector('.theme-btn').addEventListener('click',()=>{const isDark=document.documentElement.toggleAttribute('data-dark');document.querySelector('.theme-btn').textContent=isDark?'☀️':'🌙';});
+const toTop=document.querySelector('.to-top');
+window.addEventListener('scroll',()=>{document.querySelector('.progress').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';toTop.classList.toggle('visible',scrollY>300);});
+toTop.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+</script>
 </body>
 </html>
