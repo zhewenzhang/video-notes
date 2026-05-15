@@ -4,96 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>a16z - The $3 Trillion AI Coding Opportunity - 小视频大思考</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
-:root{--bg:#0a0a0f;--bg-elevated:#12121a;--bg-card:#1a1a24;--text:#f5f5f7;--text-muted:#8b8b9e;--accent:#ff6b35;--accent-soft:#ff8c5a;--secondary:#00d4aa;--border:rgba(255,255,255,0.08);--font-display:'Crimson Pro',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1000}
-.wrap{max-width:1200px;margin:0 auto;padding:48px 24px}
-.masthead{text-align:center;padding:80px 0 60px;border-bottom:1px solid var(--border);margin-bottom:48px;position:relative}
-.masthead::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.masthead-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
-.masthead h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;background:linear-gradient(135deg,var(--text) 0%,var(--text-muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.masthead p{font-size:14px;color:var(--text-muted);letter-spacing:0.1em}
-.stats-bar{display:flex;justify-content:center;gap:48px;padding:32px 0;margin-bottom:48px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.stat-item{text-align:center}
-.stat-num{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-top:8px}
-.search-wrap{max-width:600px;margin:0 auto 48px;position:relative}
-.search-wrap input{width:100%;padding:20px 24px;padding-left:56px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:0;color:var(--text);font-size:15px;transition:all .3s}
-.search-wrap input:focus{outline:none;border-color:var(--accent);background:var(--bg-card)}
-.search-wrap::before{content:"⌕";position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--text-muted)}
-.filters{margin-bottom:48px;border:1px solid var(--border);background:var(--bg-elevated)}
-.filter-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .3s}
-.filters.open .filter-header{border-bottom-color:var(--border)}
-.filter-title{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);display:flex;align-items:center;gap:12px}
-.filter-title span{color:var(--accent);font-weight:600}
-.filter-toggle{font-size:12px;color:var(--text-muted);transition:transform .3s}
-.filters.open .filter-toggle{transform:rotate(180deg)}
-.filter-body{display:none;padding:24px}
-.filters.open .filter-body{display:block}
-.filter-section{margin-bottom:32px}
-.filter-section:last-child{margin-bottom:0}
-.filter-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:16px}
-.filter-options{display:flex;flex-wrap:wrap;gap:12px}
-.filter-btn{padding:10px 18px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:13px;cursor:pointer;transition:all .2s}
-.filter-btn:hover{border-color:var(--accent);color:var(--text)}
-.filter-btn.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.filter-btn.small{padding:8px 14px;font-size:12px}
-.clear-btn{width:100%;padding:16px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;transition:all .2s;margin-top:16px}
-.clear-btn:hover{border-color:var(--accent);color:var(--accent)}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px}
-.note-card{background:var(--bg-card);border:1px solid var(--border);padding:32px;position:relative;transition:all .4s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
-.note-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--secondary));opacity:0;transition:opacity .3s}
-.note-card:hover{transform:translateY(-4px);border-color:rgba(255,107,53,0.3)}
-.note-card:hover::before{opacity:1}
-.note-meta{display:flex;gap:16px;margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.note-card h2{font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.3;margin-bottom:16px}
-.note-card h2 a{color:var(--text);text-decoration:none;transition:color .2s}
-.note-card h2 a:hover{color:var(--accent)}
-.note-tags{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.note-tag{padding:6px 12px;background:var(--bg-elevated);border:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);transition:all .2s}
-.note-tag:hover{border-color:var(--secondary);color:var(--secondary)}
-.note-summary{font-size:14px;color:var(--text-muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.note-number{position:absolute;top:16px;right:16px;font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--border);line-height:1;opacity:0.5}
-.empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
-.empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
-.empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
-
-/* 表格样式 */
-.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
-.content-table thead{background:var(--bg-elevated)}
-.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
-.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
-.content-table tr:hover{background:rgba(255,107,53,0.05)}
-.content-table tr:last-child td{border-bottom:none}
-
-/* 文本图形样式（思维导图、流程图） */
-.text-diagram{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:20px;margin:24px 0;font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:14px;line-height:1.6;color:var(--text);overflow-x:auto;white-space:pre}
-.text-diagram:hover{border-color:var(--accent)}
-
-.back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
-.back-link:hover{border-color:var(--accent);color:var(--accent)}
-.article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
-.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:24px}
-.article-meta{display:flex;gap:24px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.article-content{font-size:17px;line-height:1.8;color:var(--text)}
-.article-content h2{font-family:var(--font-display);font-size:1.75rem;font-weight:600;margin:48px 0 24px;color:var(--accent)}
-.article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
-.article-content p{margin:24px 0}
-.article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
-.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
-.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
-.article-content pre code{padding:0;background:none}
-.site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
-.site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
-.site-footer a{color:var(--accent);text-decoration:none}
-.fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
-.fab.visible{opacity:1;visibility:visible}
-.fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}.text-diagram{font-size:12px;padding:15px}}
-</style>
+<meta property="og:title" content="a16z - The $3 Trillion AI Coding Opportunity">
+<meta property="og:description" content="来自a16z的深度视频笔记">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="wrap">
@@ -105,47 +19,56 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <span>37:29</span>
 <span>2026-03-06</span>
 </div>
+
 </header>
+<article class="article-content">
+<h1>a16z - The $3 Trillion AI Coding Opportunity</h1>
 
-<article class="article-content"><h1>a16z - The $3 Trillion AI Coding Opportunity</h1>
-
-<strong>频道</strong>: a16z
-<strong>发布</strong>: 2025年
-<strong>时长</strong>: 37:29
-<strong>链接</strong>: https://www.youtube.com/watch?v= (待补充)
+<p><strong>频道</strong>: a16z</p>
+<p><strong>发布</strong>: 2025年</p>
+<p><strong>时长</strong>: 37:29</p>
+<p><strong>链接</strong>: https://www.youtube.com/watch?v= (待补充)</p>
 
 <h2>核心观点</h2>
 
 <h3>1. Legacy Code Porting 是目前 ROI 最高的企业用例</h3>
 <p>[11:12]</p>
+
 <p>企业正在大量使用 LLM 进行旧代码迁移，比如从 Cobol/Fortran 迁移到 Java。Google 早期的研究显示，即使是非常平凡的任务（如在大型代码库中替换 Java 库），LLM 也能表现出色。访谈对象表示，从多家企业听到的反馈是：传统迁移流程可以获得约 2 倍的效率提升。这导致一个有趣的现象：企业反而在加速招聘开发者，因为发现了大量"低垂果实"项目——少量前期投入就能节省大量基础设施成本。</p>
 
 <h3>2. 开发者行为转变：给 Agent 工具而非人工传递信息</h3>
 <p>[08:08]</p>
+
 <p>过去开发者需要查阅文档，然后告诉 agent 怎么做。现在，agent 可以直接调用 API 获取所需信息。例如，当 agent 需要实现某个功能时，它可以自己查询最新版本的文档，而不是依赖人类"中间人"传递信息。这种"去掉中间人"的模式正在改变开发工作流，让 agent 更加自主。同时，agent 也需要原生环境来验证代码——在人类 review 之前，先看代码能否运行、UI 是否正常、请求是否正常。</p>
 
 <h3>3. Unit Testing 迎来复兴：即使个人项目也开始写测试</h3>
 <p>[10:17]</p>
+
 <p>过去，个人项目很少写单元测试——毕竟只有一个开发者，知道自己要做什么。但现在，开发者开始为个人项目写单元测试，因为：第一，AI 让写测试变得非常简单；第二，测试能帮助 agent 验证变更是否破坏了其他功能。agent 可能没有完整的项目上下文，而单元测试提供了一种易于消化的验证方式。这是 AI 时代带来的意外收获——代码质量可能反而提升了。</p>
 
 <h3>4. 代码审查的抽象层面正在重构</h3>
 <p>[14:20]</p>
+
 <p>当 AI 生成的代码可能超出人类理解能力时，review 每一行代码变得不切实际。核心问题是：代码还是正确的抽象吗？也许应该转向审查"计划"或"功能描述"。如果 PR 的目的是让其他开发者了解变更，那么两句话的描述加上可测试的环境，可能比逐行审查代码更有价值。现有的 GitHub PR 流程可能需要重新设计——AI 已经可以自动评论、指出安全漏洞、检查实现与规范的一致性，但完全依赖 AI 审查的企业目前还没有出现。</p>
 
 <h3>5. LLM 作为新型"编译器"的双向能力</h3>
 <p>[18:04]</p>
+
 <p>传统编译器将高级抽象转换为低级代码，且能严格验证语法正确性。LLM 也能将高层描述转换为代码，但缺乏编译器的严格验证机制。不过，LLM 有一个独特能力：它可以将手写优化的低级代码反向更新到高层抽象（文档）。这创造了一个双向流动的可能性——不仅能从描述生成代码，还能从代码更新描述。这让文档维护变得更容易，也更适合 agent 快速理解项目结构。</p>
 
 <h3>6. Git/GitHub 需要为 Agent 高频操作重新设计</h3>
 <p>[19:50]</p>
+
 <p>Git 仓库是为人类设计的：低频率的 commit、人类阅读的提交信息、为人类设置的 rate limit。但 agent 可能同时运行 100 个并行任务，探索多条路径后回退到其中一条。这种高频、探索性的操作模式与现有设计冲突。需要新的"repo 抽象"：更实时、支持高频率变更、允许中间状态探索而不必永久保存。Relay 等工具正在尝试解决这个问题，提供适合 agent 的 repo 体验。</p>
 
 <h3>7. AI 带来的遗留语言复兴</h3>
 <p>[13:05]</p>
+
 <p>一个有趣的副作用是：由于 LLM 能够处理几乎所有编程语言（包括 Cobol），我们可能会看到遗留语言的"复兴"。过去没人愿意维护的 Cobol 代码，现在可以用自然语言来编写和维护。这并不意味着遗留代码会永远存在，而是迁移它们的成本大幅降低——企业可以更快地从昂贵的 mainframe 迁移到现代基础设施。</p>
 
 <h3>8. 企业级工具需要为 AI-native 重构</h3>
 <p>[22:20]</p>
+
 <p>如果从零开始为 AI 设计，现有的 Confluence、Jira、GitHub 等工具看起来会很不一样。例如，story tracker 是否应该有函数自动查看代码并更新 stories？文档系统是否应该能自动从代码推断并更新文档？Mintify 等新一代工具正在展示这种 AI-native 的设计思路。这不仅是优化现有工具，而是重新思考整个开发工具链在 AI 时代应该长什么样。</p>
 
 <h2>关键引用</h2>
@@ -169,25 +92,30 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <p>这个视频揭示了一个重要的趋势：AI 不仅仅是"写代码更快"，而是在重构整个软件开发的工作流和工具链。几个值得深思的点：</p>
 
-<p>1. <strong>工具链的机会</strong>：GitHub、Jira、Confluence 这些"标准配置"可能都是待颠覆的对象。谁能先做出 AI-native 的替代品？</p>
+<p>1. **工具链的机会**：GitHub、Jira、Confluence 这些"标准配置"可能都是待颠覆的对象。谁能先做出 AI-native 的替代品？</p>
 
-<p>2. <strong>中间层消失</strong>：很多"传递信息"的人类工作正在被 agent 的直接 API 调用取代。这影响的不仅是编程，而是所有需要"查资料再传递"的工作。</p>
+<p>2. **中间层消失**：很多"传递信息"的人类工作正在被 agent 的直接 API 调用取代。这影响的不仅是编程，而是所有需要"查资料再传递"的工作。</p>
 
-<p>3. <strong>验证比生成更重要</strong>：单元测试、运行环境、自动 review 工具——这些"验证"相关的东西反而变得更有价值。AI 能生成，但谁来验证？</p>
+<p>3. **验证比生成更重要**：单元测试、运行环境、自动 review 工具——这些"验证"相关的东西反而变得更有价值。AI 能生成，但谁来验证？</p>
 
-<p>4. <strong>遗留系统迁移加速</strong>：这对企业 IT 是个巨大的利好消息，但对 IBM 等依赖 mainframe 服务的公司可能是威胁。</p>
+<p>4. **遗留系统迁移加速**：这对企业 IT 是个巨大的利好消息，但对 IBM 等依赖 mainframe 服务的公司可能是威胁。</p>
 
 <p>---</p>
-<p>整理时间: 2026-03-06</p></article>
+
+<p>整理时间: 2026-03-06</p>
+</article>
 <footer class="site-footer">
-<p>由小爪 🐾 整理</p>
+<p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
+<p><a href="https://github.com/zhewenzhang/video-notes">GitHub</a></p>
 </footer>
 </div>
-<button class="fab">↑</button>
 <script>
-const fab=document.querySelector('.fab');
-window.addEventListener('scroll',()=>{fab.classList.toggle('visible',scrollY>500);});
-fab.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+document.addEventListener("DOMContentLoaded",function(){
+  const f=document.querySelector(".fab");
+  window.addEventListener("scroll",()=>{f.classList.toggle("visible",window.scrollY>300)});
+  f.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
+});
 </script>
+<button class="fab">↑</button>
 </body>
 </html>

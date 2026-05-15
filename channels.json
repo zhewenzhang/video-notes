@@ -1,0 +1,72 @@
+[
+  {
+    "name": "a16z",
+    "youtube_url": "https://www.youtube.com/@a16z",
+    "youtube_channel_id": "UCBcRF18a7Qf58cCRy5xuWwQ",
+    "tags": [
+      "#a16z",
+      "#VC",
+      "#AI投资"
+    ]
+  },
+  {
+    "name": "Lex Fridman",
+    "youtube_url": "https://www.youtube.com/@lexfridman",
+    "youtube_channel_id": "UCSHZKJJfhK61IS3o3Q1GhZg",
+    "tags": [
+      "#LexFridman",
+      "#AI",
+      "#深度访谈"
+    ]
+  },
+  {
+    "name": "Matthew Berman",
+    "youtube_url": "https://www.youtube.com/@MatthewBerman",
+    "youtube_channel_id": "UCjutqHWhhag_UBgP1OJ7wkg",
+    "tags": [
+      "#MatthewBerman",
+      "#AI",
+      "#LLM"
+    ]
+  },
+  {
+    "name": "All-In Podcast",
+    "youtube_url": "https://www.youtube.com/@AllInPodcast",
+    "youtube_channel_id": "UCESLZhusAkFfsNsApnjF_Cg",
+    "tags": [
+      "#AllInPodcast",
+      "#科技",
+      "#投资"
+    ]
+  },
+  {
+    "name": "Invest Like The Best",
+    "youtube_url": "https://www.youtube.com/@InvestLikeBest",
+    "youtube_channel_id": "UC1_wCOt3bOHiI_Q8tFQd7Zw",
+    "tags": [
+      "#InvestLikeTheBest",
+      "#投资",
+      "#访谈"
+    ]
+  },
+  {
+    "name": "Y Combinator",
+    "youtube_url": "https://www.youtube.com/@ycombinator",
+    "youtube_channel_id": "UCcefcZRL2oaA_uBNeo5UOWg",
+    "tags": [
+      "#YCombinator",
+      "#创业",
+      "#AI"
+    ]
+  },
+  {
+    "name": "Stanford Online",
+    "youtube_url": "https://www.youtube.com/@stanfordonline",
+    "youtube_channel_id": "UC-6nunShRVPaUIPI1p1GKig",
+    "tags": [
+      "#Stanford",
+      "#CS",
+      "#AI"
+    ]
+  }
+]

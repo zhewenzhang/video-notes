@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+pending_notes.json
+.DS_Store

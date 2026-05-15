@@ -4,96 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Markets: Deep Dive with a16z&#39;s David George - 小视频大思考</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
-:root{--bg:#0a0a0f;--bg-elevated:#12121a;--bg-card:#1a1a24;--text:#f5f5f7;--text-muted:#8b8b9e;--accent:#ff6b35;--accent-soft:#ff8c5a;--secondary:#00d4aa;--border:rgba(255,255,255,0.08);--font-display:'Crimson Pro',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1000}
-.wrap{max-width:1200px;margin:0 auto;padding:48px 24px}
-.masthead{text-align:center;padding:80px 0 60px;border-bottom:1px solid var(--border);margin-bottom:48px;position:relative}
-.masthead::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.masthead-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
-.masthead h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;background:linear-gradient(135deg,var(--text) 0%,var(--text-muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.masthead p{font-size:14px;color:var(--text-muted);letter-spacing:0.1em}
-.stats-bar{display:flex;justify-content:center;gap:48px;padding:32px 0;margin-bottom:48px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.stat-item{text-align:center}
-.stat-num{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-top:8px}
-.search-wrap{max-width:600px;margin:0 auto 48px;position:relative}
-.search-wrap input{width:100%;padding:20px 24px;padding-left:56px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:0;color:var(--text);font-size:15px;transition:all .3s}
-.search-wrap input:focus{outline:none;border-color:var(--accent);background:var(--bg-card)}
-.search-wrap::before{content:"⌕";position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--text-muted)}
-.filters{margin-bottom:48px;border:1px solid var(--border);background:var(--bg-elevated)}
-.filter-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .3s}
-.filters.open .filter-header{border-bottom-color:var(--border)}
-.filter-title{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);display:flex;align-items:center;gap:12px}
-.filter-title span{color:var(--accent);font-weight:600}
-.filter-toggle{font-size:12px;color:var(--text-muted);transition:transform .3s}
-.filters.open .filter-toggle{transform:rotate(180deg)}
-.filter-body{display:none;padding:24px}
-.filters.open .filter-body{display:block}
-.filter-section{margin-bottom:32px}
-.filter-section:last-child{margin-bottom:0}
-.filter-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:16px}
-.filter-options{display:flex;flex-wrap:wrap;gap:12px}
-.filter-btn{padding:10px 18px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:13px;cursor:pointer;transition:all .2s}
-.filter-btn:hover{border-color:var(--accent);color:var(--text)}
-.filter-btn.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.filter-btn.small{padding:8px 14px;font-size:12px}
-.clear-btn{width:100%;padding:16px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;transition:all .2s;margin-top:16px}
-.clear-btn:hover{border-color:var(--accent);color:var(--accent)}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px}
-.note-card{background:var(--bg-card);border:1px solid var(--border);padding:32px;position:relative;transition:all .4s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
-.note-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--secondary));opacity:0;transition:opacity .3s}
-.note-card:hover{transform:translateY(-4px);border-color:rgba(255,107,53,0.3)}
-.note-card:hover::before{opacity:1}
-.note-meta{display:flex;gap:16px;margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.note-card h2{font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.3;margin-bottom:16px}
-.note-card h2 a{color:var(--text);text-decoration:none;transition:color .2s}
-.note-card h2 a:hover{color:var(--accent)}
-.note-tags{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.note-tag{padding:6px 12px;background:var(--bg-elevated);border:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);transition:all .2s}
-.note-tag:hover{border-color:var(--secondary);color:var(--secondary)}
-.note-summary{font-size:14px;color:var(--text-muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.note-number{position:absolute;top:16px;right:16px;font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--border);line-height:1;opacity:0.5}
-.empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
-.empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
-.empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
-
-/* 表格样式 */
-.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
-.content-table thead{background:var(--bg-elevated)}
-.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
-.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
-.content-table tr:hover{background:rgba(255,107,53,0.05)}
-.content-table tr:last-child td{border-bottom:none}
-
-/* 文本图形样式（思维导图、流程图） */
-.text-diagram{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:20px;margin:24px 0;font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:14px;line-height:1.6;color:var(--text);overflow-x:auto;white-space:pre}
-.text-diagram:hover{border-color:var(--accent)}
-
-.back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
-.back-link:hover{border-color:var(--accent);color:var(--accent)}
-.article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
-.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:24px}
-.article-meta{display:flex;gap:24px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.article-content{font-size:17px;line-height:1.8;color:var(--text)}
-.article-content h2{font-family:var(--font-display);font-size:1.75rem;font-weight:600;margin:48px 0 24px;color:var(--accent)}
-.article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
-.article-content p{margin:24px 0}
-.article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
-.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
-.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
-.article-content pre code{padding:0;background:none}
-.site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
-.site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
-.site-footer a{color:var(--accent);text-decoration:none}
-.fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
-.fab.visible{opacity:1;visibility:visible}
-.fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}.text-diagram{font-size:12px;padding:15px}}
-</style>
+<meta property="og:title" content="AI Markets: Deep Dive with a16z&#39;s David George">
+<meta property="og:description" content="来自a16z的深度视频笔记">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="wrap">
@@ -105,50 +19,56 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <span>47:33</span>
 <span>2026-03-02</span>
 </div>
+<div class="note-tags"><span class="note-tag">#AI</span><span class="note-tag">#a16z</span><span class="note-tag">#SaaS</span><span class="note-tag">#增长</span><span class="note-tag">#ARR</span><span class="note-tag">#投资</span><span class="note-tag">#产品周期</span></div>
 </header>
-<div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#AI</span><span class="note-tag">#a16z</span><span class="note-tag">#SaaS</span><span class="note-tag">#增长</span><span class="note-tag">#ARR</span><span class="note-tag">#投资</span><span class="note-tag">#产品周期</span></div>
-<article class="article-content"><h1>AI Markets: Deep Dive with a16z's David George</h1>
+<article class="article-content">
+<h1>AI Markets: Deep Dive with a16z's David George</h1>
 
-<strong>视频信息：</strong>
-<p>- 标题：AI Markets: Deep Dive with a16z's David George</p>
-<p>- 频道：a16z</p>
-<p>- 时长：47:33</p>
-<p>- 观看数：--</p>
-<p>- 整理时间：2026-03-02</p>
+<p><strong>视频信息：</strong></p>
+<p>• 标题：AI Markets: Deep Dive with a16z's David George</p>
+
+<p>• 频道：a16z</p>
+
+<p>• 时长：47:33</p>
+
+<p>• 观看数：--</p>
+
+<p>• 整理时间：2026-03-02</p>
 
 <p>---</p>
 
 <h2>🎯 三大核心发现</h2>
 
-<table class="content-table"><thead><tr><th>发现</th><th>要点</th></tr></thead><tbody><tr><td><strong>需求端</strong></td><td>AI 需求疯狂，增长质量极高</td></tr><tr><td><strong>供给端</strong></td><td>目前健康，但开始出现一些紧张的信号</td></tr><tr><td><strong>产品周期</strong></td><td>我们才刚刚开始，这是 10-15 年的周期</td></tr></tbody></table>
+<p>发现要点<strong>需求端</strong>AI 需求疯狂，增长质量极高<strong>供给端</strong>目前健康，但开始出现一些紧张的信号<strong>产品周期</strong>我们才刚刚开始，这是 10-15 年的周期</p>
 <p>---</p>
 
 <h2>📊 AI 公司 vs SaaS 公司</h2>
 
 <h3>收入增长速度</h3>
 
-<strong>David 的核心发现：</strong>
+<p><strong>David 的核心发现：</strong></p>
 
 <blockquote>"The fastest growing AI companies are reaching $100M of revenue significantly faster than the fastest growing SaaS companies in their era."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"增长最快的 AI 公司达到 1 亿美元收入的速度，显著快于同时代增长最快的 SaaS 公司。"</blockquote>
 
 <h3>为什么更快？</h3>
 
-<strong>关键洞察：</strong>
+<p><strong>关键洞察：</strong></p>
 
 <blockquote>"It's not because they spend more money on sales and marketing. It's actually the opposite."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"不是因为他们在销售和营销上花更多钱。实际上恰恰相反。"</blockquote>
 
-<table class="content-table"><thead><tr><th>指标</th><th>AI 公司</th><th>SaaS 公司</th></tr></thead><tbody><tr><td><strong>增长速度</strong></td><td>2.5x+ 更快</td><td>基准</td></tr><tr><td><strong>销售营销支出</strong></td><td>更少</td><td>更多</td></tr><tr><td><strong>需求来源</strong></td><td>产品驱动</td><td>销售驱动</td></tr></tbody></table>
+<p>指标AI 公司SaaS 公司<strong>增长速度</strong>2.5x+ 更快基准<strong>销售营销支出</strong>更少更多<strong>需求来源</strong>产品驱动销售驱动</p>
 <h3>年增长率数据</h3>
 
-<strong>顶级表现者：</strong>
-<p>- AI 顶级公司：<strong>693% YoY</strong></p>
-<p>- 显著高于非 AI 公司</p>
+<p><strong>顶级表现者：</strong></p>
+<p>• AI 顶级公司：**693% YoY**</p>
+
+<p>• 显著高于非 AI 公司</p>
 
 <p>---</p>
 
@@ -156,23 +76,25 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>毛利率特征</h3>
 
-<strong>David 的观点：</strong>
+<p><strong>David 的观点：</strong></p>
 
 <blockquote>"Low gross margins for AI companies are sort of a badge of honor."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"AI 公司的低毛利率在某种意义上是一种荣誉勋章。"</blockquote>
 
 <h3>为什么低毛利率是好事？</h3>
 
-<strong>两个原因：</strong>
+<p><strong>两个原因：</strong></p>
 
-<p>1. <strong>高推理成本 = 人们在使用 AI 功能</strong></p>
-<p>2. <strong>推理成本会随时间下降</strong></p>
+<p>1. **高推理成本 = 人们在使用 AI 功能**</p>
 
-<strong>如果看到高毛利率：</strong>
-<p>- David 会<strong>怀疑</strong></p>
-<p>- 可能意味着 AI 功能不是客户真正购买或使用的</p>
+<p>2. **推理成本会随时间下降**</p>
+
+<p><strong>如果看到高毛利率：</strong></p>
+<p>• David 会**怀疑**</p>
+
+<p>• 可能意味着 AI 功能不是客户真正购买或使用的</p>
 
 <p>---</p>
 
@@ -180,25 +102,25 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>定义</h3>
 
-<strong>ARR per FTE = 年度经常性收入 / 全职员工数</strong>
+<p><strong>ARR per FTE = 年度经常性收入 / 全职员工数</strong></p>
 
-<strong>David 的解释：</strong>
+<p><strong>David 的解释：</strong></p>
 
 <blockquote>"It encapsulates all of your costs... not just your sales and marketing, but also your overhead, your R&D."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"它包含你所有的成本……不只是销售和营销，还有你的管理费用和研发。"</blockquote>
 
 <h3>数据对比</h3>
 
-<table class="content-table"><thead><tr><th>公司类型</th><th>ARR per FTE</th></tr></thead><tbody><tr><td><strong>顶级 AI 公司</strong></td><td>$500K - $1M</td></tr><tr><td><strong>SaaS 时代基准</strong></td><td>~$400K</td></tr></tbody></table>
+<p>公司类型ARR per FTE<strong>顶级 AI 公司</strong>$500K - $1M<strong>SaaS 时代基准</strong>~$400K</p>
 <h3>为什么更高？</h3>
 
-<strong>核心原因：</strong>
+<p><strong>核心原因：</strong></p>
 
 <blockquote>"Demand is very very strong for their products. They need less resource to go take it to market."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"对他们产品的需求非常强劲。他们需要更少的资源来推向市场。"</blockquote>
 
 <p>---</p>
@@ -207,19 +129,21 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>10-15 年周期</h3>
 
-<strong>David 的判断：</strong>
+<p><strong>David 的判断：</strong></p>
 
 <blockquote>"Product cycles drive our business. These are 10, 15 year cycles and we're just at the very beginning of it right now."</blockquote>
 
-<strong>翻译：</strong>
+<p><strong>翻译：</strong></p>
 <blockquote>"产品周期驱动我们的业务。这是 10-15 年的周期，我们现在刚刚开始。"</blockquote>
 
 <h3>2025 年的意义</h3>
 
-<strong>2025 是收入加速增长的一年：</strong>
-<p>- 2022-24 年收入放缓（加息、科技回调）</p>
-<p>- 2025 年逆转了这一趋势</p>
-<p>- AI 公司领涨</p>
+<p><strong>2025 是收入加速增长的一年：</strong></p>
+<p>• 2022-24 年收入放缓（加息、科技回调）</p>
+
+<p>• 2025 年逆转了这一趋势</p>
+
+<p>• AI 公司领涨</p>
 
 <p>---</p>
 
@@ -227,16 +151,19 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>定义</h3>
 
-<strong>David 的标准：</strong>
-<p>- 第一个上市产品是 AI 原生产品</p>
-<p>- 大约在 ChatGPT 之后成立</p>
+<p><strong>David 的标准：</strong></p>
+<p>• 第一个上市产品是 AI 原生产品</p>
+
+<p>• 大约在 ChatGPT 之后成立</p>
 
 <h3>关键问题</h3>
 
-<strong>讨论的焦点：</strong>
-<p>- 非 AI 原生公司能否竞争？</p>
-<p>- 他们是否都在转型？</p>
-<p>- 我们会看到更多的淘汰吗？</p>
+<p><strong>讨论的焦点：</strong></p>
+<p>• 非 AI 原生公司能否竞争？</p>
+
+<p>• 他们是否都在转型？</p>
+
+<p>• 我们会看到更多的淘汰吗？</p>
 
 <p>---</p>
 
@@ -244,52 +171,64 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 
 <h3>对投资者</h3>
 
-<strong>关注点：</strong>
-<p>1. <strong>ARR per FTE</strong> — 效率指标</p>
-<p>2. <strong>毛利率</strong> — 低可能是好事（意味着真正的 AI 使用）</p>
-<p>3. <strong>销售营销效率</strong> — AI 公司应该更低</p>
-<p>4. <strong>产品周期位置</strong> — 我们才刚开始</p>
+<p><strong>关注点：</strong></p>
+<p>1. **ARR per FTE** — 效率指标</p>
+
+<p>2. **毛利率** — 低可能是好事（意味着真正的 AI 使用）</p>
+
+<p>3. **销售营销效率** — AI 公司应该更低</p>
+
+<p>4. **产品周期位置** — 我们才刚开始</p>
 
 <h3>对创业者</h3>
 
-<strong>关键洞察：</strong>
-<p>- 需求驱动 > 销售驱动</p>
-<p>- 产品本身应该足够有吸引力</p>
-<p>- 高毛利率可能意味着你没有真正做 AI</p>
-<p>- 效率（ARR per FTE）是新黄金标准</p>
+<p><strong>关键洞察：</strong></p>
+<p>• 需求驱动 > 销售驱动</p>
+
+<p>• 产品本身应该足够有吸引力</p>
+
+<p>• 高毛利率可能意味着你没有真正做 AI</p>
+
+<p>• 效率（ARR per FTE）是新黄金标准</p>
 
 <p>---</p>
 
 <h2>📊 关键数据点</h2>
 
-<table class="content-table"><thead><tr><th>指标</th><th>AI 公司</th><th>SaaS 公司</th></tr></thead><tbody><tr><td>达到 $100M 收入</td><td>更快</td><td>基准</td></tr><tr><td>YoY 增长（顶级）</td><td>693%</td><td>显著更低</td></tr><tr><td>毛利率</td><td>较低</td><td>较高</td></tr><tr><td>销售营销支出</td><td>更少</td><td>更多</td></tr><tr><td>ARR per FTE</td><td>$500K-$1M</td><td>~$400K</td></tr></tbody></table>
+<p>指标AI 公司SaaS 公司达到 $100M 收入更快基准YoY 增长（顶级）693%显著更低毛利率较低较高销售营销支出更少更多ARR per FTE$500K-$1M~$400K</p>
 <p>---</p>
 
 <h2>🔑 关键引用</h2>
 
-<strong>关于增长：</strong>
+<p><strong>关于增长：</strong></p>
 <blockquote>"2025 was a year for accelerated revenue growth."</blockquote>
 
-<strong>关于效率：</strong>
+<p><strong>关于效率：</strong></p>
 <blockquote>"The best AI companies that are growing the fastest are not the ones spending the most amount of money on sales and marketing."</blockquote>
 
-<strong>关于周期：</strong>
+<p><strong>关于周期：</strong></p>
 <blockquote>"Product cycles drive our business. These are 10, 15 year cycles and we're just at the very beginning of it."</blockquote>
 
 <p>---</p>
 
 <p>_整理完成：2026-03-02_</p>
+
 <p>_视频来源：a16z_</p>
-<p>_标签：#AI #a16z #SaaS #增长 #ARR #投资 #产品周期_</p></article>
+
+<p>_标签：#AI #a16z #SaaS #增长 #ARR #投资 #产品周期_</p>
+</article>
 <footer class="site-footer">
-<p>由小爪 🐾 整理</p>
+<p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
+<p><a href="https://github.com/zhewenzhang/video-notes">GitHub</a></p>
 </footer>
 </div>
-<button class="fab">↑</button>
 <script>
-const fab=document.querySelector('.fab');
-window.addEventListener('scroll',()=>{fab.classList.toggle('visible',scrollY>500);});
-fab.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+document.addEventListener("DOMContentLoaded",function(){
+  const f=document.querySelector(".fab");
+  window.addEventListener("scroll",()=>{f.classList.toggle("visible",window.scrollY>300)});
+  f.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
+});
 </script>
+<button class="fab">↑</button>
 </body>
 </html>

@@ -4,96 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>State of AI in 2026 - Lex Fridman Podcast #490 - 小视频大思考</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
-:root{--bg:#0a0a0f;--bg-elevated:#12121a;--bg-card:#1a1a24;--text:#f5f5f7;--text-muted:#8b8b9e;--accent:#ff6b35;--accent-soft:#ff8c5a;--secondary:#00d4aa;--border:rgba(255,255,255,0.08);--font-display:'Crimson Pro',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1000}
-.wrap{max-width:1200px;margin:0 auto;padding:48px 24px}
-.masthead{text-align:center;padding:80px 0 60px;border-bottom:1px solid var(--border);margin-bottom:48px;position:relative}
-.masthead::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.masthead-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
-.masthead h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;background:linear-gradient(135deg,var(--text) 0%,var(--text-muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.masthead p{font-size:14px;color:var(--text-muted);letter-spacing:0.1em}
-.stats-bar{display:flex;justify-content:center;gap:48px;padding:32px 0;margin-bottom:48px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.stat-item{text-align:center}
-.stat-num{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-top:8px}
-.search-wrap{max-width:600px;margin:0 auto 48px;position:relative}
-.search-wrap input{width:100%;padding:20px 24px;padding-left:56px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:0;color:var(--text);font-size:15px;transition:all .3s}
-.search-wrap input:focus{outline:none;border-color:var(--accent);background:var(--bg-card)}
-.search-wrap::before{content:"⌕";position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--text-muted)}
-.filters{margin-bottom:48px;border:1px solid var(--border);background:var(--bg-elevated)}
-.filter-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .3s}
-.filters.open .filter-header{border-bottom-color:var(--border)}
-.filter-title{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);display:flex;align-items:center;gap:12px}
-.filter-title span{color:var(--accent);font-weight:600}
-.filter-toggle{font-size:12px;color:var(--text-muted);transition:transform .3s}
-.filters.open .filter-toggle{transform:rotate(180deg)}
-.filter-body{display:none;padding:24px}
-.filters.open .filter-body{display:block}
-.filter-section{margin-bottom:32px}
-.filter-section:last-child{margin-bottom:0}
-.filter-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:16px}
-.filter-options{display:flex;flex-wrap:wrap;gap:12px}
-.filter-btn{padding:10px 18px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:13px;cursor:pointer;transition:all .2s}
-.filter-btn:hover{border-color:var(--accent);color:var(--text)}
-.filter-btn.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.filter-btn.small{padding:8px 14px;font-size:12px}
-.clear-btn{width:100%;padding:16px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;transition:all .2s;margin-top:16px}
-.clear-btn:hover{border-color:var(--accent);color:var(--accent)}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px}
-.note-card{background:var(--bg-card);border:1px solid var(--border);padding:32px;position:relative;transition:all .4s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
-.note-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--secondary));opacity:0;transition:opacity .3s}
-.note-card:hover{transform:translateY(-4px);border-color:rgba(255,107,53,0.3)}
-.note-card:hover::before{opacity:1}
-.note-meta{display:flex;gap:16px;margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.note-card h2{font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.3;margin-bottom:16px}
-.note-card h2 a{color:var(--text);text-decoration:none;transition:color .2s}
-.note-card h2 a:hover{color:var(--accent)}
-.note-tags{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.note-tag{padding:6px 12px;background:var(--bg-elevated);border:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);transition:all .2s}
-.note-tag:hover{border-color:var(--secondary);color:var(--secondary)}
-.note-summary{font-size:14px;color:var(--text-muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.note-number{position:absolute;top:16px;right:16px;font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--border);line-height:1;opacity:0.5}
-.empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
-.empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
-.empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
-
-/* 表格样式 */
-.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
-.content-table thead{background:var(--bg-elevated)}
-.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
-.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
-.content-table tr:hover{background:rgba(255,107,53,0.05)}
-.content-table tr:last-child td{border-bottom:none}
-
-/* 文本图形样式（思维导图、流程图） */
-.text-diagram{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:20px;margin:24px 0;font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:14px;line-height:1.6;color:var(--text);overflow-x:auto;white-space:pre}
-.text-diagram:hover{border-color:var(--accent)}
-
-.back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
-.back-link:hover{border-color:var(--accent);color:var(--accent)}
-.article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
-.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:24px}
-.article-meta{display:flex;gap:24px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.article-content{font-size:17px;line-height:1.8;color:var(--text)}
-.article-content h2{font-family:var(--font-display);font-size:1.75rem;font-weight:600;margin:48px 0 24px;color:var(--accent)}
-.article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
-.article-content p{margin:24px 0}
-.article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
-.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
-.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
-.article-content pre code{padding:0;background:none}
-.site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
-.site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
-.site-footer a{color:var(--accent);text-decoration:none}
-.fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
-.fab.visible{opacity:1;visibility:visible}
-.fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}.text-diagram{font-size:12px;padding:15px}}
-</style>
+<meta property="og:title" content="State of AI in 2026 - Lex Fridman Podcast #490">
+<meta property="og:description" content="来自4:25:13的深度视频笔记">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="wrap">
@@ -101,80 +15,105 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <header class="article-header">
 <h1>State of AI in 2026 - Lex Fridman Podcast #490</h1>
 <div class="article-meta">
-
 <span>4:25:13</span>
 <span>2026-03-03</span>
+<span></span>
 </div>
+<div class="note-tags"><span class="note-tag">#490</span><span class="note-tag">#LexFridman</span><span class="note-tag">#AI2026</span><span class="note-tag">#DeepSeek</span><span class="note-tag">#SebastianRaschka</span><span class="note-tag">#NathanLambert</span><span class="note-tag">#LLM</span><span class="note-tag">#AGI</span></div>
 </header>
-<div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#490</span><span class="note-tag">#LexFridman</span><span class="note-tag">#AI2026</span><span class="note-tag">#DeepSeek</span><span class="note-tag">#SebastianRaschka</span><span class="note-tag">#NathanLambert</span><span class="note-tag">#LLM</span><span class="note-tag">#AGI</span></div>
-<article class="article-content"><h1>State of AI in 2026 - Lex Fridman Podcast #490</h1>
+<article class="article-content">
+<h1>State of AI in 2026 - Lex Fridman Podcast #490</h1>
 
-<strong>来源</strong>: Lex Fridman Podcast  
-<strong>嘉宾</strong>: Sebastian Raschka + Nathan Lambert  
-<strong>时长</strong>: 4:25:13  
-<strong>日期</strong>: 2026-03-03  
-<strong>整理时间</strong>: 2026-03-03 07:45
+<p><strong>来源</strong>: Lex Fridman Podcast  </p>
+<p><strong>嘉宾</strong>: Sebastian Raschka + Nathan Lambert  </p>
+<p><strong>时长</strong>: 4:25:13  </p>
+<p><strong>日期</strong>: 2026-03-03  </p>
+<p><strong>整理时间</strong>: 2026-03-03 07:45</p>
 
 <p>---</p>
 
 <h2>核心话题</h2>
 
 <h3>1. "DeepSeek 时刻" (The DeepSeek Moment)</h3>
-<p>- <strong>时间</strong>: 2025 年 1 月</p>
-<p>- <strong>事件</strong>: DeepSeek 发布 R1 模型</p>
-<p>- <strong>意义</strong>: 中国开源模型首次达到 frontier 水平</p>
-<p>- <strong>影响</strong>: 打破了美国 AI 公司的垄断局面</p>
+<p>• **时间**: 2025 年 1 月</p>
+
+<p>• **事件**: DeepSeek 发布 R1 模型</p>
+
+<p>• **意义**: 中国开源模型首次达到 frontier 水平</p>
+
+<p>• **影响**: 打破了美国 AI 公司的垄断局面</p>
 
 <h3>2. 2025-2026 AI 技术突破</h3>
 
-<strong>关键进展</strong>:
-<p>- LLM 架构优化</p>
-<p>- Scaling Laws 新发现</p>
-<p>- AI Agents 实用化</p>
-<p>- 推理能力提升</p>
-<p>- 多模态融合</p>
+<p><strong>关键进展</strong>:</p>
+<p>• LLM 架构优化</p>
 
-<strong>代表人物</strong>:
-<p>- <strong>Sebastian Raschka</strong>: 《Build LLM from Scratch》作者</p>
-<p>- <strong>Nathan Lambert</strong>: Allen Institute for AI, RLHF 专家</p>
+<p>• Scaling Laws 新发现</p>
+
+<p>• AI Agents 实用化</p>
+
+<p>• 推理能力提升</p>
+
+<p>• 多模态融合</p>
+
+<p><strong>代表人物</strong>:</p>
+<p>• **Sebastian Raschka**: 《Build LLM from Scratch》作者</p>
+
+<p>• **Nathan Lambert**: Allen Institute for AI, RLHF 专家</p>
 
 <h3>3. AI 生态系统变化</h3>
 
-<strong>参与者</strong>:
-<p>- OpenAI, Anthropic (美国闭源)</p>
-<p>- DeepSeek, Moonshot, MiniMax (中国开源)</p>
-<p>- Google DeepMind, Meta (开源 + 闭源混合)</p>
+<p><strong>参与者</strong>:</p>
+<p>• OpenAI, Anthropic (美国闭源)</p>
 
-<strong>趋势</strong>:
-<p>- 开源模型质量接近闭源</p>
-<p>- 中国 AI 公司快速崛起</p>
-<p>- 成本大幅下降</p>
+<p>• DeepSeek, Moonshot, MiniMax (中国开源)</p>
+
+<p>• Google DeepMind, Meta (开源 + 闭源混合)</p>
+
+<p><strong>趋势</strong>:</p>
+<p>• 开源模型质量接近闭源</p>
+
+<p>• 中国 AI 公司快速崛起</p>
+
+<p>• 成本大幅下降</p>
 
 <h3>4. 技术讨论重点</h3>
 
-<p>- <strong>Scaling Laws</strong>: 是否还在持续？</p>
-<p>- <strong>AGI 时间线</strong>: 各嘉宾观点</p>
-<p>- <strong>AI 安全</strong>: 如何平衡发展与风险</p>
-<p>- <strong>计算资源</strong>: GPU/TPU 供应链</p>
-<p>- <strong>中国 vs 美国</strong>: 技术竞争态势</p>
+<p>• **Scaling Laws**: 是否还在持续？</p>
+
+<p>• **AGI 时间线**: 各嘉宾观点</p>
+
+<p>• **AI 安全**: 如何平衡发展与风险</p>
+
+<p>• **计算资源**: GPU/TPU 供应链</p>
+
+<p>• **中国 vs 美国**: 技术竞争态势</p>
 
 <p>---</p>
 
 <h2>嘉宾背景</h2>
 
 <h3>Sebastian Raschka</h3>
-<p>- 机器学习研究员/教育家</p>
-<p>- 著作:</p>
+<p>• 机器学习研究员/教育家</p>
+
+<p>• 著作:</p>
+
 <p>  - 《Build a Large Language Model from Scratch》</p>
+
 <p>  - 《Build a Reasoning Model from Scratch》</p>
-<p>- YouTube 课程博主</p>
-<p>- 理念：<strong>从 0 开始构建是最佳学习方式</strong></p>
+
+<p>• YouTube 课程博主</p>
+
+<p>• 理念：**从 0 开始构建是最佳学习方式**</p>
 
 <h3>Nathan Lambert</h3>
-<p>- Allen Institute for AI 博士后训练负责人</p>
-<p>- RLHF (Reinforcement Learning from Human Feedback) 专家</p>
-<p>- 播客主持人</p>
-<p>- 专注于 AI 对齐和安全研究</p>
+<p>• Allen Institute for AI 博士后训练负责人</p>
+
+<p>• RLHF (Reinforcement Learning from Human Feedback) 专家</p>
+
+<p>• 播客主持人</p>
+
+<p>• 专注于 AI 对齐和安全研究</p>
 
 <p>---</p>
 
@@ -184,45 +123,59 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <blockquote>"The best way to learn and understand something is to build it yourself from scratch."</blockquote>
 
 <h3>2. DeepSeek 的影响</h3>
-<p>- 证明了中国 AI 研究实力</p>
-<p>- 开源模型可以匹敌闭源</p>
-<p>- 推动了全球 AI 竞争</p>
+<p>• 证明了中国 AI 研究实力</p>
+
+<p>• 开源模型可以匹敌闭源</p>
+
+<p>• 推动了全球 AI 竞争</p>
 
 <h3>3. 2026 年展望</h3>
-<p>- AI Agents 将成为主流</p>
-<p>- 多模态能力大幅增强</p>
-<p>- 成本继续下降</p>
-<p>- 应用场景爆发</p>
+<p>• AI Agents 将成为主流</p>
+
+<p>• 多模态能力大幅增强</p>
+
+<p>• 成本继续下降</p>
+
+<p>• 应用场景爆发</p>
 
 <p>---</p>
 
 <h2>相关资源</h2>
 
-<p>- <a href="https://youtube.com/watch?v=EV7WhVT270Q">Lex Fridman Podcast #490</a></p>
-<p>- <a href="https://youtube.com/@SebastianRaschka">Sebastian Raschka YouTube</a></p>
-<p>- <a href="https://youtube.com/@NathanLambert">Nathan Lambert Podcast</a></p>
+<p>• Lex Fridman Podcast #490</p>
+
+<p>• Sebastian Raschka YouTube</p>
+
+<p>• Nathan Lambert Podcast</p>
 
 <p>---</p>
 
 <h2>后续行动</h2>
 
-<p>- [ ] 观看完整 4.5 小时访谈</p>
-<p>- [ ] 阅读 Sebastian 的 LLM 书籍</p>
-<p>- [ ] 关注 Nathan 的 RLHF 研究</p>
-<p>- [ ] 追踪 DeepSeek 后续发展</p>
+<p>• [ ] 观看完整 4.5 小时访谈</p>
+
+<p>• [ ] 阅读 Sebastian 的 LLM 书籍</p>
+
+<p>• [ ] 关注 Nathan 的 RLHF 研究</p>
+
+<p>• [ ] 追踪 DeepSeek 后续发展</p>
 
 <p>---</p>
+
 <p>_标签：#LexFridman #AI2026 #DeepSeek #SebastianRaschka #NathanLambert #LLM #AGI_</p>
 </article>
 <footer class="site-footer">
-<p>由小爪 🐾 整理</p>
+<p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
+<p><a href="https://github.com/zhewenzhang/video-notes">GitHub</a></p>
 </footer>
 </div>
-<button class="fab">↑</button>
 <script>
-const fab=document.querySelector('.fab');
-window.addEventListener('scroll',()=>{fab.classList.toggle('visible',scrollY>500);});
-fab.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+document.addEventListener("DOMContentLoaded",function(){
+  const f=document.querySelector(".fab");
+  window.addEventListener("scroll",()=>{f.classList.toggle("visible",window.scrollY>300)});
+  f.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
+});
 </script>
+<button class="fab">↑</button>
 </body>
 </html>

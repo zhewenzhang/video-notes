@@ -4,96 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459 - 小视频大思考</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
-:root{--bg:#0a0a0f;--bg-elevated:#12121a;--bg-card:#1a1a24;--text:#f5f5f7;--text-muted:#8b8b9e;--accent:#ff6b35;--accent-soft:#ff8c5a;--secondary:#00d4aa;--border:rgba(255,255,255,0.08);--font-display:'Crimson Pro',Georgia,serif;--font-body:'Space Grotesk',system-ui,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1000}
-.wrap{max-width:1200px;margin:0 auto;padding:48px 24px}
-.masthead{text-align:center;padding:80px 0 60px;border-bottom:1px solid var(--border);margin-bottom:48px;position:relative}
-.masthead::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.masthead-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
-.masthead h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;background:linear-gradient(135deg,var(--text) 0%,var(--text-muted) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.masthead p{font-size:14px;color:var(--text-muted);letter-spacing:0.1em}
-.stats-bar{display:flex;justify-content:center;gap:48px;padding:32px 0;margin-bottom:48px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.stat-item{text-align:center}
-.stat-num{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-top:8px}
-.search-wrap{max-width:600px;margin:0 auto 48px;position:relative}
-.search-wrap input{width:100%;padding:20px 24px;padding-left:56px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:0;color:var(--text);font-size:15px;transition:all .3s}
-.search-wrap input:focus{outline:none;border-color:var(--accent);background:var(--bg-card)}
-.search-wrap::before{content:"⌕";position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--text-muted)}
-.filters{margin-bottom:48px;border:1px solid var(--border);background:var(--bg-elevated)}
-.filter-header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-bottom:1px solid transparent;transition:all .3s}
-.filters.open .filter-header{border-bottom-color:var(--border)}
-.filter-title{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);display:flex;align-items:center;gap:12px}
-.filter-title span{color:var(--accent);font-weight:600}
-.filter-toggle{font-size:12px;color:var(--text-muted);transition:transform .3s}
-.filters.open .filter-toggle{transform:rotate(180deg)}
-.filter-body{display:none;padding:24px}
-.filters.open .filter-body{display:block}
-.filter-section{margin-bottom:32px}
-.filter-section:last-child{margin-bottom:0}
-.filter-label{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:16px}
-.filter-options{display:flex;flex-wrap:wrap;gap:12px}
-.filter-btn{padding:10px 18px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:13px;cursor:pointer;transition:all .2s}
-.filter-btn:hover{border-color:var(--accent);color:var(--text)}
-.filter-btn.active{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.filter-btn.small{padding:8px 14px;font-size:12px}
-.clear-btn{width:100%;padding:16px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;transition:all .2s;margin-top:16px}
-.clear-btn:hover{border-color:var(--accent);color:var(--accent)}
-.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:32px}
-.note-card{background:var(--bg-card);border:1px solid var(--border);padding:32px;position:relative;transition:all .4s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
-.note-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--secondary));opacity:0;transition:opacity .3s}
-.note-card:hover{transform:translateY(-4px);border-color:rgba(255,107,53,0.3)}
-.note-card:hover::before{opacity:1}
-.note-meta{display:flex;gap:16px;margin-bottom:16px;font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.note-card h2{font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.3;margin-bottom:16px}
-.note-card h2 a{color:var(--text);text-decoration:none;transition:color .2s}
-.note-card h2 a:hover{color:var(--accent)}
-.note-tags{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.note-tag{padding:6px 12px;background:var(--bg-elevated);border:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);transition:all .2s}
-.note-tag:hover{border-color:var(--secondary);color:var(--secondary)}
-.note-summary{font-size:14px;color:var(--text-muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.note-number{position:absolute;top:16px;right:16px;font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--border);line-height:1;opacity:0.5}
-.empty{text-align:center;padding:120px 40px;color:var(--text-muted)}
-.empty-icon{font-size:4rem;margin-bottom:24px;opacity:0.3}
-.empty h3{font-family:var(--font-display);font-size:1.5rem;color:var(--text);margin-bottom:12px}
-
-/* 表格样式 */
-.content-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
-.content-table thead{background:var(--bg-elevated)}
-.content-table th{padding:14px 16px;text-align:left;font-weight:600;color:var(--accent);border-bottom:2px solid var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-size:13px}
-.content-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text)}
-.content-table tr:hover{background:rgba(255,107,53,0.05)}
-.content-table tr:last-child td{border-bottom:none}
-
-/* 文本图形样式（思维导图、流程图） */
-.text-diagram{background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:20px;margin:24px 0;font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;font-size:14px;line-height:1.6;color:var(--text);overflow-x:auto;white-space:pre}
-.text-diagram:hover{border-color:var(--accent)}
-
-.back-link{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;margin-bottom:40px;transition:all .2s}
-.back-link:hover{border-color:var(--accent);color:var(--accent)}
-.article-header{padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:40px}
-.article-header h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:24px}
-.article-meta{display:flex;gap:24px;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);flex-wrap:wrap}
-.article-content{font-size:17px;line-height:1.8;color:var(--text)}
-.article-content h2{font-family:var(--font-display);font-size:1.75rem;font-weight:600;margin:48px 0 24px;color:var(--accent)}
-.article-content h3{font-size:1.35rem;font-weight:600;margin:32px 0 16px}
-.article-content p{margin:24px 0}
-.article-content blockquote{border-left:2px solid var(--accent);padding-left:24px;margin:32px 0;font-style:italic;color:var(--text-muted)}
-.article-content code{font-family:monospace;font-size:14px;background:var(--bg-elevated);padding:4px 10px;border-radius:4px;color:var(--secondary)}
-.article-content pre{background:var(--bg-elevated);padding:24px;border-radius:0;overflow-x:auto;margin:32px 0}
-.article-content pre code{padding:0;background:none}
-.site-footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
-.site-footer p{font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin:8px 0}
-.site-footer a{color:var(--accent);text-decoration:none}
-.fab{position:fixed;bottom:32px;right:32px;width:56px;height:56px;border-radius:50%;background:var(--accent);border:none;color:var(--bg);font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:100;box-shadow:0 8px 32px rgba(255,107,53,0.3)}
-.fab.visible{opacity:1;visibility:visible}
-.fab:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,107,53,0.4)}
-@media(max-width:768px){.wrap{padding:24px 16px}.masthead{padding:48px 0 40px}.masthead h1{font-size:2.5rem}.stats-bar{gap:32px}.notes{grid-template-columns:1fr}.note-card{padding:24px}.content-table{font-size:14px}.content-table th,.content-table td{padding:10px 12px}.text-diagram{font-size:12px;padding:15px}}
-</style>
+<meta property="og:title" content="DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459">
+<meta property="og:description" content="来自5:06:19的深度视频笔记">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="wrap">
@@ -101,137 +15,179 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background-
 <header class="article-header">
 <h1>DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459</h1>
 <div class="article-meta">
-
 <span>5:06:19</span>
 <span>2026-03-03</span>
+<span></span>
 </div>
+<div class="note-tags"><span class="note-tag">#459</span><span class="note-tag">#LexFridman</span><span class="note-tag">#DeepSeek</span><span class="note-tag">#China</span><span class="note-tag">#OpenAI</span><span class="note-tag">#NVIDIA</span><span class="note-tag">#TSMC</span><span class="note-tag">#AI</span></div>
 </header>
-<div class="note-tags" style="margin-bottom:40px"><span class="note-tag">#459</span><span class="note-tag">#LexFridman</span><span class="note-tag">#DeepSeek</span><span class="note-tag">#China</span><span class="note-tag">#OpenAI</span><span class="note-tag">#NVIDIA</span><span class="note-tag">#TSMC</span><span class="note-tag">#AI</span></div>
-<article class="article-content"><h1>DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459</h1>
+<article class="article-content">
+<h1>DeepSeek, China, OpenAI, NVIDIA - Lex Fridman #459</h1>
 
-<strong>来源</strong>: Lex Fridman Podcast #459  
-<strong>主题</strong>: 中美 AI 竞争全景分析  
-<strong>时长</strong>: 5:06:19  
-<strong>整理时间</strong>: 2026-03-03 08:00
+<p><strong>来源</strong>: Lex Fridman Podcast #459  </p>
+<p><strong>主题</strong>: 中美 AI 竞争全景分析  </p>
+<p><strong>时长</strong>: 5:06:19  </p>
+<p><strong>整理时间</strong>: 2026-03-03 08:00</p>
 
 <p>---</p>
 
 <h2>核心话题</h2>
 
 <h3>1. DeepSeek 崛起</h3>
-<p>- <strong>背景</strong>: 中国量化基金转型 AI</p>
-<p>- <strong>技术路线</strong>: 开源 + 高性价比</p>
-<p>- <strong>影响</strong>: 打破美国 AI 垄断</p>
-<p>- <strong>争议</strong>: 蒸馏攻击指控</p>
+<p>• **背景**: 中国量化基金转型 AI</p>
+
+<p>• **技术路线**: 开源 + 高性价比</p>
+
+<p>• **影响**: 打破美国 AI 垄断</p>
+
+<p>• **争议**: 蒸馏攻击指控</p>
 
 <h3>2. 中国 AI 生态</h3>
 
-<strong>主要玩家</strong>:
-<table class="content-table"><thead><tr><th>公司</th><th>代表模型</th><th>特点</th></tr></thead><tbody><tr><td>DeepSeek</td><td>V2/R1</td><td>开源 + 低成本</td></tr><tr><td>Moonshot (月之暗面)</td><td>Kimi</td><td>长上下文</td></tr><tr><td>MiniMax (名之梦)</td><td>ABAB</td><td>多模态</td></tr><tr><td>Alibaba</td><td>Qwen</td><td>开源生态</td></tr><tr><td>Baidu</td><td>ERNIE</td><td>搜索整合</td></tr><tr><td>Tencent</td><td>HunYuan</td><td>社交整合</td></tr></tbody></table>
-<strong>优势</strong>:
-<p>- 工程师红利</p>
-<p>- 数据丰富</p>
-<p>- 政策支持</p>
-<p>- 市场巨大</p>
+<p><strong>主要玩家</strong>:</p>
+<p>公司代表模型特点DeepSeekV2/R1开源 + 低成本Moonshot (月之暗面)Kimi长上下文MiniMax (名之梦)ABAB多模态AlibabaQwen开源生态BaiduERNIE搜索整合TencentHunYuan社交整合</p>
+<p><strong>优势</strong>:</p>
+<p>• 工程师红利</p>
 
-<strong>挑战</strong>:
-<p>- GPU 限制</p>
-<p>- 基础创新不足</p>
-<p>- 国际化困难</p>
+<p>• 数据丰富</p>
+
+<p>• 政策支持</p>
+
+<p>• 市场巨大</p>
+
+<p><strong>挑战</strong>:</p>
+<p>• GPU 限制</p>
+
+<p>• 基础创新不足</p>
+
+<p>• 国际化困难</p>
 
 <h3>3. 美国 AI 生态</h3>
 
-<strong>主要玩家</strong>:
-<p>- OpenAI (GPT 系列)</p>
-<p>- Anthropic (Claude)</p>
-<p>- Google (Gemini)</p>
-<p>- Meta (Llama)</p>
-<p>- xAI (Grok)</p>
+<p><strong>主要玩家</strong>:</p>
+<p>• OpenAI (GPT 系列)</p>
 
-<strong>优势</strong>:
-<p>- 基础研究领先</p>
-<p>- 人才聚集</p>
-<p>- 资本充足</p>
-<p>- 生态系统成熟</p>
+<p>• Anthropic (Claude)</p>
 
-<strong>挑战</strong>:
-<p>- 成本高</p>
-<p>- 监管压力</p>
-<p>- 中国竞争</p>
+<p>• Google (Gemini)</p>
+
+<p>• Meta (Llama)</p>
+
+<p>• xAI (Grok)</p>
+
+<p><strong>优势</strong>:</p>
+<p>• 基础研究领先</p>
+
+<p>• 人才聚集</p>
+
+<p>• 资本充足</p>
+
+<p>• 生态系统成熟</p>
+
+<p><strong>挑战</strong>:</p>
+<p>• 成本高</p>
+
+<p>• 监管压力</p>
+
+<p>• 中国竞争</p>
 
 <h3>4. NVIDIA 的垄断地位</h3>
 
-<strong>关键数据</strong>:
-<p>- AI GPU 市场份额: 90%+</p>
-<p>- 市值：2026 年超$3 万亿</p>
-<p>- 护城河：CUDA 生态</p>
+<p><strong>关键数据</strong>:</p>
+<p>• AI GPU 市场份额: 90%+</p>
 
-<strong>挑战者</strong>:
-<p>- AMD (MI 系列)</p>
-<p>- Intel (Gaudi)</p>
-<p>- Google (TPU)</p>
-<p>- 中国：华为昇腾、寒武纪</p>
+<p>• 市值：2026 年超$3 万亿</p>
+
+<p>• 护城河：CUDA 生态</p>
+
+<p><strong>挑战者</strong>:</p>
+<p>• AMD (MI 系列)</p>
+
+<p>• Intel (Gaudi)</p>
+
+<p>• Google (TPU)</p>
+
+<p>• 中国：华为昇腾、寒武纪</p>
 
 <h3>5. TSMC 与 AI 芯片供应链</h3>
 
-<strong>关键角色</strong>:
-<p>- TSMC 生产 NVIDIA 所有先进芯片</p>
-<p>- 5nm/3nm 产能紧张</p>
-<p>- 地缘政治风险</p>
+<p><strong>关键角色</strong>:</p>
+<p>• TSMC 生产 NVIDIA 所有先进芯片</p>
 
-<strong>Stargate 项目</strong>:
-<p>- OpenAI + 微软 + 甲骨文</p>
-<p>- 投资规模：$500 亿+</p>
-<p>- 目标：建设 AI 专用数据中心</p>
+<p>• 5nm/3nm 产能紧张</p>
+
+<p>• 地缘政治风险</p>
+
+<p><strong>Stargate 项目</strong>:</p>
+<p>• OpenAI + 微软 + 甲骨文</p>
+
+<p>• 投资规模：$500 亿+</p>
+
+<p>• 目标：建设 AI 专用数据中心</p>
 
 <p>---</p>
 
 <h2>关键洞察</h2>
 
 <h3>中美 AI 竞争格局</h3>
-<p>- <strong>美国</strong>: 基础创新 + 高端芯片</p>
-<p>- <strong>中国</strong>: 应用创新 + 工程优化</p>
-<p>- <strong>趋势</strong>: 技术脱钩加速</p>
+<p>• **美国**: 基础创新 + 高端芯片</p>
+
+<p>• **中国**: 应用创新 + 工程优化</p>
+
+<p>• **趋势**: 技术脱钩加速</p>
 
 <h3>AI 军备竞赛</h3>
-<p>- 计算能力每 3-4 个月翻倍</p>
-<p>- 训练成本突破$10 亿</p>
-<p>- 能源消耗成为瓶颈</p>
+<p>• 计算能力每 3-4 个月翻倍</p>
+
+<p>• 训练成本突破$10 亿</p>
+
+<p>• 能源消耗成为瓶颈</p>
 
 <h3>地缘政治影响</h3>
-<p>- 芯片出口管制</p>
-<p>- 人才流动限制</p>
-<p>- 开源模型成为战场</p>
+<p>• 芯片出口管制</p>
+
+<p>• 人才流动限制</p>
+
+<p>• 开源模型成为战场</p>
 
 <p>---</p>
 
 <h2>对我的启发</h2>
 
-<p>1. <strong>理解全局</strong> - AI 不仅是技术，更是地缘政治</p>
-<p>2. <strong>供应链风险</strong> - GPU 依赖是单点故障</p>
-<p>3. <strong>开源价值</strong> - 开源模型是平衡力量</p>
+<p>1. **理解全局** - AI 不仅是技术，更是地缘政治</p>
+
+<p>2. **供应链风险** - GPU 依赖是单点故障</p>
+
+<p>3. **开源价值** - 开源模型是平衡力量</p>
 
 <p>---</p>
 
 <h2>后续关注</h2>
 
-<p>- [ ] DeepSeek 后续发展</p>
-<p>- [ ] 美国 AI 监管政策</p>
-<p>- [ ] 中国芯片自主进展</p>
-<p>- [ ] Stargate 项目落地</p>
+<p>• [ ] DeepSeek 后续发展</p>
+
+<p>• [ ] 美国 AI 监管政策</p>
+
+<p>• [ ] 中国芯片自主进展</p>
+
+<p>• [ ] Stargate 项目落地</p>
 
 <p>---</p>
+
 <p>_标签：#LexFridman #DeepSeek #China #OpenAI #NVIDIA #TSMC #AI 竞争_</p>
 </article>
 <footer class="site-footer">
-<p>由小爪 🐾 整理</p>
+<p>由小爪 🐾 整理 · 每晚更新，晨间阅读</p>
+<p><a href="https://github.com/zhewenzhang/video-notes">GitHub</a></p>
 </footer>
 </div>
-<button class="fab">↑</button>
 <script>
-const fab=document.querySelector('.fab');
-window.addEventListener('scroll',()=>{fab.classList.toggle('visible',scrollY>500);});
-fab.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+document.addEventListener("DOMContentLoaded",function(){
+  const f=document.querySelector(".fab");
+  window.addEventListener("scroll",()=>{f.classList.toggle("visible",window.scrollY>300)});
+  f.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
+});
 </script>
+<button class="fab">↑</button>
 </body>
 </html>
